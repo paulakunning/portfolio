@@ -15,7 +15,7 @@ export default function About() {
           <div className="aboutme-img">
             <img
               className="profile-img"
-              src="/src/assets/profile_picture.jpg"
+              src="https://i.postimg.cc/gkjTH7g8/profile-picture.jpg"
               alt={t("about.alt")}
             />
           </div>

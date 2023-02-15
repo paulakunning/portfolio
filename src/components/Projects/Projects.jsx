@@ -12,7 +12,7 @@ export default function Projects() {
         <div className="project-container">
           <h2>{t("projects.project1-title")}</h2>
           <div className="project-info">
-            <img src="/src/assets/acmetronics-shop.PNG" alt="acmetronics project" />
+            <img src="https://i.postimg.cc/vZcwDTRR/acmetronics-shop.png" alt="acmetronics project" />
             <div className="project-btns">
               <button>
                 <a href={t("projects.project1-deploy")} target="blank">
@@ -32,7 +32,7 @@ export default function Projects() {
         <div className="project-container">
           <h2>{t("projects.project2-title")}</h2>
           <div className="project-info">
-            <img src="/src/assets/pi-2.PNG" alt="countries app" />
+            <img src="https://i.postimg.cc/L4NWfS3m/pi-2.png" alt="countries app" />
             <div className="project-btns">
               <button>
                 <a href={t("projects.project2-deploy")} target="blank">                   
@@ -52,7 +52,7 @@ export default function Projects() {
         <div className="project-container">
           <h2>{t("projects.project3-title")}</h2>
           <div className="project-info">
-            <img src="/src/assets/WeatherApp.PNG" alt="weather app" />
+            <img src="https://i.postimg.cc/prG1tQLm/Weather-App.png" alt="weather app" />
             <div className="project-btns">
               <button>
                 <a href={t("projects.project3-deploy")} target="blank">                   
@@ -72,7 +72,7 @@ export default function Projects() {
         <div className="project-container">
           <h2>{t("projects.project4-title")}</h2>
           <div className="project-info">
-            <img src="/src/assets/id-project.PNG" alt="imagine dragons landing page" />
+            <img src="https://i.postimg.cc/MTwL0KLp/id-project.png" alt="imagine dragons landing page" />
             <div className="project-btns">
               <button>
                 <a href={t("projects.project4-deploy")} target="blank">                   
@@ -92,7 +92,7 @@ export default function Projects() {
         <div className="project-container">
           <h2>{t("projects.project5-title")}</h2>
           <div className="project-info">
-            <img src="/src/assets/github-profile.PNG" alt="github profile" />
+            <img src="https://i.postimg.cc/N0mVrrpn/github-profile.png" alt="github profile" />
             <div className="project-btns">               
               <button>                 
                 <a href={t("projects.project5-deploy")} target="blank">                   

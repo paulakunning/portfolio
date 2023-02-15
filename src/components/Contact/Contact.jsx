@@ -12,28 +12,28 @@ export default function Contact() {
         <h2>{t("contact.subtitle1")}</h2>
         <a href="https://www.linkedin.com/in/paula-kunning/">
           <img
-            src="/src/components/assets/linkedin-footer.png"
+            src="https://i.postimg.cc/65bDsK8M/linkedin-footer.png"
             width="70px"
             alt="linkedin icon"
           />
         </a>
         <a href="https://github.com/paulakunning">
           <img
-            src="/src/components/assets/github-footer.png"
+            src="https://i.postimg.cc/1XJb3hJ5/github-footer.png"
             width="70px"
             alt="github icon"
           />
         </a>
         <a href="https://twitter.com/pau_dev_">
           <img
-            src="/src/components/assets/twitter-footer.png"
+            src="https://i.postimg.cc/GthSNgd0/twitter-footer.png"
             width="70px"
             alt="twitter icon"
           />
         </a>
       </div>
       <div className="contact-container">
-        <img src="/src/components/assets/gmail.png" width="70px" alt="email icon" />
+        <img src="https://i.postimg.cc/QCXRDxgy/gmail.png" width="70px" alt="email icon" />
         <h2>
           {t("contact.subtitle2")}{" "}
           <a href="mailto:paulakunning@gmail.com"> email</a>!

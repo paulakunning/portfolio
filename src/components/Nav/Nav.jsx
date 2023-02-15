@@ -17,7 +17,7 @@ export default function Nav() {
             <a className="list-text" href="#home">
               <img
                 className="icon"
-                src="/src/assets/home.png"
+                src="https://i.postimg.cc/G3QWQGdw/home.png"
                 alt="Home icon"
               />
               {t("nav.link1")}
@@ -25,7 +25,7 @@ export default function Nav() {
             <a className="list-text" href="#about">
               <img
                 className="icon"
-                src="/src/assets/girl.png"
+                src="https://i.postimg.cc/DZ39CcSF/girl.png"
                 alt="About icon"
               />
               {t("nav.link2")}
@@ -33,7 +33,7 @@ export default function Nav() {
             <a className="list-text" href="#projects">
               <img
                 className="icon"
-                src="/src/assets/coding.png"
+                src="https://i.postimg.cc/GpD0Jfhq/coding.png"
                 alt="Projects icon"
               />
               {t("nav.link3")}
@@ -41,7 +41,7 @@ export default function Nav() {
             <a className="list-text" href="#contact">
               <img
                 className="icon"
-                src="/src/assets/phone-book.png"
+                src="https://i.postimg.cc/htJNcYxc/phone-book.png"
                 alt="Contact icon"
               />
               {t("nav.link4")}
