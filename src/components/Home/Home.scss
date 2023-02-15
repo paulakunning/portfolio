@@ -1,0 +1,68 @@
+@import "/src/styles/root";
+ 
+.home-bg {
+    background: $bg-home-default;
+    background: $bg-home-gradient;
+    color: $color1;
+    height: 100vh;
+    display: flex;
+    padding: 1.5rem;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+        font-size: 4rem;
+        font-family: $FontMontserrat;
+    }
+
+    h2 {
+        font-family: $FontRoboto;
+        font-size: 2rem;
+    }
+
+    h1,
+    h2 {
+        padding: 0.5rem;
+    }
+
+    .draw {
+        img {
+            max-width: 300px;
+        }
+    }
+
+    .icons {
+        padding-top: 1rem;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .home-bg {
+        flex-direction: column-reverse;
+        flex-wrap: wrap;
+    }
+
+    .draw {
+        padding-bottom: 2rem;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .home-bg {
+        flex-direction: column-reverse;
+        height: 100vh;
+
+        h1 {
+            font-size: 3rem;
+        }
+    }
+
+    .draw {
+        img {
+            width: 200px;
+        }
+    }
+}

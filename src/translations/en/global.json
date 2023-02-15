@@ -1,5 +1,56 @@
 {
+    "nav": {
+        "link1": "Home",
+        "link2": "About",
+        "link3": "Projects",
+        "link4": "Contact"
+    },
     "home": {
-        "hello": "Hi, I'm"
+        "title": "Hi! I'm",
+        "subtitle": "Full-Stack Developer based in Córdoba, Argentina",
+        "cv-link": "Download resume"
+    },
+    "about": {
+        "title": "About me", 
+        "p1":"I am a simple person who loves coding and learning whatever I can.",
+        "p2": "After having my accountant degree, I felt curious about what was programming about, so I started learning by myself and I found it fascinating. Coding is my real passion and that is why I decided to get out of my confort zone and joined the Soy Henry's bootcamp.",
+        "p3":" I have knowledge in HTML, CSS, SASS, Bootstrap, ChakraUI, MaterialUI, Javascript, ReactJS, Redux, NodeJS, ExpressJS, Sequelize, PostgreSQL and Scrum. I am learning React Native, but I am open to learn any other technology!",
+        "p4": "I am a highly creative person. I love generating attractive experiences, not only visually but also functionally, paying special attention on details.",
+        "p5": "I like being part of a team because I can learn from my teammates and bring my knowledge in order to achieve goals.",
+        "alt": "A picture of me :)", 
+        "skills": "Skills"
+    },
+    "projects":{
+        "title": "Projects",
+        "project1-title": "ACMEtronics E-Commerce",
+        "project1-tecnologies": "HTML5, CSS, Javascript, Bootstrap, MaterialUI, ReactJs, Redux, NodeJs, ExpressJs, Sequelize, PostgreSQL, Auth0, JWT, Stripe, Nodemailer",
+        "project1-description": "E-commerce platform created as a team final project for Soy Henry's Bootcamp. We created our own information to use as an API. You can search, order and filter products, add them to favorites or add them to the cart and buy. Also you can modify the information or ban users if you have administrator permissions.",
+        "project1-repository": "https://github.com/kachamozo/ACMEtronics-front",
+        "project1-deploy": "https://github.com/kachamozo/ACMEtronics-front",
+        "project2-title": "Countries App",
+        "project2-tecnologies": "HTML5, CSS, Javascript, ReactJs, Redux, NodeJs, ExpressJs, Sequelize, PostgreSQL",
+        "project2-description": "Single Page Application where you can search, filter, order countries and create touristic activities.",
+        "project2-repository": "https://github.com/paulakunning/PI-countries-front",
+        "project2-deploy": "https://pi-countries-pk.vercel.app/",
+        "project3-title": "Weather App",
+        "project3-tecnologies": "HTML5, CSS, Javascript, React, ChakraUI",
+        "project3-description": "Single Page Application where you can search the weather from a specific city. It was made during Soy Henry's Bootcamp while we were learning ReactJs, and we used Open Weather API. I made some changes and added styles using Chakra UI.",
+        "project3-repository": "https://github.com/paulakunning/weather-app",
+        "project3-deploy": "https://pk-weather-app.vercel.app/",
+        "project4-title": "Imagine Dragons Page",
+        "project4-tecnologies": "HTML5, CSS, SASS, Bootstrap",
+        "project4-description": "This was my first project with HTML and CSS. It's a landing page tribute to the band. You can find information about the artists, their discography and pictures.",
+        "project4-repository": "https://github.com/paulakunning/imaginedragons",
+        "project4-deploy": "https://paulakunning.github.io/imaginedragons/",
+        "project5-title": "Looking for more projects?",
+        "project5-description": "Checkout my GitHub account!",
+        "project5-repository": "https://github.com/paulakunning",
+        "project5-deploy": "https://github.com/paulakunning"
+    }, 
+    "contact": {
+        "title": "Let's talk!",
+        "subtitle1": "You can find me on social", 
+        "subtitle2": "or send me an"
+
     }
 }

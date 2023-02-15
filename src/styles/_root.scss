@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap');
+
+/* Fonts */
+$FontMontserrat: 'Montserrat', sans-serif;
+$FontRoboto: 'Roboto', sans-serif;
+
+/* Colors */
+$color1: #CE7BB0;
+$color2: #cab1d4;
+$color3: #543f5e;
+$color4: #f5ebf8;
+$color5: #f5ebe0;
+$color6: #d2bed9;
+$color7: #b78ebe;
+
+
+/* Backgrounds */
+$bg-dark: #1f1f1f;
+$bg-home-default:rgb(246, 244, 244);
+$bg-home-gradient: linear-gradient(0deg, rgba(246, 244, 244, 1) 0%, rgba(247, 236, 246, 1) 100%); 
+$bg-about-default:rgb(247,236,246);
+$bg-about-gradient:linear-gradient(0deg, rgba(247,236,246,1) 0%, rgba(246,244,244,1) 100%);
+$bg-contact: #f5ebf8;
+
+* {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth; 
+}
+
+%btn {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid $color2;
+  background-color: $color2;
+  color: $color3;
+  &:hover {
+      cursor: pointer;
+  }
+  &:after, &:active, &:focus {
+    font-weight: bold;
+  }
+}
+
+%box {
+  border: dotted 2px $color3;
+  border-radius: 25px;
+  padding: 2rem;
+  margin: 1rem;
+}
+
+::-webkit-scrollbar {
+  width: 13px;
+  background-color: $color5;
+}
+
+::-webkit-scrollbar-track {
+  border: 1px solid $color2;
+  border-radius: 15px;
+  background-color: $color5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $color2;
+  border-radius: 15px;
+}

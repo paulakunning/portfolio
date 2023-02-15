@@ -1,5 +1,55 @@
 {
+    "nav": {
+        "link1": "Inicio",
+        "link2": "Sobre mí",
+        "link3": "Proyectos",
+        "link4": "Contacto"
+    },
     "home": {
-        "hello": "Hola, soy"
+        "title": "Hola! Soy", 
+        "subtitle": "Desarrolladora Full-Stack de Córdoba, Argentina",
+        "cv-link": "Download resume"
+    },
+    "about": {
+        "title": "Sobre mí",
+        "p1": "Soy una persona simple que disfruta codear y aprender cosas nuevas.",
+        "p2": "Después de recibirme como Contadora Pública, sentí curiosidad sobre qué era programar, así que comencé a aprender por mi cuenta y quedé fascinada con este mundo. Descubrí que esta es mi verdadera pasión así que decidí salir de mi zona de confort y realicé el bootcamp de Soy Henry.",
+        "p3":"Tengo conocimientos en HTML, CSS, SASS, Bootstrap, ChakraUI, MaterialUI, Javascript, ReactJS, Redux, NodeJS, ExpressJS, Sequelize, PostgreSQL y Scrum. Actualmente estoy aprendiendo React Native, pero estoy abierta a aprender cualquier otra tecnología",
+        "p4": "Soy una persona muy creativa. Disfruto desarrollar experiencias atractivas, no solo visualmente sino también funcionales, prestando especial atención a los detalles.",
+        "p5": " Me gusta ser parte de un equipo porque puedo aprender de mis compañeros y aportar mis conocimientos para lograr los objetivos.",
+        "alt": "Una foto mia :)",
+        "skills": "Tecnologías"
+    }, 
+    "projects":{
+        "title": "Proyectos",
+        "project1-title": "ACMEtronics E-Commerce",
+        "project1-tecnologies": "HTML5, CSS, Javascript, Bootstrap, MaterialUI, ReactJs, Redux, NodeJs, ExpressJs, Sequelize, PostgreSQL, Auth0, JWT, Stripe, Nodemailer",
+        "project1-description": "E-commerce creado como proyecto final grupal del Bootcamp Soy Henry. Creamos la información para usarla como una API. Se puede buscar, filtrar y ordenar productos, agregarlos a favoritos o al carrito y comprar. Además se puede modificar la información o banear usuarios si tienes permisos de administrador.",
+        "project1-repository": "https://github.com/kachamozo/ACMEtronics-front",
+        "project1-deploy": "https://github.com/kachamozo/ACMEtronics-front",
+        "project2-title": "Countries App",
+        "project2-tecnologies": "HTML5, CSS, Javascript, ReactJs, Redux, NodeJs, ExpressJs, Sequelize, PostgreSQL",
+        "project2-description": "Single Page Application (SPA) donde podes buscar, filtrar, ordenar países y crear actividades turísticas.",
+        "project2-repository": "https://github.com/paulakunning/PI-countries-front",
+        "project2-deploy": "https://pi-countries-pk.vercel.app/",
+        "project3-title": "Weather App",
+        "project3-tecnologies": "HTML5, CSS, Javascript, React, ChakraUI",
+        "project3-description": "Single Page Application (SPA) donde podes buscar el tiempo en una ciudad específica. Lo hice durante el bootcamp Soy Henry mientras aprendíamos ReactJs y usamos la API Open Weather. Realicé algunos cambios y le agregué estilos con Chakra UI.",
+        "project3-repository": "https://github.com/paulakunning/weather-app",
+        "project3-deploy": "https://pk-weather-app.vercel.app/",
+        "project4-title": "Imagine Dragons",
+        "project4-tecnologies": "HTML5, CSS, SASS, Bootstrap",
+        "project4-description": "Este fue mi primer proyecto con HTML y CSS. Es una landing page tributo a la banda. Tiene información sobre sus intregrantes, la discografía e imágenes.",
+        "project4-repository": "https://github.com/paulakunning/imaginedragons",
+        "project4-deploy": "https://paulakunning.github.io/imaginedragons",
+        "project5-title": "¿Buscas más proyectos?",
+        "project5-description": "Visita mi GitHub!",
+        "project5-repository": "https://github.com/paulakunning",
+        "project5-deploy": "https://github.com/paulakunning"
+    },
+    "contact": {
+        "title": "Charlemos!",
+        "subtitle1": "Puedes encontrarme en redes sociales", 
+        "subtitle2": "o enviarme un"
     }
 }
