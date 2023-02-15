@@ -23,7 +23,7 @@ export default function Home() {
         </div>
       </div>
       <div className="draw">
-        <img src="/src/assets/pau-draw.png" alt="" />
+        <img src="https://i.postimg.cc/7Zpd6NM7/pau-draw.png" alt="draw of me :D" />
       </div>
     </div>
   );
