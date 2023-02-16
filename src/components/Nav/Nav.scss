@@ -123,3 +123,21 @@
     }
   }
 }
+
+@media screen and (max-width: 375px) {
+  .menu-toggle {
+    .menu-list {
+      margin: -100px 0 0px -100px;
+      align-items: center;
+      padding-left: 1rem;
+      .list-text{
+        flex-direction: column;
+      }
+      .translation-container{
+        .translation-btn{
+          margin: 2rem 1rem;
+        }
+      }
+    }
+  }
+}
