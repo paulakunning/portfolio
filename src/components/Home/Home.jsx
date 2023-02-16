@@ -17,13 +17,13 @@ export default function Home() {
           <a href="https://github.com/paulakunning" target="blank">
             <img src="https://i.postimg.cc/QtgRvW77/github.png" alt="github icon" width="70px" />
           </a>
-          <a href="https://github.com/paulakunning" target="blank">
+          <a href={t("home.cv-link")} target="blank">
             <img src="https://i.postimg.cc/sgqdWzyM/cv.png" alt="link to my resume" width="60px" />
           </a>
         </div>
       </div>
       <div className="draw">
-        <img src="https://i.postimg.cc/7Zpd6NM7/pau-draw.png" alt="draw of me :D" />
+        <img src="https://i.postimg.cc/7Zpd6NM7/pau-draw.png" alt="a draw of me :D" />
       </div>
     </div>
   );

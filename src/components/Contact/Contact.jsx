@@ -10,21 +10,21 @@ export default function Contact() {
       <h1>{t("contact.title")}</h1>
       <div className="contact-container">
         <h2>{t("contact.subtitle1")}</h2>
-        <a href="https://www.linkedin.com/in/paula-kunning/">
+        <a href="https://www.linkedin.com/in/paula-kunning/" target="blank">
           <img
             src="https://i.postimg.cc/65bDsK8M/linkedin-footer.png"
             width="70px"
             alt="linkedin icon"
           />
         </a>
-        <a href="https://github.com/paulakunning">
+        <a href="https://github.com/paulakunning" target="blank">
           <img
             src="https://i.postimg.cc/1XJb3hJ5/github-footer.png"
             width="70px"
             alt="github icon"
           />
         </a>
-        <a href="https://twitter.com/pau_dev_">
+        <a href="https://twitter.com/pau_dev_" target="blank">
           <img
             src="https://i.postimg.cc/GthSNgd0/twitter-footer.png"
             width="70px"

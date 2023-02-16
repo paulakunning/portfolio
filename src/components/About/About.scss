@@ -111,9 +111,11 @@
                 }
 
                 .skills-icons {
+                    justify-content: space-around;
 
                     .language {
                         padding: 1rem;
+                        text-align: center;
 
                         img {
                             width: 55px;
