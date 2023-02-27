@@ -26,7 +26,7 @@
         "project1-tecnologies": "HTML5, CSS, Javascript, Bootstrap, MaterialUI, ReactJs, Redux, NodeJs, ExpressJs, Sequelize, PostgreSQL, Auth0, JWT, Stripe, Nodemailer",
         "project1-description": "E-commerce platform created as a team final project for Soy Henry's Bootcamp. We created our own information to use as an API. You can search, order and filter products, add them to favorites or add them to the cart and buy. Also you can modify the information or ban users if you have administrator permissions.",
         "project1-repository": "https://github.com/kachamozo/ACMEtronics-front",
-        "project1-deploy": "https://github.com/kachamozo/ACMEtronics-front",
+        "project1-deploy": "https://acmetronics-henryproject.vercel.app/",
         "project2-title": "Countries App",
         "project2-tecnologies": "HTML5, CSS, Javascript, ReactJs, Redux, NodeJs, ExpressJs, Sequelize, PostgreSQL",
         "project2-description": "Single Page Application where you can search, filter, order countries and create touristic activities.",
