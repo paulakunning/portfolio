@@ -36,6 +36,11 @@
         display: flex;
         justify-content: space-evenly;
         align-items: center;
+        img {
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
     }
 }
 

@@ -31,7 +31,11 @@
         display: flex;
         align-items: center;
         width: 40%;
-
+        a {
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
         img {
             max-width: 70px;
             max-height: 70px;
@@ -67,18 +71,24 @@
             width: 90%;
             img {
                 padding: 0.5rem;
+                width: 60px;
             }
         }
     }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 375px) {
     .contact-bg {
         .contact-container {
-            padding-bottom: 3rem;
-            img {
-                width: 60px;
+            h2 {
+                width: 300px;
+                flex-wrap: nowrap;
             }
+            padding-bottom: 1rem;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 90%;
         }
     }
 }
