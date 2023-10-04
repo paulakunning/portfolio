@@ -14,9 +14,9 @@
         "title": "About me", 
         "p1":"I am a simple person who loves coding and learning whatever I can.",
         "p2": "After having my accountant degree, I felt curious about what was programming about, so I started learning by myself and I found it fascinating. Coding is my real passion and that is why I decided to get out of my confort zone and joined the Soy Henry's bootcamp.",
-        "p3":" I have knowledge in HTML, CSS, SASS, Bootstrap, ChakraUI, MaterialUI, Javascript, ReactJS, Redux, NodeJS, ExpressJS, Sequelize, PostgreSQL and Scrum. I am learning React Native, but I am open to learn any other technology!",
-        "p4": "I am a highly creative person. I love generating attractive experiences, not only visually but also functionally, paying special attention on details.",
-        "p5": "I like being part of a team because I can learn from my teammates and bring my knowledge in order to achieve goals.",
+        "p3":" I have knowledge in HTML, CSS, SASS, Bootstrap, ChakraUI, MaterialUI, Javascript, ReactJS, Redux, NodeJS, ExpressJS, Sequelize, PostgreSQL and Scrum. And I am open to learn any other technology!",
+        "p4": "Currently I am working as remote developer for the chilean start up Canal Cero, mainly on Front-End development and support using tools and languages such as Wordpress, PHP, Elementor, Bricks and WooCommerce.",
+        "p5": "I am a highly creative person. I love generating attractive experiences, not only visually but also functionally, paying special attention on details. I like being part of a team because I can learn from my teammates and bring my knowledge in order to achieve goals.",
         "alt": "A picture of me :)", 
         "skills": "Skills"
     },
