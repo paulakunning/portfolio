@@ -22,6 +22,11 @@ $bg-about-default:rgb(247,236,246);
 $bg-about-gradient:linear-gradient(0deg, rgba(247,236,246,1) 0%, rgba(246,244,244,1) 100%);
 $bg-contact: #f5ebf8;
 
+:root {
+  --swiper-navigation-color: $color3;
+  --swiper-pagination-color: $color3;
+}
+
 * {
   margin: 0;
   padding: 0;
