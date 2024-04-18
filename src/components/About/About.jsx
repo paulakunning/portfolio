@@ -65,6 +65,14 @@ export default function About() {
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" />
               <p>Boostrap</p>
             </div>
+            <div className="language">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/wordpress/wordpress-plain.svg" />
+              <p>Wordpress</p>
+            </div>
+            <div className="language">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" />
+              <p>PHP</p>
+            </div>
 
             <div className="language">
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg" />
