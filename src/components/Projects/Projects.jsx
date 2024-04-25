@@ -42,7 +42,7 @@ export default function Projects() {
         <div className="project-container">
           <h2>{t("projects.project7-title")}</h2>
           <div className="project-info">
-            <img src="https://i.postimg.cc/kgd3YPH2/ags-inc.png" alt="ags-inc"/>
+            <img src="https://i.postimg.cc/zGK1zJ9f/ags-inc2.png" alt="ags-inc"/>
             <div className="project-btns">
               <button>
                 <a href={t("projects.project7-deploy")} target="blank">
@@ -129,8 +129,6 @@ export default function Projects() {
           </div>
         </div>
       </swiper-slide>
-
-
 
         <swiper-slide>
           <div className="project-container">
