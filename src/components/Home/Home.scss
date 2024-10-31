@@ -45,9 +45,16 @@
 }
 
 @media screen and (max-width: 768px) {
+
     .home-bg {
         flex-direction: column-reverse;
         flex-wrap: wrap;
+        h1 {
+            font-size: 2rem;
+        }
+        h2 {
+            font-size: 1.2rem;
+        }
     }
 
     .draw {
@@ -60,9 +67,6 @@
         flex-direction: column-reverse;
         height: 100vh;
 
-        h1 {
-            font-size: 3rem;
-        }
         .draw {
             img {
                 width: 180px;
