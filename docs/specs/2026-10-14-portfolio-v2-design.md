@@ -73,12 +73,14 @@ No se usa ninguna librería de i18n: los dos idiomas se resuelven con el ruteo d
 - `src/proxy.ts` (en Next 16 reemplaza a `middleware.ts`):
   - Si la ruta empieza con `/es`, redirige 308 a la misma ruta sin `/es`.
   - Si no empieza con `/en`, la reescribe internamente a `/es/...`.
-  - El matcher excluye `_next`, `api` y archivos con extensión (imágenes, PDFs, `sitemap.xml`, `robots.txt`).
+  - El matcher excluye `_next`, `api`, archivos con extensión (imágenes, PDFs, `sitemap.xml`, `robots.txt`) y las rutas `opengraph-image`, que se sirven en su ruta interna.
 - `src/app/[lang]/layout.tsx` es el root layout:
   - pone `<html lang={lang}>`, carga las fuentes y renderiza el link para saltar al contenido, el header y el footer;
-  - exporta `generateStaticParams` (es, en) y `dynamicParams = false`.
+  - exporta `generateStaticParams` (es, en) y valida el idioma con `isLocale`.
+  - No se usa `dynamicParams = false`, porque rompería el catch-all de la 404.
 - Todas las páginas son estáticas (SSG). El detalle genera sus params a partir de `projects`, y un slug desconocido llama a `notFound()`.
 - `src/app/[lang]/[...rest]/page.tsx` llama a `notFound()`, para que las rutas inexistentes usen `src/app/[lang]/not-found.tsx` (404 localizada).
+- `not-found.tsx` no recibe params: lee el idioma con `next/root-params` (estable desde Next 16.3).
 - `src/i18n/routing.ts` tiene dos helpers puros:
   - `localizePath(locale, path)` devuelve, por ejemplo, `('en', '/contacto')` → `'/en/contacto'`;
   - `switchLocalePath(pathname, targetLocale)` lo usa el selector de idioma.
@@ -357,12 +359,12 @@ Cada página tiene un único `h1`: en el home es el título del hero. El sitio a
 ### Componentes
 
 **Corren en el navegador (`'use client'`), solo estos tres:**
-- `MobileMenu`
+- `SiteNav`: links del header, selector de idioma y menú mobile. Necesita la URL actual, que solo existe en el navegador.
 - `ProjectFilter`
 - `ContactForm`
 
 **Todo lo demás son Server Components:**
-- **Layout:** `Header`, `Footer`, `LanguageSwitcher`.
+- **Layout:** `Header`, `Footer`.
 - **Home:** `Hero`, `FeaturedProjects`, `ExperienceList`, `SkillsGrid`, `About`, `Testimonials`, `ContactCta`.
 - **Proyectos:** `ProjectCard`, `ProjectFacts`, `ProjectGallery`, `ProjectNav`.
 - **Compartido:** `ButtonLink` (variantes `primary` y `secondary`, interno o externo). Se usa en todo el sitio; no se crean más abstracciones de UI hasta que se repitan.
@@ -494,7 +496,7 @@ type ContactState =
 - **`src/app/sitemap.ts`:** todas las páginas en los dos idiomas, con sus alternativas.
 - **`src/app/robots.ts`:** permite todo y apunta al sitemap.
 - **Favicon:** `src/app/icon.svg`, a partir del favicon o logo de Paula.
-- **Imagen principal (LCP):** se precarga la de cada página que tenga una.
+- **Imagen principal (LCP):** la de cada página que tenga una lleva `fetchPriority="high"`. `priority` está deprecado en Next 16.
 
 ## 9. Calidad y testing
 
@@ -504,7 +506,7 @@ type ContactState =
 |---|---|
 | `src/lib/contact/schema.test.ts` | datos válidos, cada regla de cada campo, recorte de espacios |
 | `src/app/[lang]/contacto/actions.test.ts` | con `sendContactEmail` simulado: éxito, datos inválidos (no envía), trampa (no envía, devuelve éxito), fallo de Resend (devuelve `error` con valores), dry run |
-| `src/content/projects.test.ts` | slugs únicos con formato `kebab-case`, al menos una categoría, galería de 2 a 4 imágenes, URLs `https` |
+| `src/content/content.test.ts` | slugs únicos con formato `kebab-case`, al menos una categoría, galería de 2 a 4 imágenes, URLs `https` |
 | `src/lib/projects.test.ts` | `filterProjects` (por categoría y con límite), `getNextProject` (incluida la vuelta al primero), `getProject` con slug inexistente |
 | `src/i18n/routing.test.ts` | `localizePath` y `switchLocalePath` en home, páginas y detalle, en los dos sentidos |
 | `src/lib/dates.test.ts` | `formatPeriod` en ES y EN, con y sin fecha de fin |
