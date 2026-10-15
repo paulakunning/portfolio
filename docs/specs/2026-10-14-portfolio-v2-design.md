@@ -250,12 +250,12 @@ Paula confirma el permiso de cada persona antes de publicar.
 **Sobre mí:** el título es "Hola, soy Paula" / "Hi, I'm Paula". Los párrafos van textuales:
 
 - **ES:**
-  1. "Hola, soy Paula. Diseño sitios web en Figma y los llevo a la realidad en WordPress y código, así que lo que se diseña es lo que se publica."
+  1. "Diseño sitios web en Figma y los llevo a la realidad en WordPress y código, así que lo que se diseña es lo que se publica."
   2. "Tengo más de 3 años de experiencia: trabajé 2 años y medio en una agencia de marketing digital desarrollando sitios corporativos, y hoy tomo proyectos freelance que combinan diseño y desarrollo."
   3. "Antes de dedicarme a esto fui contadora pública. Cambié de carrera en 2022, y esa mirada de negocio, ordenada y atenta al detalle sigue presente en cada proyecto."
   4. "Hoy estoy profundizando en React, Next.js y TypeScript, y aprendiendo Framer. Vivo en Córdoba, Argentina, y trabajo en remoto en español e inglés."
 - **EN:**
-  1. "Hi, I'm Paula. I design websites in Figma and build them in WordPress and code, so what gets designed is what ships."
+  1. "I design websites in Figma and build them in WordPress and code, so what gets designed is what ships."
   2. "I have 3+ years of experience: I spent 2.5 years at a digital marketing agency building corporate sites, and I now take freelance projects that combine design and development."
   3. "Before this I was a public accountant. I changed careers in 2022, and that business mindset, organized and detail-oriented, shows up in every project."
   4. "I'm currently going deeper into React, Next.js and TypeScript, and learning Framer. I live in Córdoba, Argentina, and work remotely in English and Spanish."
