@@ -6,6 +6,8 @@
   --color-primary: #6d4e68;
   --color-secondary: #b79bb8;
   --color-accent: #d7b6b6;
+  /* Form errors; not part of the brand palette. 6.24:1 on background. */
+  --color-error: #a3332b;
 }
 
 @theme inline {
