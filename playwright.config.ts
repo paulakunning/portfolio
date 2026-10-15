@@ -6,7 +6,7 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? [["list"], ["html", { open: "never" }]] : "list",
   use: {
-    baseURL: "http://localhost:3000",
+    baseURL: "http://localhost:3100",
     trace: "on-first-retry",
   },
   projects: [
@@ -30,11 +30,12 @@ export default defineConfig({
   webServer: {
     // CI builds in an earlier step; locally the server builds first.
     command: process.env.CI
-      ? "npm run start"
-      : "npm run build && npm run start",
-    url: "http://localhost:3000",
+      ? "npm run start -- -p 3100"
+      : "npm run build && npm run start -- -p 3100",
+    url: "http://localhost:3100",
     env: { CONTACT_DRY_RUN: "true" },
-    reuseExistingServer: !process.env.CI,
+    // Always test a fresh production build, never a dev server left on the port.
+    reuseExistingServer: false,
     timeout: 180_000,
   },
 });
