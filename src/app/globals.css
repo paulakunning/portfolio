@@ -13,15 +13,22 @@
   --font-serif: var(--font-playfair);
 }
 
+@utility content-width {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 73rem;
+  padding-inline: 1.5rem;
+}
+
 @layer base {
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background font-sans text-foreground antialiased;
   }
 
   h1,
   h2,
   h3 {
-    @apply font-serif font-semibold;
+    @apply font-serif font-normal;
   }
 
   :focus-visible {

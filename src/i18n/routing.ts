@@ -13,3 +13,14 @@ export function switchLocalePath(pathname: string, target: Locale): string {
   const path = pathname.replace(ENGLISH_PREFIX, "") || "/";
   return localizePath(target, path);
 }
+
+const INTERNAL_SPANISH_PREFIX = /^\/es(?=\/|$)/;
+
+/**
+ * Spanish pages are prerendered under /es but served without the prefix, so
+ * usePathname() differs between server and browser. Normalizing both to the
+ * public path keeps hydration consistent.
+ */
+export function toPublicPath(pathname: string): string {
+  return pathname.replace(INTERNAL_SPANISH_PREFIX, "") || "/";
+}

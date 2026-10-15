@@ -20,6 +20,24 @@ export const en: Dictionary = {
         "Get in touch with Paula Kunning about a remote role or a freelance project.",
     },
   },
+  nav: {
+    skipToContent: "Skip to content",
+    home: "Paula Kunning — Home",
+    label: "Main",
+    projects: "Projects",
+    contact: "Contact",
+    cta: "Let's talk",
+    switchTo: "ES",
+    switchToLabel: "View this page in Spanish",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+  },
+  common: {
+    newTab: "(opens in a new tab)",
+  },
+  footer: {
+    title: "Let's stay in touch",
+  },
   hero: {
     title: "Web Designer & WordPress / Front-End Developer",
   },

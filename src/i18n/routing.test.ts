@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { isLocale } from "./config";
-import { localizePath, switchLocalePath } from "./routing";
+import { localizePath, switchLocalePath, toPublicPath } from "./routing";
 
 describe("localizePath", () => {
   it("keeps Spanish paths unprefixed", () => {
@@ -38,5 +38,17 @@ describe("isLocale", () => {
     expect(isLocale("es")).toBe(true);
     expect(isLocale("en")).toBe(true);
     expect(isLocale("fr")).toBe(false);
+  });
+});
+
+describe("toPublicPath", () => {
+  it.each([
+    ["/es", "/"],
+    ["/es/proyectos", "/proyectos"],
+    ["/proyectos", "/proyectos"],
+    ["/en/contacto", "/en/contacto"],
+    ["/estudio", "/estudio"],
+  ])("%s → %s", (pathname, expected) => {
+    expect(toPublicPath(pathname)).toBe(expected);
   });
 });

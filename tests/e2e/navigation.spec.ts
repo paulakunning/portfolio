@@ -28,7 +28,9 @@ test("redirects /es URLs to the unprefixed URL", async ({ page }) => {
 test("redirects WordPress-style trailing slashes", async ({ page }) => {
   await page.goto("/proyectos/");
   expect(pathnameOf(page)).toBe("/proyectos");
-  await expect(page.locator("h1")).toHaveText("Some work I enjoyed making");
+  await expect(page.locator("h1")).toHaveText(
+    "Algunos trabajos que disfruté crear",
+  );
 
   await page.goto("/en/contacto/");
   expect(pathnameOf(page)).toBe("/en/contacto");

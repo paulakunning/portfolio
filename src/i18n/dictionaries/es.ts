@@ -19,11 +19,29 @@ export const es = {
         "Contactá a Paula Kunning para un puesto remoto o un proyecto freelance.",
     },
   },
+  nav: {
+    skipToContent: "Ir al contenido",
+    home: "Paula Kunning — Inicio",
+    label: "Principal",
+    projects: "Proyectos",
+    contact: "Contacto",
+    cta: "Hablemos",
+    switchTo: "EN",
+    switchToLabel: "Ver esta página en inglés",
+    openMenu: "Abrir menú",
+    closeMenu: "Cerrar menú",
+  },
+  common: {
+    newTab: "(se abre en una pestaña nueva)",
+  },
+  footer: {
+    title: "Estemos en contacto",
+  },
   hero: {
     title: "Diseñadora Web y Desarrolladora WordPress / Front-End",
   },
   projects: {
-    title: "Some work I enjoyed making",
+    title: "Algunos trabajos que disfruté crear",
   },
   contact: {
     title: "¿Tenés un proyecto en mente?",
