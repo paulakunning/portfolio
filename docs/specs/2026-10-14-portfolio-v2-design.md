@@ -151,10 +151,10 @@ type Project = {
 | 4 | `gea-logistics` | GEA Logistics | web-development | WordPress | live |
 | 5 | `javier-carrizo` | Javier Carrizo | web-development | WordPress | live |
 | 6 | `arqci` | ARQCI | web-development | WordPress | live |
-| 7 | `maraton-de-rio` | Maratón de Río | a confirmar | a confirmar | a confirmar |
+| 7 | `olatrek` | Olatrek | a confirmar | a confirmar | a confirmar |
 | 8 | `friosur` | Friosur | a confirmar | a confirmar | a confirmar |
 | 9 | `aeropuerto-el-loa` | Aeropuerto El Loa | a confirmar | a confirmar | a confirmar |
-| 10 | según el nombre | Sitio de coaching | a confirmar | a confirmar | a confirmar |
+| 10 | `burning-wanderlust` | Burning Wanderlust | a confirmar | a confirmar | a confirmar |
 | 11 | `dede-digital` | DéDé Digital | web-design | Figma | behance |
 | 12 | `amanda-wellness-coach` | Amanda Wellness Coach (conceptual) | web-design | Figma | behance |
 | 13 | `uniform` | Uniform (conceptual) | branding, web-design | Adobe Illustrator, Figma | behance |
@@ -628,7 +628,7 @@ Se deja en `~/Dev/portfolio-assets`. La implementación no se bloquea por esto: 
 En español alcanza: Claude traduce y Paula revisa.
 
 **Proyectos nuevos:**
-- [ ] Datos completos de Tecnofast Perú, Maratón de Río, Friosur, Aeropuerto El Loa y el sitio de coaching (nombre incluido).
+- [ ] Datos completos de Tecnofast Perú, Olatrek, Friosur, Aeropuerto El Loa y Burning Wanderlust.
 - [ ] Confirmar que los proyectos de Canal Cero sigan online y no tengan acuerdo de confidencialidad.
 
 **Testimonios:**
