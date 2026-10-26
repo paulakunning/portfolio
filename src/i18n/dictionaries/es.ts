@@ -41,6 +41,34 @@ export const es = {
     title: "Diseñadora Web y Desarrolladora WordPress / Front-End",
     cv: "Ver mi CV",
     cvNotice: "(PDF, se abre en una pestaña nueva)",
+    subtitle:
+      "Diseño en Figma y lo desarrollo: sitios responsive que se ven bien y funcionan.",
+    availability:
+      "Disponible para trabajo remoto de tiempo completo y proyectos freelance",
+  },
+  featured: {
+    title: "Proyectos destacados",
+    viewAll: "Ver todos los proyectos",
+  },
+  experience: {
+    title: "Experiencia",
+    present: "Actualidad",
+  },
+  skills: {
+    title: "Habilidades",
+    learning: "Aprendiendo",
+  },
+  about: {
+    title: "Hola, soy Paula",
+    paragraphs: [
+      "Diseño sitios web en Figma y los llevo a la realidad en WordPress y código, así que lo que se diseña es lo que se publica.",
+      "Tengo más de 3 años de experiencia: trabajé 2 años y medio en una agencia de marketing digital desarrollando sitios corporativos, y hoy tomo proyectos freelance que combinan diseño y desarrollo.",
+      "Antes de dedicarme a esto fui contadora pública. Cambié de carrera en 2022, y esa mirada de negocio, ordenada y atenta al detalle sigue presente en cada proyecto.",
+      "Hoy estoy profundizando en React, Next.js y TypeScript, y aprendiendo Framer. Vivo en Córdoba, Argentina, y trabajo en remoto en español e inglés.",
+    ],
+  },
+  testimonials: {
+    title: "Testimonios",
   },
   projects: {
     title: "Algunos trabajos que disfruté crear",
