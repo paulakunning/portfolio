@@ -45,6 +45,30 @@ export const en: Dictionary = {
   },
   projects: {
     title: "Some work I enjoyed making",
+    filterLabel: "Filter projects by category",
+    all: "All",
+    categories: {
+      "web-design": "Web design",
+      "web-development": "Web development",
+      branding: "Branding",
+    },
+    count: { one: "{count} project", other: "{count} projects" },
+    conceptual: "Concept",
+    detail: {
+      role: "Role",
+      year: "Year",
+      services: "Services",
+      tools: "Tools",
+      links: { live: "Visit site", behance: "View on Behance" },
+      back: "Back to projects",
+      next: "Next project",
+    },
+  },
+  cta: {
+    title: "Have an idea in mind? I'd love to bring it to life",
+    availability:
+      "I'm looking for a remote role as a web designer or WordPress / front-end developer, and I also take on freelance projects.",
+    button: "Let's talk",
   },
   contact: {
     title: "Have a project in mind?",

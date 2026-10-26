@@ -44,6 +44,30 @@ export const es = {
   },
   projects: {
     title: "Algunos trabajos que disfruté crear",
+    filterLabel: "Filtrar proyectos por categoría",
+    all: "Todos",
+    categories: {
+      "web-design": "Diseño web",
+      "web-development": "Desarrollo web",
+      branding: "Branding",
+    },
+    count: { one: "{count} proyecto", other: "{count} proyectos" },
+    conceptual: "Conceptual",
+    detail: {
+      role: "Rol",
+      year: "Año",
+      services: "Servicios",
+      tools: "Herramientas",
+      links: { live: "Ir a la web", behance: "Ver en Behance" },
+      back: "Volver a proyectos",
+      next: "Siguiente proyecto",
+    },
+  },
+  cta: {
+    title: "¿Tenés una idea en mente? Me encantaría hacerla realidad",
+    availability:
+      "Busco un puesto remoto como diseñadora web o desarrolladora WordPress / front-end, y también tomo proyectos freelance.",
+    button: "Hablemos",
   },
   contact: {
     title: "¿Tenés un proyecto en mente?",
