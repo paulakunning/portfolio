@@ -24,6 +24,7 @@ export const es = {
     home: "Paula Kunning — Inicio",
     label: "Principal",
     projects: "Proyectos",
+    about: "Sobre mí",
     contact: "Contacto",
     cta: "Hablemos",
     switchTo: "EN",

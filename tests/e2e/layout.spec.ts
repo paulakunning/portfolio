@@ -41,9 +41,29 @@ test("marks the current section in the navigation", async ({
   ).toHaveAttribute("aria-current", "page");
 });
 
-test("header CTA leads to the contact page", async ({ page, isMobile }) => {
+test("Sobre mí lands on the about section from another page", async ({
+  page,
+  isMobile,
+}) => {
+  const cases: [string, string, string][] = [
+    ["/proyectos", "Sobre mí", "Hola, soy Paula"],
+    ["/en/proyectos", "About", "Hi, I'm Paula"],
+  ];
+  for (const [from, label, heading] of cases) {
+    await page.goto(from);
+    if (isMobile) await menuToggle(page).click();
+    await page
+      .getByRole("navigation", { name: /Principal|Main/ })
+      .getByRole("link", { name: label })
+      .click();
+    await expect(page).toHaveURL(new RegExp(`#sobre-mi$`));
+    const title = page.getByRole("heading", { level: 2, name: heading });
+    await expect(title).toBeInViewport();
+  }
+});
+
+test("header CTA leads to the contact page", async ({ page }) => {
   await page.goto("/");
-  if (isMobile) await menuToggle(page).click();
   await page
     .getByRole("banner")
     .getByRole("link", { name: "Hablemos" })

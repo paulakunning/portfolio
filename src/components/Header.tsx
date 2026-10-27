@@ -9,14 +9,14 @@ export async function Header() {
   const { nav } = getDictionary(locale);
 
   return (
-    <header className="absolute inset-x-0 top-0 z-20 text-background">
-      <div className="relative content-width flex items-center justify-between py-6">
+    <header className="pointer-events-none fixed inset-x-0 top-3 z-50 flex justify-center px-gutter md:top-4">
+      <div className="pointer-events-auto relative flex w-full items-center gap-1.5 rounded-full border border-line bg-background/90 py-1.5 pr-1.5 pl-4 shadow-[0_10px_30px_-18px_rgb(46_42_40/0.35)] backdrop-blur-[14px] md:w-auto md:gap-8 md:pl-5.5">
         <Link
           href={localizePath(locale, "/")}
           aria-label={nav.home}
-          className="font-serif text-2xl text-secondary"
+          className="font-serif text-[1.125rem] tracking-[-0.03em] whitespace-nowrap text-primary md:text-[1.2rem]"
         >
-          <span className="italic">Paula</span> Kunning
+          Paula <em>Kunning</em>
         </Link>
         <SiteNav locale={locale} labels={nav} />
       </div>

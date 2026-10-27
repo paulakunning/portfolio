@@ -25,6 +25,7 @@ export const en: Dictionary = {
     home: "Paula Kunning — Home",
     label: "Main",
     projects: "Projects",
+    about: "About",
     contact: "Contact",
     cta: "Let's talk",
     switchTo: "ES",
