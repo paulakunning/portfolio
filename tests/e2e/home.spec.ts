@@ -66,6 +66,7 @@ test.describe("desktop reel", () => {
     page,
   }) => {
     await page.goto("/");
+    await expect(page.locator("#proyectos")).toHaveAttribute("data-pinned");
     const last = page.getByRole("link", {
       name: "Ver proyecto Lucrecia Cornaglia",
     });
@@ -76,6 +77,16 @@ test.describe("desktop reel", () => {
   test("a full page load on #sobre-mi lands on the about section", async ({
     page,
   }) => {
+    // Chromium's scroll anchoring would hide a missing re-scroll; Safari has none.
+    await page.addInitScript(() => {
+      new MutationObserver((_, observer) => {
+        if (!document.head) return;
+        const style = document.createElement("style");
+        style.textContent = "html { overflow-anchor: none }";
+        document.head.append(style);
+        observer.disconnect();
+      }).observe(document, { childList: true, subtree: true });
+    });
     await page.goto("/#sobre-mi");
     const title = page.getByRole("heading", {
       level: 2,
@@ -85,12 +96,29 @@ test.describe("desktop reel", () => {
     expect((await title.boundingBox())!.y).toBeLessThan(400);
   });
 
+  test("pinning later doesn't jump back to the #hash", async ({ page }) => {
+    await page.setViewportSize({ width: 800, height: 800 });
+    await page.goto("/#sobre-mi");
+    await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await expect(page.locator("#proyectos")).toHaveAttribute("data-pinned");
+    // Two frames: the pinned effect has run.
+    await page.evaluate(
+      () =>
+        new Promise((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(resolve)),
+        ),
+    );
+    expect(await page.evaluate(() => window.scrollY)).toBeLessThan(10);
+  });
+
   test("falls back to the carousel when the window gets narrow", async ({
     page,
   }) => {
     await page.goto("/");
-    await page.setViewportSize({ width: 800, height: 800 });
     const reel = page.locator("#proyectos");
+    await expect(reel).toHaveAttribute("data-pinned");
+    await page.setViewportSize({ width: 800, height: 800 });
     await expect(reel).not.toHaveAttribute("data-pinned");
     await expect(reel).not.toHaveAttribute("style", /height/);
     expect(
