@@ -267,12 +267,12 @@ Paula confirma el permiso de cada persona antes de publicar.
 
 **Hero:**
 - **Título:**
-  - ES: "Diseño en Figma y lo desarrollo."
-  - EN: "I design in Figma and build it."
+  - ES: "Diseño digital, del concepto a la pantalla."
+  - EN: "Digital design, from concept to screen."
 - **Subtítulo:**
-  - ES: "Soy Paula Kunning, diseñadora web y desarrolladora WordPress / front-end. Hago sitios responsive que se ven bien y funcionan."
-  - EN: "I'm Paula Kunning, a web designer and WordPress / front-end developer. I build responsive sites that look good and work."
-- El rol sigue en el subtítulo y en el título de la página, así que se mantiene para SEO.
+  - ES: "Creo sitios web que conectan una buena idea con un diseño cuidado y una experiencia intuitiva. También puedo llevar esos diseños a la web, combinando criterio visual y conocimientos de desarrollo."
+  - EN: "I create websites that connect a good idea with thoughtful design and an intuitive experience. I can also bring those designs to the web, combining a visual eye with development skills."
+- El rol ("Diseñadora Web y Desarrolladora WordPress / Front-End") sigue en el título de la página, así que se mantiene para SEO.
 - **Disponibilidad:**
   - ES: "Disponible para trabajo remoto de tiempo completo y proyectos freelance"
   - EN: "Available for full-time remote work and freelance projects"
@@ -379,7 +379,7 @@ Cada página tiene un único `h1`: en el home es el título del hero.
 1. **Hero, un lienzo tipo Figma:**
    - Ocupa toda la pantalla, con fondo de grilla de puntos que se desvanece abajo.
    - Al centro, en este orden:
-     - el título (`h1`, tracking −0.035em) y el subtítulo;
+     - el título (`h1`, tracking −0.035em, con `text-wrap: balance` para que corte "Diseño digital, / del concepto / a la pantalla.") y el subtítulo;
      - "Ver proyectos" (sólido, baja al reel) y "Ver mi CV" (outline, abre el PDF del idioma en una pestaña nueva y lo indica en un texto oculto para lectores de pantalla);
      - la línea de disponibilidad, con un punto verde.
    - Alrededor hay 11 fichas con íconos de herramientas, sobre fondos `lilac-tint`, `rose-tint` o `surface`, y una ficha más grande con la foto de Paula, rotulada "Paula.jpg".
