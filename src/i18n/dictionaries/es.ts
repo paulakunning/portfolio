@@ -24,6 +24,7 @@ export const es = {
     home: "Paula Kunning — Inicio",
     label: "Principal",
     projects: "Proyectos",
+    about: "Sobre mí",
     contact: "Contacto",
     cta: "Hablemos",
     switchTo: "EN",
@@ -35,7 +36,12 @@ export const es = {
     newTab: "(se abre en una pestaña nueva)",
   },
   footer: {
-    title: "Estemos en contacto",
+    copy: "Copiar",
+    copied: "Copiado",
+    copyFailed: "No se pudo copiar. El mail es {email}",
+    backToTop: "Volver arriba",
+    credit: "Diseñado y desarrollado por mí, con una ayudita de la IA.",
+    copyright: "© {year} Paula Kunning. Córdoba, Argentina.",
   },
   hero: {
     title: "Diseñadora Web y Desarrolladora WordPress / Front-End",
@@ -95,7 +101,6 @@ export const es = {
     title: "¿Tenés una idea en mente? Me encantaría hacerla realidad",
     availability:
       "Busco un puesto remoto como diseñadora web o desarrolladora WordPress / front-end, y también tomo proyectos freelance.",
-    button: "Hablemos",
   },
   contact: {
     title: "¿Tenés un proyecto en mente?",

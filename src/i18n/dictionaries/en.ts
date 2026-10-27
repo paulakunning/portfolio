@@ -25,6 +25,7 @@ export const en: Dictionary = {
     home: "Paula Kunning — Home",
     label: "Main",
     projects: "Projects",
+    about: "About",
     contact: "Contact",
     cta: "Let's talk",
     switchTo: "ES",
@@ -36,7 +37,12 @@ export const en: Dictionary = {
     newTab: "(opens in a new tab)",
   },
   footer: {
-    title: "Let's stay in touch",
+    copy: "Copy",
+    copied: "Copied",
+    copyFailed: "Couldn't copy. The email is {email}",
+    backToTop: "Back to top",
+    credit: "Designed & built by me, with a little help from AI.",
+    copyright: "© {year} Paula Kunning. Córdoba, Argentina.",
   },
   hero: {
     title: "Web Designer & WordPress / Front-End Developer",
@@ -95,7 +101,6 @@ export const en: Dictionary = {
     title: "Have an idea in mind? I'd love to bring it to life",
     availability:
       "I'm looking for a remote role as a web designer or WordPress / front-end developer, and I also take on freelance projects.",
-    button: "Let's talk",
   },
   contact: {
     title: "Have a project in mind?",

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { About } from "@/components/About";
-import { ContactCta } from "@/components/ContactCta";
 import { ExperienceList } from "@/components/ExperienceList";
 import { FeaturedProjects } from "@/components/FeaturedProjects";
 import { Hero } from "@/components/Hero";
@@ -21,10 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default async function HomePage() {
-  const locale = await getLocale();
-  const { cta } = getDictionary(locale);
-
+export default function HomePage() {
   return (
     <>
       <Hero />
@@ -33,7 +29,6 @@ export default async function HomePage() {
       <SkillsGrid />
       <About />
       <Testimonials />
-      <ContactCta locale={locale} labels={cta} />
     </>
   );
 }

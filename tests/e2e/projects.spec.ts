@@ -24,7 +24,9 @@ test("filters projects by category and marks the active tab", async ({
     "Uniform",
     "Lucrecia Cornaglia",
   ]);
-  await expect(page.getByRole("status")).toHaveText("2 proyectos");
+  await expect(page.getByRole("main").getByRole("status")).toHaveText(
+    "2 proyectos",
+  );
 });
 
 test("opens a project and walks to the next one", async ({ page }) => {

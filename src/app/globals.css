@@ -6,6 +6,15 @@
   --color-primary: #6d4e68;
   --color-secondary: #b79bb8;
   --color-accent: #d7b6b6;
+  --color-muted: #675e5a;
+  --color-primary-deep: #3a2937;
+  --color-primary-hover: #5a3f56;
+  --color-lilac-tint: #ece2eb;
+  --color-rose-tint: #f3e5e3;
+  --color-sand-tint: #ebe5da;
+  --color-surface: #fffdf9;
+  --color-line: rgb(46 42 40 / 0.12);
+  --spacing-gutter: clamp(1rem, 4vw, 3rem);
   /* Form errors; not part of the brand palette. 6.24:1 on background. */
   --color-error: #a3332b;
 }
@@ -19,10 +28,37 @@
   margin-inline: auto;
   width: 100%;
   max-width: 73rem;
-  padding-inline: 1.5rem;
+  padding-inline: var(--spacing-gutter);
+}
+
+/* The element must be relative; its children need relative z-1 to sit above the fade. */
+@utility dot-grid {
+  background-image: radial-gradient(
+    circle,
+    rgb(109 78 104 / 0.2) 1px,
+    transparent 1.6px
+  );
+  background-size: 24px 24px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 50%;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      var(--color-background)
+    );
+    pointer-events: none;
+  }
 }
 
 @layer base {
+  html {
+    scroll-padding-top: 5.5rem;
+  }
+
   body {
     @apply bg-background font-sans text-foreground antialiased;
   }
@@ -31,6 +67,8 @@
   h2,
   h3 {
     @apply font-serif font-normal;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
   }
 
   :focus-visible {

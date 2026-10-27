@@ -14,6 +14,11 @@ type SiteNavProps = {
   labels: Dictionary["nav"];
 };
 
+// Inside the mobile menu panel links are full-width rows in the foreground color.
+const linkClass =
+  "block px-4 py-3.5 text-sm uppercase tracking-[0.06em] text-foreground transition-colors hover:text-foreground md:p-0";
+const idleClass = "md:text-muted";
+
 export function SiteNav({ locale, labels }: SiteNavProps) {
   const pathname = toPublicPath(usePathname());
   // The menu remembers the page it was opened on, so navigating closes it.
@@ -35,6 +40,7 @@ export function SiteNav({ locale, labels }: SiteNavProps) {
   const otherLocale: Locale = locale === "es" ? "en" : "es";
   const links = [
     { href: localizePath(locale, "/proyectos"), label: labels.projects },
+    { href: `${localizePath(locale, "/")}#sobre-mi`, label: labels.about },
     { href: localizePath(locale, "/contacto"), label: labels.contact },
   ];
   const currentState = (href: string) => {
@@ -43,11 +49,14 @@ export function SiteNav({ locale, labels }: SiteNavProps) {
   };
 
   return (
-    <nav aria-label={labels.label}>
+    <nav
+      aria-label={labels.label}
+      className="ml-auto flex items-center gap-1.5 md:ml-0 md:gap-8"
+    >
       <button
         ref={toggleRef}
         type="button"
-        className="-mr-2 p-2 md:hidden"
+        className="order-last grid size-10 place-items-center rounded-full border border-foreground/30 md:hidden"
         aria-expanded={isOpen}
         aria-controls="site-menu"
         aria-label={isOpen ? labels.closeMenu : labels.openMenu}
@@ -58,9 +67,10 @@ export function SiteNav({ locale, labels }: SiteNavProps) {
 
       <div
         id="site-menu"
-        className={`${isOpen ? "flex" : "hidden"} absolute inset-x-0 top-full flex-col gap-6 bg-foreground px-6 py-8 md:static md:flex md:flex-row md:items-center md:gap-8 md:bg-transparent md:p-0`}
+        onClick={() => setOpenOn(null)}
+        className={`${isOpen ? "flex" : "hidden"} absolute inset-x-0 top-[calc(100%+0.5rem)] flex-col rounded-3xl border border-line bg-background p-2 shadow-[0_16px_40px_-20px_rgb(46_42_40/0.4)] md:static md:flex md:flex-row md:items-center md:gap-6 md:rounded-none md:border-0 md:bg-transparent md:p-0 md:shadow-none`}
       >
-        <ul className="flex flex-col gap-6 md:flex-row md:gap-8">
+        <ul className="flex flex-col md:flex-row md:gap-6">
           {links.map(({ href, label }) => {
             const current = currentState(href);
             return (
@@ -68,7 +78,7 @@ export function SiteNav({ locale, labels }: SiteNavProps) {
                 <Link
                   href={href}
                   aria-current={current}
-                  className={`font-semibold uppercase transition-colors hover:text-accent ${current ? "text-accent" : ""}`}
+                  className={`${linkClass} ${current ? "underline decoration-1 underline-offset-[0.45em]" : idleClass}`}
                 >
                   {label}
                 </Link>
@@ -80,19 +90,20 @@ export function SiteNav({ locale, labels }: SiteNavProps) {
         <a
           href={switchLocalePath(pathname, otherLocale)}
           hrefLang={otherLocale}
-          className="font-semibold uppercase transition-colors hover:text-accent"
+          className={`${linkClass} ${idleClass}`}
         >
           {labels.switchTo}
           <span className="sr-only"> — {labels.switchToLabel}</span>
         </a>
-        <ButtonLink
-          href={localizePath(locale, "/contacto")}
-          variant="outline"
-          className="self-start md:self-auto"
-        >
-          {labels.cta}
-        </ButtonLink>
       </div>
+
+      <ButtonLink
+        href={localizePath(locale, "/contacto")}
+        className="uppercase"
+        onClick={() => setOpenOn(null)}
+      >
+        {labels.cta}
+      </ButtonLink>
     </nav>
   );
 }

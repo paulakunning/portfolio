@@ -9,6 +9,7 @@ export async function About() {
 
   return (
     <section
+      id="sobre-mi"
       aria-labelledby="about-title"
       className="bg-foreground text-background"
     >
