@@ -9,17 +9,20 @@ test("renders the home sections in order", async ({ page }) => {
     "Hola, soy Paula",
     "Testimonios",
     "¿Tenés una idea en mente? Me encantaría hacerla realidad",
-    "Estemos en contacto",
   ]);
 });
 
 test("links the CV for each language", async ({ page, request }) => {
   await page.goto("/");
-  const spanish = page.getByRole("link", { name: /Ver mi CV/ });
+  const spanish = page
+    .getByRole("main")
+    .getByRole("link", { name: /Ver mi CV/ });
   await expect(spanish).toHaveAttribute("href", "/cv/paula-kunning-cv-es.pdf");
 
   await page.goto("/en");
-  const english = page.getByRole("link", { name: /View my resume/ });
+  const english = page
+    .getByRole("main")
+    .getByRole("link", { name: /View my resume/ });
   await expect(english).toHaveAttribute(
     "href",
     "/cv/paula-kunning-resume-en.pdf",

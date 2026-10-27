@@ -1,50 +1,72 @@
-import { contactLinks, socialChannels } from "@/content/site";
+import { contactLinks, cvPaths, socialChannels } from "@/content/site";
+import { formatMessage } from "@/i18n/format";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { getLocale } from "@/i18n/server";
-import { BehanceIcon, GitHubIcon, LinkedInIcon, MailIcon } from "./icons";
+import { ButtonLink } from "./ButtonLink";
+import { CopyEmailButton } from "./CopyEmailButton";
+import { FooterCta } from "./FooterCta";
+import { ArrowUpIcon } from "./icons";
 
-const socialIcons = {
-  linkedin: LinkedInIcon,
-  behance: BehanceIcon,
-  github: GitHubIcon,
-};
+// `new Date()` is not allowed in a prerendered component; a cached function is.
+async function getYear() {
+  "use cache";
+  return new Date().getFullYear();
+}
 
 export async function Footer() {
-  const { footer, common } = getDictionary(await getLocale());
+  const locale = await getLocale();
+  const { footer, cta, hero, common } = getDictionary(locale);
+  const year = await getYear();
 
   return (
-    <footer className="bg-foreground text-background">
-      <div className="content-width flex flex-col items-center gap-6 py-10 text-center md:flex-row md:justify-between md:text-left">
-        <h2 className="text-2xl italic">{footer.title}</h2>
-        <ul className="flex flex-wrap items-center justify-center gap-6">
-          <li className="flex basis-full justify-center sm:basis-auto">
+    <footer className="mx-2 mb-2 grid rounded-[2rem] bg-primary-deep px-5 pt-10 pb-6 text-background md:mx-6 md:mb-6 md:grid-cols-[1fr_auto] md:items-end md:gap-x-12 md:p-[clamp(2.5rem,6vw,5rem)] [&_:focus-visible]:outline-background">
+      <div className="min-w-0">
+        <FooterCta
+          locale={locale}
+          title={cta.title}
+          availability={cta.availability}
+        />
+        <div className="mt-10 flex flex-wrap items-center gap-3 first:mt-0">
+          <div className="relative inline-flex items-center gap-4 rounded-full border border-background/25 py-1 pr-1 pl-5">
+            <a href={`mailto:${contactLinks.email}`}>{contactLinks.email}</a>
+            <CopyEmailButton email={contactLinks.email} labels={footer} />
+          </div>
+          <ButtonLink
+            href={cvPaths[locale]}
+            variant="light"
+            newTabNotice={hero.cvNotice}
+          >
+            {hero.cv}
+          </ButtonLink>
+        </div>
+      </div>
+
+      <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-2 md:mt-0 md:grid md:justify-items-end md:gap-y-2 md:text-right">
+        {socialChannels.map(({ id, label, href }) => (
+          <li key={id}>
             <a
-              href={`mailto:${contactLinks.email}`}
-              className="flex items-center gap-2 text-accent transition-colors hover:text-background"
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-serif text-[clamp(1.5rem,2.4vw,2rem)] leading-tight text-background/80 hover:text-background hover:underline hover:underline-offset-[0.25em]"
             >
-              <MailIcon className="size-6" />
-              {contactLinks.email}
+              {label}
+              <span className="sr-only"> {common.newTab}</span>
             </a>
           </li>
-          {socialChannels.map(({ id, label, href }) => {
-            const Icon = socialIcons[id];
-            return (
-              <li key={id}>
-                <a
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-accent transition-colors hover:text-background"
-                >
-                  <Icon className="size-6" />
-                  <span className="sr-only">
-                    {label} {common.newTab}
-                  </span>
-                </a>
-              </li>
-            );
-          })}
-        </ul>
+        ))}
+      </ul>
+
+      <div className="mt-18 grid gap-4 border-t border-background/15 pt-6 text-sm text-background/65 md:col-span-full md:grid-cols-[1fr_auto_1fr]">
+        <p>{formatMessage(footer.copyright, { year })}</p>
+        <p>{footer.credit}</p>
+        <a
+          href="#"
+          className="inline-flex items-center gap-1.5 md:justify-self-end"
+        >
+          {footer.backToTop}
+          <ArrowUpIcon className="size-4" />
+        </a>
       </div>
     </footer>
   );

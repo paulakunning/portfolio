@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ButtonLink } from "@/components/ButtonLink";
-import { ContactCta } from "@/components/ContactCta";
 import { PageHero } from "@/components/PageHero";
 import { ProjectFacts } from "@/components/ProjectFacts";
 import { ProjectGallery } from "@/components/ProjectGallery";
@@ -43,7 +42,7 @@ export default async function ProjectPage({
   const project = getProject(slug);
   if (!project) notFound();
   const locale = await getLocale();
-  const { projects: labels, common, cta } = getDictionary(locale);
+  const { projects: labels, common } = getDictionary(locale);
   const next = getNextProject(slug);
 
   return (
@@ -87,8 +86,6 @@ export default async function ProjectPage({
           <ProjectNav locale={locale} next={next} labels={labels.detail} />
         )}
       </div>
-
-      <ContactCta locale={locale} labels={cta} />
     </>
   );
 }

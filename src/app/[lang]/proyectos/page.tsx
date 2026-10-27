@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { ContactCta } from "@/components/ContactCta";
 import { PageHero } from "@/components/PageHero";
 import { ProjectFilter } from "@/components/ProjectFilter";
 import { projects } from "@/content/projects";
@@ -35,7 +34,6 @@ export default async function ProjectsPage() {
           labels={dictionary.projects}
         />
       </section>
-      <ContactCta locale={locale} labels={dictionary.cta} />
     </>
   );
 }

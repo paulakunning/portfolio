@@ -135,3 +135,53 @@ test("footer lists every contact channel", async ({ page }) => {
     await expect(footer.locator(`a[href="${href}"]`)).toHaveCount(1);
   }
 });
+
+test.describe("copy email", () => {
+  test("copies the address and confirms", async ({ page, context }) => {
+    await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+    await page.goto("/");
+    const footer = page.getByRole("contentinfo");
+    await footer.getByRole("button", { name: "Copiar" }).click();
+    await expect(footer.getByRole("button", { name: "Copiado" })).toBeVisible();
+    expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(
+      "paulakunning@gmail.com",
+    );
+  });
+
+  test("shows the address when the clipboard fails", async ({ page }) => {
+    await page.addInitScript(() => {
+      navigator.clipboard.writeText = () => Promise.reject(new Error("denied"));
+    });
+    await page.goto("/");
+    await page
+      .getByRole("contentinfo")
+      .getByRole("button", { name: "Copiar" })
+      .click();
+    await expect(
+      page.getByText("No se pudo copiar. El mail es paulakunning@gmail.com"),
+    ).toBeVisible();
+  });
+});
+
+test("the footer closes every page except contact", async ({ page }) => {
+  const title = "¿Tenés una idea en mente? Me encantaría hacerla realidad";
+  await page.goto("/proyectos");
+  await expect(
+    page.getByRole("contentinfo").getByRole("heading", { name: title }),
+  ).toBeVisible();
+  await page.goto("/contacto");
+  await expect(page.getByRole("contentinfo").getByRole("heading")).toHaveCount(
+    0,
+  );
+});
+
+test("footer credits and back to top", async ({ page }) => {
+  await page.goto("/en");
+  const footer = page.getByRole("contentinfo");
+  await expect(footer).toContainText(
+    "Designed & built by me, with a little help from AI.",
+  );
+  await expect(
+    footer.getByRole("link", { name: "Back to top" }),
+  ).toHaveAttribute("href", "#");
+});
