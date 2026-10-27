@@ -2,10 +2,10 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 const variants = {
-  primary: "bg-primary text-background hover:bg-primary/85",
-  secondary: "bg-background text-primary hover:bg-secondary/40",
-  outline:
-    "border border-current text-background hover:bg-background hover:text-foreground",
+  primary: "bg-primary text-white hover:bg-primary-hover",
+  secondary:
+    "border border-foreground/30 hover:border-foreground hover:bg-foreground/5",
+  light: "bg-background text-primary-deep hover:bg-white",
 } as const;
 
 type ButtonLinkProps = {
@@ -24,7 +24,7 @@ export function ButtonLink({
   children,
   className = "",
 }: ButtonLinkProps) {
-  const classes = `inline-flex items-center justify-center rounded-full px-6 py-2.5 text-sm font-medium tracking-wide uppercase transition-colors ${variants[variant]} ${className}`;
+  const classes = `inline-flex min-h-11.5 items-center justify-center gap-2 rounded-full px-5.5 text-[0.9375rem] font-medium whitespace-nowrap transition-colors ${variants[variant]} ${className}`;
 
   if (newTabNotice) {
     return (

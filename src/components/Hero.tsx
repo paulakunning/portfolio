@@ -26,7 +26,7 @@ export async function Hero() {
             </ButtonLink>
             <ButtonLink
               href={cvPaths[locale]}
-              variant="outline"
+              variant="light"
               newTabNotice={hero.cvNotice}
             >
               {hero.cv}

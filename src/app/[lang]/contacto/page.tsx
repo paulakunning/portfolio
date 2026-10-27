@@ -32,7 +32,7 @@ export default async function ContactPage() {
             <p className="mt-6 max-w-xl text-lg">{contact.intro}</p>
             <ButtonLink
               href={cvPaths[locale]}
-              variant="secondary"
+              variant="light"
               newTabNotice={hero.cvNotice}
               className="mt-8"
             >

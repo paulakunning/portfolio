@@ -87,7 +87,7 @@ export function SiteNav({ locale, labels }: SiteNavProps) {
         </a>
         <ButtonLink
           href={localizePath(locale, "/contacto")}
-          variant="outline"
+          variant="light"
           className="self-start md:self-auto"
         >
           {labels.cta}
