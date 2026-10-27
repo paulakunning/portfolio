@@ -42,9 +42,60 @@ export const en: Dictionary = {
     title: "Web Designer & WordPress / Front-End Developer",
     cv: "View my resume",
     cvNotice: "(PDF, opens in a new tab)",
+    subtitle:
+      "I design in Figma and build it in WordPress and code: responsive sites that look good and work.",
+    availability: "Available for full-time remote work and freelance projects",
+  },
+  featured: {
+    title: "Featured projects",
+    viewAll: "View all projects",
+  },
+  experience: {
+    title: "Experience",
+    present: "Present",
+  },
+  skills: {
+    title: "Skills",
+    learning: "Learning",
+  },
+  about: {
+    title: "Hi, I'm Paula",
+    paragraphs: [
+      "I design websites in Figma and build them in WordPress and code, so what gets designed is what ships.",
+      "I have 3+ years of experience: I spent 2.5 years at a digital marketing agency building corporate sites, and I now take freelance projects that combine design and development.",
+      "Before this I was a public accountant. I changed careers in 2022, and that business mindset, organized and detail-oriented, shows up in every project.",
+      "I'm currently going deeper into React, Next.js and TypeScript, and learning Framer. I live in Córdoba, Argentina, and work remotely in English and Spanish.",
+    ],
+  },
+  testimonials: {
+    title: "Testimonials",
   },
   projects: {
     title: "Some work I enjoyed making",
+    filterLabel: "Filter projects by category",
+    all: "All",
+    categories: {
+      "web-design": "Web design",
+      "web-development": "Web development",
+      branding: "Branding",
+    },
+    count: { one: "{count} project", other: "{count} projects" },
+    conceptual: "Concept",
+    detail: {
+      role: "Role",
+      year: "Year",
+      services: "Services",
+      tools: "Tools",
+      links: { live: "Visit site", behance: "View on Behance" },
+      back: "Back to projects",
+      next: "Next project",
+    },
+  },
+  cta: {
+    title: "Have an idea in mind? I'd love to bring it to life",
+    availability:
+      "I'm looking for a remote role as a web designer or WordPress / front-end developer, and I also take on freelance projects.",
+    button: "Let's talk",
   },
   contact: {
     title: "Have a project in mind?",

@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/PageHero";
+import { About } from "@/components/About";
+import { ContactCta } from "@/components/ContactCta";
+import { ExperienceList } from "@/components/ExperienceList";
+import { FeaturedProjects } from "@/components/FeaturedProjects";
+import { Hero } from "@/components/Hero";
+import { SkillsGrid } from "@/components/SkillsGrid";
+import { Testimonials } from "@/components/Testimonials";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { getLocale } from "@/i18n/server";
 import { pageMetadata } from "@/lib/metadata";
@@ -16,10 +22,18 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage() {
-  const { hero } = getDictionary(await getLocale());
+  const locale = await getLocale();
+  const { cta } = getDictionary(locale);
+
   return (
-    <PageHero>
-      <h1 className="text-4xl md:text-5xl">{hero.title}</h1>
-    </PageHero>
+    <>
+      <Hero />
+      <FeaturedProjects />
+      <ExperienceList />
+      <SkillsGrid />
+      <About />
+      <Testimonials />
+      <ContactCta locale={locale} labels={cta} />
+    </>
   );
 }

@@ -4,6 +4,8 @@ export const pages = [
   "/en",
   "/proyectos",
   "/en/proyectos",
+  "/proyectos/don-higinio",
+  "/en/proyectos/don-higinio",
   "/contacto",
   "/en/contacto",
 ];
