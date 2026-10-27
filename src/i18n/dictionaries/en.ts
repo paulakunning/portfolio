@@ -42,6 +42,33 @@ export const en: Dictionary = {
     title: "Web Designer & WordPress / Front-End Developer",
     cv: "View my resume",
     cvNotice: "(PDF, opens in a new tab)",
+    subtitle:
+      "I design in Figma and build it in WordPress and code: responsive sites that look good and work.",
+    availability: "Available for full-time remote work and freelance projects",
+  },
+  featured: {
+    title: "Featured projects",
+    viewAll: "View all projects",
+  },
+  experience: {
+    title: "Experience",
+    present: "Present",
+  },
+  skills: {
+    title: "Skills",
+    learning: "Learning",
+  },
+  about: {
+    title: "Hi, I'm Paula",
+    paragraphs: [
+      "I design websites in Figma and build them in WordPress and code, so what gets designed is what ships.",
+      "I have 3+ years of experience: I spent 2.5 years at a digital marketing agency building corporate sites, and I now take freelance projects that combine design and development.",
+      "Before this I was a public accountant. I changed careers in 2022, and that business mindset, organized and detail-oriented, shows up in every project.",
+      "I'm currently going deeper into React, Next.js and TypeScript, and learning Framer. I live in Córdoba, Argentina, and work remotely in English and Spanish.",
+    ],
+  },
+  testimonials: {
+    title: "Testimonials",
   },
   projects: {
     title: "Some work I enjoyed making",

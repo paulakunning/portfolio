@@ -11,14 +11,16 @@ export const workingPhoto: ProjectImage = {
   },
 };
 
-export const aboutPhotos: ProjectImage[] = [
-  {
-    src: portrait,
-    alt: {
-      es: "Paula sonriendo, con el mentón apoyado en la mano frente a su notebook",
-      en: "Paula smiling, chin resting on her hand in front of her laptop",
-    },
+export const portraitPhoto: ProjectImage = {
+  src: portrait,
+  alt: {
+    es: "Paula sonriendo, con el mentón apoyado en la mano frente a su notebook",
+    en: "Paula smiling, chin resting on her hand in front of her laptop",
   },
+};
+
+export const aboutPhotos: ProjectImage[] = [
+  portraitPhoto,
   workingPhoto,
   {
     src: mirror,
