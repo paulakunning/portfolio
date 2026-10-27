@@ -55,6 +55,10 @@
 }
 
 @layer base {
+  html {
+    scroll-padding-top: 5.5rem;
+  }
+
   body {
     @apply bg-background font-sans text-foreground antialiased;
   }

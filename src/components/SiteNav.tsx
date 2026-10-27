@@ -49,16 +49,28 @@ export function SiteNav({ locale, labels }: SiteNavProps) {
   };
 
   return (
-    // `contents`: the nav's children lay out directly inside the header pill.
-    <nav aria-label={labels.label} className="contents">
+    <nav
+      aria-label={labels.label}
+      className="ml-auto flex items-center gap-1.5 md:ml-0 md:gap-8"
+    >
+      <button
+        ref={toggleRef}
+        type="button"
+        className="order-last grid size-10 place-items-center rounded-full border border-foreground/30 md:hidden"
+        aria-expanded={isOpen}
+        aria-controls="site-menu"
+        aria-label={isOpen ? labels.closeMenu : labels.openMenu}
+        onClick={() => setOpenOn(isOpen ? null : pathname)}
+      >
+        {isOpen ? <CloseIcon /> : <MenuIcon />}
+      </button>
+
       <div
         id="site-menu"
+        onClick={() => setOpenOn(null)}
         className={`${isOpen ? "flex" : "hidden"} absolute inset-x-0 top-[calc(100%+0.5rem)] flex-col rounded-3xl border border-line bg-background p-2 shadow-[0_16px_40px_-20px_rgb(46_42_40/0.4)] md:static md:flex md:flex-row md:items-center md:gap-6 md:rounded-none md:border-0 md:bg-transparent md:p-0 md:shadow-none`}
       >
-        <ul
-          className="flex flex-col md:flex-row md:gap-6"
-          onClick={() => setOpenOn(null)}
-        >
+        <ul className="flex flex-col md:flex-row md:gap-6">
           {links.map(({ href, label }) => {
             const current = currentState(href);
             return (
@@ -87,22 +99,11 @@ export function SiteNav({ locale, labels }: SiteNavProps) {
 
       <ButtonLink
         href={localizePath(locale, "/contacto")}
-        className="ml-auto min-h-10 uppercase md:ml-0"
+        className="uppercase"
+        onClick={() => setOpenOn(null)}
       >
         {labels.cta}
       </ButtonLink>
-
-      <button
-        ref={toggleRef}
-        type="button"
-        className="grid size-10 place-items-center rounded-full border border-foreground/30 md:hidden"
-        aria-expanded={isOpen}
-        aria-controls="site-menu"
-        aria-label={isOpen ? labels.closeMenu : labels.openMenu}
-        onClick={() => setOpenOn(isOpen ? null : pathname)}
-      >
-        {isOpen ? <CloseIcon /> : <MenuIcon />}
-      </button>
     </nav>
   );
 }

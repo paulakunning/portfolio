@@ -15,6 +15,7 @@ type ButtonLinkProps = {
   newTabNotice?: string;
   children: ReactNode;
   className?: string;
+  onClick?: () => void;
 };
 
 export function ButtonLink({
@@ -23,6 +24,7 @@ export function ButtonLink({
   newTabNotice,
   children,
   className = "",
+  onClick,
 }: ButtonLinkProps) {
   const classes = `inline-flex min-h-11.5 items-center justify-center gap-2 rounded-full px-5.5 text-[0.9375rem] font-medium whitespace-nowrap transition-colors ${variants[variant]} ${className}`;
 
@@ -41,7 +43,7 @@ export function ButtonLink({
   }
 
   return (
-    <Link href={href} className={classes}>
+    <Link href={href} className={classes} onClick={onClick}>
       {children}
     </Link>
   );
