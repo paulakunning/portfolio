@@ -72,6 +72,7 @@
 
 @layer base {
   html {
+    /* For focus: keeps focused elements clear of the fixed pill. Anchor targets cancel it (-scroll-mt-22) to land at the top, like the prototype. */
     scroll-padding-top: 5.5rem;
   }
 

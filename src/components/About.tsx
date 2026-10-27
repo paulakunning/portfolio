@@ -11,7 +11,7 @@ export async function About() {
     <section
       id="sobre-mi"
       aria-labelledby="about-title"
-      className="bg-foreground text-background"
+      className="-scroll-mt-22 bg-foreground text-background"
     >
       <div className="content-width grid items-center gap-12 py-20 md:grid-cols-2 md:py-28">
         <div>

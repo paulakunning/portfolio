@@ -134,7 +134,7 @@ export function ProjectReel({ intro, children, labels }: ProjectReelProps) {
       id="proyectos"
       aria-labelledby="featured-title"
       data-pinned={pinned || undefined}
-      className="group relative py-20 data-pinned:py-0"
+      className="group relative -scroll-mt-22 py-20 data-pinned:py-0"
     >
       <div className="group-data-pinned:sticky group-data-pinned:top-0 group-data-pinned:flex group-data-pinned:h-svh group-data-pinned:items-center group-data-pinned:overflow-clip">
         <div

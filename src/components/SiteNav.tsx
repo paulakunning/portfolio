@@ -62,7 +62,11 @@ export function SiteNav({ locale, labels }: SiteNavProps) {
         aria-label={isOpen ? labels.closeMenu : labels.openMenu}
         onClick={() => setOpenOn(isOpen ? null : pathname)}
       >
-        {isOpen ? <CloseIcon /> : <MenuIcon />}
+        {isOpen ? (
+          <CloseIcon width={18} height={18} strokeWidth={1.8} />
+        ) : (
+          <MenuIcon width={18} height={18} strokeWidth={1.8} />
+        )}
       </button>
 
       <div

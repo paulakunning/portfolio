@@ -20,12 +20,13 @@ const stroke = {
   strokeLinejoin: "round",
 } as const;
 
+// Lines at the prototype's spacing, tighter than Lucide's.
 export function MenuIcon(props: IconProps) {
   return (
     <svg {...stroke} {...props}>
-      <path d="M4 5h16" />
+      <path d="M4 7h16" />
       <path d="M4 12h16" />
-      <path d="M4 19h16" />
+      <path d="M4 17h16" />
     </svg>
   );
 }
