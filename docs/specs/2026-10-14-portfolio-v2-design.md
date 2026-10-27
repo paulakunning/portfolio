@@ -1,13 +1,22 @@
 # Portfolio v2 — Spec de diseño
 
 - **Fecha:** 2026-10-14
+- **Actualizado:** 2026-10-27, con el rediseño visual (secciones 1, 2, 4, 5, 6, 9, 11 y 12)
 - **Estado:** en revisión
 - **Reemplaza a:** paulakunning.com (WordPress + Elementor en Hostinger)
 - **Versión anterior:** [paulakunning/portfolio-v1](https://github.com/paulakunning/portfolio-v1) (archivada)
 
 ## 1. Objetivo
 
-Rehacer paulakunning.com en Next.js manteniendo el diseño actual, con estos cambios: textos nuevos, formulario de contacto, páginas de detalle de proyectos, sección de testimonios y lista de habilidades actualizada.
+Rehacer paulakunning.com en Next.js con un diseño nuevo, creativo en cómo se comporta y sobrio en cómo se ve:
+
+- el hero es un lienzo tipo Figma, con herramientas que se pueden arrastrar;
+- los proyectos destacados se recorren con el scroll;
+- todo usa la paleta y las tipografías de Paula.
+
+Además suma textos nuevos, formulario de contacto, páginas de detalle de proyectos, testimonios y la lista de herramientas actualizada.
+
+**Referencia visual:** el prototipo HTML de `~/Dev/portfolio-prototipo/`, que está fuera del repo y es descartable. Paula lo aprobó el 2026-10-27. Si este documento no fija una medida, vale la del prototipo (`styles.css`).
 
 El sitio tiene dos públicos:
 
@@ -24,10 +33,20 @@ El código también es parte del portfolio: tiene que poder mostrarse y explicar
 4. Sin scroll horizontal ni elementos rotos entre 360px y 1440px de ancho.
 5. El formulario entrega un mail real. Si el envío falla, la persona ve una alternativa y no pierde lo que escribió.
 6. CI en verde (lint, tipos, unit tests, build, E2E) en cada PR y en `main`.
+7. Con `prefers-reduced-motion: reduce` nada se mueve solo: el reel es un carrusel común y no hay animaciones de entrada.
+
+### Qué se mantiene
+
+Lo construido en los PRs #1 a #7 sigue igual: rutas e idiomas, contenido, formulario y su Server Action, metadata, tests y CI. El rediseño cambia:
+
+- los componentes (sección 5);
+- los tokens (sección 6);
+- algunos textos (sección 4).
 
 ### Fuera de alcance (por ahora)
 
-- Animaciones de aparición al hacer scroll: fase 2, respetando `prefers-reduced-motion`.
+- Recordar dónde quedaron las herramientas arrastradas: vuelven a su lugar al recargar.
+- Animaciones además de las de la sección 5 (lienzo, reel y aparición de proyectos).
 - Sección "Proyectos de código".
 - Abrir los proyectos en pop-up con URL propia (intercepting routes). Se puede sumar después sobre las páginas de detalle sin rehacerlas.
 - Blog, CMS, analytics, captcha, guardar mensajes en base de datos, Storybook, hooks de pre-commit, tests visuales por capturas.
@@ -39,7 +58,7 @@ El código también es parte del portfolio: tiene que poder mostrarse y explicar
 | Framework | Next.js 16 (App Router), React 19 |
 | Lenguaje | TypeScript en modo `strict`, con `noUncheckedIndexedAccess` |
 | Estilos | Tailwind CSS 4, con tokens en `globals.css` (`@theme`) |
-| Tipografías | `next/font/google`: Playfair Display 600 (títulos) y DM Sans 400/500 (texto) |
+| Tipografías | `next/font/google`: Playfair Display 400 normal e itálica (títulos) y DM Sans 400/500/600 (texto) |
 | Validación | Zod 4 |
 | Mail | Resend |
 | Unit tests | Vitest |
@@ -50,6 +69,12 @@ El código también es parte del portfolio: tiene que poder mostrarse y explicar
 | Node / paquetes | Node 24 LTS (`.nvmrc`), npm |
 
 No se usa ninguna librería de i18n: los dos idiomas se resuelven con el ruteo de Next y diccionarios tipados (ver sección 3).
+
+Tampoco hay librería de animaciones:
+
+- el arrastre usa Pointer Events;
+- el reel, un listener de scroll con `requestAnimationFrame`;
+- la aparición de proyectos, `IntersectionObserver`.
 
 ## 3. Rutas e idiomas
 
@@ -112,6 +137,7 @@ type Project = {
   categories: Category[]         // define en qué pestañas aparece
   tools: string[]                // Figma, WordPress, Bricks Builder…
   conceptual?: boolean           // muestra la etiqueta "Conceptual"
+  featured?: boolean             // aparece en el reel del home
   year: number
   role: Localized
   summary: Localized             // qué hizo Paula, en una línea (tarjeta)
@@ -125,6 +151,7 @@ type Project = {
 **Reglas:**
 - El orden del array es el orden en pantalla.
 - "Siguiente proyecto" toma el que sigue en el array; el del último es el primero.
+- El reel del home muestra los proyectos con `featured: true`, en el orden del array. Son 6 y mezclan categorías, porque el home no tiene pestañas: Don Higinio, Factchequeado Lab, GEA Logistics, DéDé Digital, Uniform y Lucrecia Cornaglia.
 
 **Etiquetas:**
 
@@ -140,6 +167,7 @@ type Project = {
 - Se importan de forma estática desde `src/assets/projects/{slug}/`. Así Next conoce el tamaño (sin saltos de layout) y genera el placeholder borroso.
 - Los archivos fuente miden como máximo 2400px de ancho; `next/image` sirve AVIF o WebP.
 - Los originales quedan en `~/Dev/portfolio-assets`, fuera del repo.
+- La portada se recorta según dónde aparece (16:10 en el reel, 4:3 en la grilla, 16:9 en el detalle), así que lo importante tiene que estar cerca del centro.
 
 **Lista inicial, en este orden:**
 
@@ -209,7 +237,8 @@ type Skill = { name: string; icon: StaticImageData; learning?: boolean }
 **Íconos:**
 - Son SVG en `src/assets/skills/`.
 - Los que ya existen salen del sitio actual; los que faltan, de los recursos oficiales de cada marca.
-- `learning: true` muestra la etiqueta "Aprendiendo" / "Learning".
+- Las que tienen `learning: true` no van entre las píldoras de herramientas. Se nombran en una línea aparte, armada con `Intl.ListFormat`: "Ahora estoy aprendiendo Next.js y Framer." / "Currently learning Next.js and Framer.".
+- El hero usa 11 de estos íconos como fichas decorativas: Figma, WordPress, Elementor, PHP, HTML, CSS, React, TypeScript, Next.js, JavaScript y Bricks Builder.
 
 ### Testimonios — `src/content/testimonials.ts`
 
@@ -238,11 +267,12 @@ Paula confirma el permiso de cada persona antes de publicar.
 
 **Hero:**
 - **Título:**
-  - ES: "Diseñadora Web y Desarrolladora WordPress / Front-End"
-  - EN: "Web Designer & WordPress / Front-End Developer"
+  - ES: "Diseño en Figma y lo desarrollo."
+  - EN: "I design in Figma and build it."
 - **Subtítulo:**
-  - ES: "Diseño en Figma y lo desarrollo: sitios responsive que se ven bien y funcionan."
-  - EN: "I design in Figma and build it in WordPress and code: responsive sites that look good and work."
+  - ES: "Soy Paula Kunning, diseñadora web y desarrolladora WordPress / front-end. Hago sitios responsive que se ven bien y funcionan."
+  - EN: "I'm Paula Kunning, a web designer and WordPress / front-end developer. I build responsive sites that look good and work."
+- El rol sigue en el subtítulo y en el título de la página, así que se mantiene para SEO.
 - **Disponibilidad:**
   - ES: "Disponible para trabajo remoto de tiempo completo y proyectos freelance"
   - EN: "Available for full-time remote work and freelance projects"
@@ -260,19 +290,36 @@ Paula confirma el permiso de cada persona antes de publicar.
   3. "Before this I was a public accountant. I changed careers in 2022, and that business mindset, organized and detail-oriented, shows up in every project."
   4. "I'm currently going deeper into React, Next.js and TypeScript, and learning Framer. I live in Córdoba, Argentina, and work remotely in English and Spanish."
 
-**Cierre:**
+**Cierre (va en el footer):**
 - **Título:** "¿Tenés una idea en mente? Me encantaría hacerla realidad"
 - **Línea de disponibilidad:** "Busco un puesto remoto como diseñadora web o desarrolladora WordPress / front-end, y también tomo proyectos freelance."
 - La versión en inglés la traduce Claude.
 
-**Contacto:** se mantienen los textos actuales:
-- "¿Tenés un proyecto en mente?"
-- "Si sentís que podemos crear algo juntos, me encantaría conocer tu idea."
-- "Estemos en contacto"
+**Contacto:**
+- Se mantienen "¿Tenés un proyecto en mente?" y "Si sentís que podemos crear algo juntos, me encantaría conocer tu idea.".
+- El bloque "Estemos en contacto" se elimina, porque el footer ya tiene el mail y las redes.
 
-La versión en inglés la traduce Claude.
+**Página de proyectos:** "Algunos trabajos que disfruté crear" / "Some work I enjoyed making".
 
-**Página de proyectos:** el título actual es "Some work I enjoyed making" (en inglés también en la versión ES). Se mantiene salvo que Paula indique otro.
+**Textos nuevos del rediseño:**
+
+| Dónde | ES | EN |
+|---|---|---|
+| Header | Sobre mí | About |
+| Hero, botón | Ver proyectos | See projects |
+| Hero, aviso | Podés mover las herramientas | You can move the tools around |
+| Reel, bajada | Diseño web, desarrollo WordPress y branding. | Web design, WordPress development and branding. |
+| Reel, tarjeta | Ver proyecto | View project |
+| Reel, tarjeta final | Ver los {count} proyectos | See all {count} projects |
+| Reel, botones del carrusel | Proyecto anterior / Proyecto siguiente | Previous project / Next project |
+| Sobre mí | Herramientas que uso | Tools I use |
+| Sobre mí | Ahora estoy aprendiendo {lista}. | Currently learning {list}. |
+| Detalle | Sobre el proyecto | About the project |
+| Detalle, `aria-label` del cierre | Más proyectos | More projects |
+| Footer, botón del mail | Copiar → Copiado | Copy → Copied |
+| Footer, si falla copiar | No se pudo copiar. El mail es {email} | Couldn't copy. The email is {email} |
+| Footer | Volver arriba | Back to top |
+| Footer, crédito | Diseñado y desarrollado por mí, con una ayudita de la IA. | Designed & built by me, with a little help from AI. |
 
 **Regla para todo lo nuevo en inglés:** lo traduce Claude y lo revisa Paula antes del lanzamiento.
 
@@ -296,115 +343,190 @@ La versión en inglés la traduce Claude.
 
 ### Layout (todas las páginas)
 
+**Medidas comunes:**
+- Columna de contenido de `73rem` como máximo, centrada, con margen lateral `clamp(1rem, 4vw, 3rem)`.
+- El reel del home arranca en el mismo borde izquierdo que esa columna: `max(margen, (100% − 73rem) / 2 + margen)`. Se usa `100%` y no `100vw`, porque `100vw` incluye la barra de scroll.
+- Los encabezados de proyectos y del detalle llevan de fondo la grilla de puntos del hero, que se desvanece hacia abajo.
+- Ningún link interno anima el scroll (`scroll-behavior` queda en `auto`). Con scroll suave, ir a "Sobre mí" o "Volver arriba" recorría todo el reel.
+
 **Link para saltar al contenido:** "Ir al contenido" / "Skip to content", visible al recibir foco.
 
-**Header:**
-- Logo, que lleva al home del idioma actual.
-- Proyectos y Contacto.
-- Selector de idioma: muestra "EN" en español y "ES" en inglés.
-- Botón "Hablemos", que lleva a `/contacto`.
+**Header:** una píldora flotante, fija arriba y centrada, con fondo `background` al 80 % y desenfoque.
+- "Paula *Kunning*" en serif `primary`, con tracking −0.03em y el apellido en itálica. Lleva al home del idioma actual.
+- Links Proyectos, Sobre mí (`/#sobre-mi` o `/en#sobre-mi`) y Contacto, y el selector de idioma ("EN" en español, "ES" en inglés): mayúsculas, 0.875rem, tracking 0.06em, en `muted`. La página actual va subrayada y con `aria-current="page"`; Sobre mí nunca se marca.
+- Botón "Hablemos", sólido, que lleva a `/contacto`.
 
-**Menú mobile:**
-- Es un botón con `aria-expanded` y `aria-controls`.
-- Se cierra con Escape y al navegar, y el foco vuelve al botón.
+**Menú mobile (menos de 768px):**
+- La píldora muestra el nombre, "Hablemos" y un botón redondo con ícono de hamburguesa, que pasa a ✕ cuando está abierto.
+- El botón tiene `aria-expanded`, `aria-controls` y `aria-label` "Abrir menú" / "Cerrar menú".
+- Abre un panel debajo de la píldora con los links en columna.
+- Se cierra con Escape, al tocar un link y al navegar, y el foco vuelve al botón.
 
-**Footer:**
-- Mail, LinkedIn, Behance y GitHub.
+**Footer:** un bloque `primary-deep` con radio de 2rem, separado de los bordes de la ventana, con texto `background`.
+- Título del cierre (`h2`) y línea de disponibilidad (sección 4). En `/contacto` no van, porque la página entera ya es eso.
+- El mail en una píldora con el botón "Copiar", que es `CopyEmailButton`:
+  - copia con `navigator.clipboard`;
+  - durante 2 segundos dice "Copiado" y lo anuncia en una región `role="status"`;
+  - si falla, la región muestra el mail.
+- "Ver mi CV", botón claro.
+- LinkedIn, Behance y GitHub en serif grande, a la derecha (debajo en mobile).
+- Fila final, separada por una línea, con tres partes: "© {año} Paula Kunning. Córdoba, Argentina.", la frase de crédito centrada y "Volver arriba ↑" a la derecha. En mobile van una debajo de la otra.
 
 ### Home — `/`
 
-Cada página tiene un único `h1`: en el home es el título del hero. El sitio actual no tiene ninguno.
+Cada página tiene un único `h1`: en el home es el título del hero.
 
-1. **Hero:**
-   - título (`h1`), subtítulo y etiqueta de disponibilidad;
-   - "Hablemos", que lleva a `/contacto`;
-   - "Ver mi CV", que abre el PDF del idioma en una pestaña nueva y lo indica en un texto oculto para lectores de pantalla.
-2. **Proyectos destacados:**
-   - pestañas Todos / Diseño web / Desarrollo web / Branding;
-   - muestra los primeros 6 proyectos de la pestaña activa;
-   - termina con "Ver todos los proyectos".
-3. **Experiencia.**
-4. **Habilidades:** grilla de íconos con la etiqueta "Aprendiendo" donde corresponde.
-5. **Sobre mí:** texto y tira de 3 fotos.
-6. **Testimonios.**
-7. **Cierre:** título, línea de disponibilidad y "Hablemos".
+1. **Hero, un lienzo tipo Figma:**
+   - Ocupa toda la pantalla, con fondo de grilla de puntos que se desvanece abajo.
+   - Al centro, en este orden:
+     - el título (`h1`, tracking −0.035em) y el subtítulo;
+     - "Ver proyectos" (sólido, baja al reel) y "Ver mi CV" (outline, abre el PDF del idioma en una pestaña nueva y lo indica en un texto oculto para lectores de pantalla);
+     - la línea de disponibilidad, con un punto verde.
+   - Alrededor hay 11 fichas con íconos de herramientas, sobre fondos `lilac-tint`, `rose-tint` o `surface`, y una ficha más grande con la foto de Paula, rotulada "Paula.jpg".
+   - Las fichas se arrastran con el mouse o el dedo (ver `HeroCanvas`):
+     - quedan donde se sueltan;
+     - la que se agarra pasa al frente;
+     - al pasar el mouse o arrastrar, muestran una caja de selección estilo Figma con una etiqueta con el nombre.
+   - Al cargar, las fichas entran con una caída corta, escalonada cada 60ms.
+   - Abajo, el aviso "Podés mover las herramientas" se oculta después del primer arrastre.
+   - Las fichas son decorativas (`aria-hidden`), porque las herramientas también están como texto en Sobre mí.
+   - **Mobile:** 8 fichas, en una banda arriba y otra abajo del texto; sin foto.
+2. **Proyectos destacados, el reel** (`id="proyectos"`):
+   - **Contenido:** título "Proyectos destacados", bajada, "Ver todos los proyectos", una tarjeta por cada proyecto `featured` y una tarjeta final `primary` con "Ver los 14 proyectos →".
+   - **Cada tarjeta:** imagen 16:10, nombre (`h3`), rol y año, resumen y botón "Ver proyecto".
+   - **Desktop con movimiento** (`min-width: 900px` y `prefers-reduced-motion: no-preference`):
+     - la sección queda fija y el scroll vertical mueve la tira hacia el costado;
+     - las imágenes tienen un parallax leve y abajo hay una barra de progreso;
+     - si con Tab se llega a una tarjeta fuera de pantalla, la página scrollea hasta mostrarla.
+   - **Mobile o con movimiento reducido:** carrusel horizontal nativo con scroll-snap y botones anterior/siguiente.
+3. **Sobre mí** (`id="sobre-mi"`):
+   - a la izquierda, la foto de Paula trabajando, cuadrada;
+   - a la derecha, el título, los párrafos, "Herramientas que uso" como píldoras con ícono y la línea de lo que está aprendiendo.
+4. **Experiencia:**
+   - El título va a la izquierda y los trabajos a la derecha (4/12 y 8/12).
+   - El título acompaña el scroll (`sticky`) y frena cuando llega al último trabajo, para no terminar pegado a Testimonios. Va dentro de un contenedor que ocupa las filas de todos los trabajos menos el último, y la lista es `subgrid`. Hace falta así porque `sticky` se limita a su contenedor, no a su celda de la grilla.
+   - Cada trabajo muestra período, empresa (`h3`), rol, y descripción o lista.
+5. **Testimonios:** el de Désirée va grande, en serif y con comillas `primary`; los otros dos, en tarjetas al costado (debajo en mobile).
 
 ### Proyectos — `/proyectos`
 
-- Título (`h1`), pestañas y grilla con los 14 proyectos, cierre y footer.
+- **Encabezado con puntos:** el `h1` a la izquierda (4.5rem como máximo), y a la derecha, alineadas con su base, las pestañas y la cantidad de proyectos. En mobile van debajo.
+- **Pestañas:** píldoras outline; la activa, `primary`.
+- **Grilla:**
+  - 2 columnas desde 768px, con la columna derecha 8rem más abajo; 1 columna en mobile.
+  - Cada tarjeta muestra la imagen 4:3, el nombre (`h2`), el rol, el año y la etiqueta "Conceptual".
+  - Al pasar el mouse, la imagen crece 3 %.
+- **Aparición:**
+  - Cuando una tarjeta entra en pantalla, sube 2.5rem y aparece en 0.9s, con la imagen pasando de 108 % a 100 %. La columna derecha arranca 0.12s después.
+  - Pasa una vez por tarjeta, y de nuevo con las tarjetas que aparecen al cambiar de pestaña.
+  - Las que ya están en pantalla cuando carga la página no se esconden, para que no parpadeen al hidratar.
+  - Sin JavaScript se ve todo, y con movimiento reducido no hay animación.
 
 ### Detalle — `/proyectos/[slug]`
 
 **Contenido, en orden:**
-1. Imagen de portada.
-2. Nombre (`h1`) y etiqueta "Conceptual" si corresponde.
-3. Resumen.
-4. Fila de datos: Rol, Año, Servicios (las categorías traducidas) y Herramientas.
-5. Párrafos.
-6. Galería de 2 a 4 imágenes.
-7. Botón externo "Ir a la web" o "Ver en Behance" (pestaña nueva, indicado).
-
-**Al final:**
-- "← Volver a proyectos".
-- "Siguiente proyecto: {nombre} →".
+1. Encabezado con puntos: "← Volver a proyectos", el nombre (`h1`) y la etiqueta "Conceptual" si corresponde.
+2. Dos columnas (7/12 y 5/12):
+   - a la izquierda, el resumen y el botón externo "Ir a la web" o "Ver en Behance" (pestaña nueva, indicado);
+   - a la derecha, los datos en una grilla de 2×2: Rol, Año, Servicios (las categorías traducidas) y Herramientas.
+3. Portada 16:9 con radio de 2rem, del ancho de la columna de contenido.
+4. "Sobre el proyecto" (`h2`) a la izquierda y los párrafos a la derecha (4/12 y 8/12), como en Experiencia.
+5. Galería de 2 columnas (1 en mobile).
+6. **Cierre:** un `nav` con `aria-label` "Más proyectos".
+   - Una fila con "Siguiente proyecto" a la izquierda y el botón outline "← Volver a proyectos" a la derecha.
+   - Una línea divisoria.
+   - El link al siguiente proyecto, con el nombre en serif grande, una flecha que se corre al pasar el mouse y la miniatura de su portada.
 
 ### Contacto — `/contacto`
 
-- Título (`h1`) y texto.
-- "Ver mi CV".
-- El formulario (sección 7).
-- Imagen.
-- "Estemos en contacto", con los links.
+- Dos columnas (5/12 y 7/12).
+- A la izquierda: el retrato de Paula (9rem, cuadrado, oculto en mobile), el `h1`, el texto y "Ver mi CV" (outline).
+- A la derecha: el formulario (sección 7) en una tarjeta `surface` con borde y sombra suave.
+- Todo entra en una pantalla de 1280×800.
+- El footer va sin título ni línea de disponibilidad.
 
 ### Componentes
 
-**Corren en el navegador (`'use client'`), solo estos tres:**
-- `SiteNav`: links del header, selector de idioma y menú mobile. Necesita la URL actual, que solo existe en el navegador.
-- `ProjectFilter`
-- `ContactForm`
+**Lógica pura, sin React, con unit tests:**
+- `src/lib/canvas.ts`, para el arrastre:
+  - recibe el puntero, el punto donde se agarró la ficha, su tamaño y el del lienzo;
+  - devuelve la posición en % del lienzo, limitada a sus bordes;
+  - usa % para que las fichas se acomoden si cambia el tamaño de la ventana.
+- `src/lib/reel.ts`, para el reel:
+  - el progreso del scroll (0 a 1);
+  - el alto que necesita la sección fija;
+  - el desplazamiento de parallax de cada imagen;
+  - a dónde scrollear para mostrar la tarjeta que recibió el foco.
+
+**Corren en el navegador (`'use client'`):**
+- **`SiteNav`** (ya existe): suma Sobre mí y el nuevo menú mobile.
+- **`ProjectFilter`** (ya existe): nuevo diseño y la aparición de tarjetas.
+- **`ContactForm`** (ya existe): nuevo diseño.
+- **`HeroCanvas`** (nuevo): recibe las fichas y maneja el arrastre con Pointer Events y `setPointerCapture`.
+- **`ProjectReel`** (nuevo):
+  - recibe como `children` las tarjetas, ya renderizadas en el servidor;
+  - agrega el modo fijo, el parallax, la barra de progreso, los botones del carrusel y el seguimiento del foco;
+  - el alto de la sección fija se conoce recién en el navegador, así que, después de calcularlo, si la URL trae un `#` que apunta debajo del reel, vuelve a scrollear a ese elemento.
+- **`CopyEmailButton`** (nuevo).
 
 **Todo lo demás son Server Components:**
-- **Layout:** `Header`, `Footer`.
-- **Home:** `Hero`, `FeaturedProjects`, `ExperienceList`, `SkillsGrid`, `About`, `Testimonials`, `ContactCta`.
-- **Proyectos:** `ProjectCard`, `ProjectFacts`, `ProjectGallery`, `ProjectNav`.
-- **Compartido:** `ButtonLink` (variantes `primary` y `secondary`, interno o externo). Se usa en todo el sitio; no se crean más abstracciones de UI hasta que se repitan.
+- **Layout:** `Header` y `Footer`. El `Footer` absorbe el cierre, así que `ContactCta` se elimina.
+- **Home:** `Hero`, `FeaturedProjects` (arma el reel), `About`, `ExperienceList` y `Testimonials`. `About` absorbe las herramientas, así que `SkillsGrid` se elimina.
+- **Proyectos:** `PageHero` (el encabezado con puntos), `ProjectCard`, `ProjectFacts`, `ProjectGallery` y `ProjectNav`.
+- **Compartido:** `ButtonLink`, con las variantes `primary` (sólido), `secondary` (outline) y `light` (para el footer).
 
 ### Pestañas — `ProjectFilter`
 
 **Datos:**
 - Recibe la lista de proyectos ya traducida al idioma de la página.
-- `filterProjects(projects, category, limit?)` es una función pura en `src/lib/projects.ts`, junto a `getProject(slug)` y `getNextProject(slug)`.
+- `filterProjects(projects, category)` es una función pura en `src/lib/projects.ts`, junto a `getProject(slug)` y `getNextProject(slug)`. El parámetro `limit` se elimina, porque el home ya no tiene pestañas.
 
 **Accesibilidad:**
 - Es un grupo de botones (`role="group"` con `aria-label`), y el activo lleva `aria-pressed="true"`.
-- Una región `aria-live="polite"` anuncia la cantidad de resultados.
+- La cantidad de proyectos se ve en pantalla y está en una región `aria-live="polite"`, que la anuncia al cambiar de pestaña.
 
 **SEO:** el HTML que se genera de antemano incluye la pestaña "Todos" con todos los proyectos, así que el contenido es indexable sin JavaScript.
 
 ### Responsive
 
-- Mobile-first con los breakpoints de Tailwind (`sm` 640, `md` 768, `lg` 1024, `xl` 1280).
-- **Grilla de proyectos:** 1 columna en mobile, 2 desde `md`, 3 desde `lg`.
-- **Referencia visual:** capturas de paulakunning.com a 390px y 1280px para cada sección. La versión nueva se compara contra ellas.
+- Mobile-first.
+- **Cortes:**
+  - `md` (768px) para las dos columnas y para la píldora completa del header;
+  - el reel queda fijo desde 900px, y lo decide `matchMedia` en `ProjectReel`.
+- **Referencia visual:** el prototipo a 390px y a 1440px.
 
 ## 6. Tokens de diseño
 
-Se definen en `src/app/globals.css` con `@theme` de Tailwind 4.
+Se definen en `src/app/globals.css` con `@theme` de Tailwind 4. Los contrastes son contra `background`, salvo que se indique otro fondo.
 
 | Token | Valor | Uso |
 |---|---|---|
 | `--color-background` | `#F7F4EF` | fondo general |
-| `--color-foreground` | `#2E2A28` | texto (12.95:1 sobre el fondo) |
-| `--color-primary` | `#6D4E68` | títulos destacados, links, botones (6.51:1 sobre el fondo) |
-| `--color-secondary` | `#B79BB8` | solo fondos, bordes y decoración (2.28:1, no apto para texto) |
-| `--color-accent` | `#D7B6B6` | solo fondos, bordes y decoración (1.7:1, no apto para texto) |
-| `--font-serif` | Playfair Display 600 | títulos |
-| `--font-sans` | DM Sans 400 / 500 | texto, botones, interfaz |
+| `--color-foreground` | `#2E2A28` | texto (12.95:1) |
+| `--color-muted` | `#675E5A` | texto secundario: bajadas, períodos, datos (5.76:1; 6.22:1 sobre `surface`; 5.01:1 sobre `lilac-tint`) |
+| `--color-primary` | `#6D4E68` | nombre, botones, pestaña activa, foco (6.51:1; blanco sobre `primary`, 7.14:1) |
+| `--color-primary-deep` | `#3A2937` | fondo del footer (`background` encima, 12.33:1; al 65 % de opacidad, 6.16:1) |
+| `--color-secondary` | `#B79BB8` | base de `lilac-tint`; solo decoración (2.28:1, no apto para texto) |
+| `--color-accent` | `#D7B6B6` | base de `rose-tint`; solo decoración (1.7:1, no apto para texto) |
+| `--color-lilac-tint` | `#ECE2EB` | fondo de fichas e imágenes |
+| `--color-rose-tint` | `#F3E5E3` | fondo de fichas e imágenes |
+| `--color-sand-tint` | `#EBE5DA` | fondo de fichas e imágenes |
+| `--color-surface` | `#FFFDF9` | tarjetas, píldoras de herramientas, campos del formulario |
+| `--color-line` | `rgb(46 42 40 / 0.12)` | bordes y divisores |
+| `--color-error` | `#A3332B` | errores del formulario (6.24:1) |
+| `--font-serif` | Playfair Display 400, normal e itálica | títulos |
+| `--font-sans` | DM Sans 400 / 500 / 600 | texto, botones, interfaz |
+
+**Forma:**
+- **Títulos:** serif 400, interlineado 1.05 y tracking −0.015em; los `h1` y el título del hero, −0.035em.
+- **Botones y píldoras:** radio completo, sólidos o con borde de 1px. Sin degradés ni brillos.
+- **Radios:** 1.5rem en imágenes y tarjetas; 2rem en la portada del detalle, el formulario y el footer.
 
 **Reglas de contraste:**
-- El texto sobre `secondary` o `accent` va en `foreground` (5.68:1 y 7.62:1).
-- El texto sobre `primary` va en `background` (6.51:1).
-- El foco es siempre visible: `outline` en `primary` con separación.
+- El texto sobre los tints o sobre `surface` va en `foreground` o `muted`.
+- El texto sobre `primary` va en blanco o `background`.
+- El texto sobre `primary-deep` va en `background`, con al menos 65 % de opacidad.
+- El foco es siempre visible: `outline` en `primary` con separación; dentro del footer, en `background`.
 
 ## 7. Formulario de contacto
 
@@ -506,8 +628,10 @@ type ContactState =
 |---|---|
 | `src/lib/contact/schema.test.ts` | datos válidos, cada regla de cada campo, recorte de espacios |
 | `src/app/[lang]/contacto/actions.test.ts` | con `sendContactEmail` simulado: éxito, datos inválidos (no envía), trampa (no envía, devuelve éxito), fallo de Resend (devuelve `error` con valores), dry run |
-| `src/content/content.test.ts` | slugs únicos con formato `kebab-case`, al menos una categoría, galería de 2 a 4 imágenes, URLs `https` |
-| `src/lib/projects.test.ts` | `filterProjects` (por categoría y con límite), `getNextProject` (incluida la vuelta al primero), `getProject` con slug inexistente |
+| `src/content/content.test.ts` | slugs únicos con formato `kebab-case`, al menos una categoría, galería de 2 a 4 imágenes, URLs `https`, 6 proyectos `featured` |
+| `src/lib/projects.test.ts` | `filterProjects` por categoría, `getNextProject` (incluida la vuelta al primero), `getProject` con slug inexistente |
+| `src/lib/canvas.test.ts` | la posición en % con el puntero dentro del lienzo, y limitada a los bordes cuando sale |
+| `src/lib/reel.test.ts` | progreso 0 y 1 en los extremos y limitado afuera de ellos; alto de la sección; parallax con signo opuesto al desplazamiento; destino del foco para la primera tarjeta, una del medio y la última |
 | `src/i18n/routing.test.ts` | `localizePath` y `switchLocalePath` en home, páginas y detalle, en los dos sentidos |
 | `src/lib/dates.test.ts` | `formatPeriod` en ES y EN, con y sin fecha de fin |
 
@@ -518,7 +642,8 @@ Corren contra el build de producción con `CONTACT_DRY_RUN=true`, en dos proyect
 | Archivo | Recorrido |
 |---|---|
 | `tests/e2e/navigation.spec.ts` | las 4 páginas cargan en ES y EN; el selector de idioma conserva la página; `/es/proyectos` redirige a `/proyectos`; una ruta inexistente muestra la 404 localizada; el menú mobile abre, navega y se cierra con Escape |
-| `tests/e2e/projects.spec.ts` | las pestañas filtran y marcan la activa; una tarjeta lleva a su detalle; "Siguiente proyecto" y "Volver a proyectos" funcionan |
+| `tests/e2e/home.spec.ts` | desktop: el scroll mueve el reel, y con Tab se llega a la última tarjeta y queda visible; arrastrar una ficha del hero la mueve. Con movimiento reducido y en mobile, el reel es un carrusel y los botones lo mueven. Desde `/proyectos`, "Sobre mí" deja esa sección arriba de la pantalla (ES y EN). "Copiar" copia el mail y muestra "Copiado" |
+| `tests/e2e/projects.spec.ts` | las pestañas filtran y marcan la activa; con JavaScript desactivado se ven todas las tarjetas; una tarjeta lleva a su detalle; "Siguiente proyecto" y los dos "Volver a proyectos" funcionan |
 | `tests/e2e/contact.spec.ts` | envío vacío muestra errores y enfoca el primero; envío válido muestra el agradecimiento |
 | `tests/e2e/a11y.spec.ts` | axe sin violaciones en las 4 páginas (un detalle), en los dos idiomas |
 
@@ -526,7 +651,7 @@ Corren contra el build de producción con `CONTACT_DRY_RUN=true`, en dos proyect
 
 **Antes de lanzar:**
 - Lighthouse manual en mobile sobre la URL de producción de Vercel, con el objetivo de la sección 1.
-- Revisión visual a 360, 768 y 1280px contra las capturas del sitio actual.
+- Revisión visual a 360, 768 y 1440px contra el prototipo.
 
 ### CI — `.github/workflows/ci.yml`
 
@@ -597,11 +722,11 @@ Corren contra el build de producción con `CONTACT_DRY_RUN=true`, en dos proyect
 │  │  ├─ icon.svg
 │  │  ├─ robots.ts
 │  │  └─ sitemap.ts
-│  ├─ assets/                       imágenes importadas (projects/, skills/, about/)
+│  ├─ assets/                       imágenes importadas (projects/, skills/, about/ con la foto del hero)
 │  ├─ components/
 │  ├─ content/                      projects.ts, experience.ts, skills.ts, testimonials.ts
 │  ├─ i18n/                         config.ts, routing.ts, dictionaries/
-│  ├─ lib/                          projects.ts, dates.ts, contact/
+│  ├─ lib/                          projects.ts, dates.ts, canvas.ts, reel.ts, contact/
 │  └─ proxy.ts
 ├─ tests/e2e/
 ├─ .env.example
@@ -616,7 +741,11 @@ Se deja en `~/Dev/portfolio-assets`. La implementación no se bloquea por esto: 
 **Archivos generales:**
 - [ ] CV en español y Resume en inglés (PDF). De ahí salen los highlights de Canal Cero.
 - [ ] Logo en SVG y favicon.
-- [ ] Las 3 fotos de "Sobre mí" y la imagen de la página de contacto.
+- [x] Fotos:
+  - Sobre mí: Paula trabajando;
+  - contacto: el retrato;
+  - hero: `paula-perfil.jpg`, que hoy está en el prototipo;
+  - la foto del espejo queda sin uso.
 
 **Por cada proyecto:**
 - [ ] Imagen de tarjeta y 2 a 4 imágenes para el detalle.
