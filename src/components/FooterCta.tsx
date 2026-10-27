@@ -17,7 +17,9 @@ export function FooterCta({ locale, title, availability }: FooterCtaProps) {
       <h2 className="max-w-[18ch] text-[clamp(2.25rem,5.4vw,4.5rem)]">
         {title}
       </h2>
-      <p className="mt-6 max-w-[34rem] text-background/75">{availability}</p>
+      <p className="mt-6 mb-10 max-w-[34rem] text-background/75">
+        {availability}
+      </p>
     </>
   );
 }

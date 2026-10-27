@@ -1,15 +1,19 @@
+import { cacheLife } from "next/cache";
 import { contactLinks, cvPaths, socialChannels } from "@/content/site";
 import { formatMessage } from "@/i18n/format";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { getLocale } from "@/i18n/server";
 import { ButtonLink } from "./ButtonLink";
-import { CopyEmailButton } from "./CopyEmailButton";
+import { EmailPill } from "./EmailPill";
 import { FooterCta } from "./FooterCta";
 import { ArrowUpIcon } from "./icons";
 
 // `new Date()` is not allowed in a prerendered component; a cached function is.
+// "days": the year can lag at most a day after Jan 1, and the default profile
+// would make every page revalidate every 15 minutes.
 async function getYear() {
   "use cache";
+  cacheLife("days");
   return new Date().getFullYear();
 }
 
@@ -26,7 +30,15 @@ export async function Footer() {
           title={cta.title}
           availability={cta.availability}
         />
-        <CopyEmailButton email={contactLinks.email} labels={footer}>
+        <div className="flex flex-wrap items-center gap-3">
+          <EmailPill
+            email={contactLinks.email}
+            labels={{
+              copy: footer.copy,
+              copied: footer.copied,
+              copyFailed: footer.copyFailed,
+            }}
+          />
           <ButtonLink
             href={cvPaths[locale]}
             variant="light"
@@ -34,7 +46,7 @@ export async function Footer() {
           >
             {hero.cv}
           </ButtonLink>
-        </CopyEmailButton>
+        </div>
       </div>
 
       <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-2 md:mt-0 md:grid md:justify-items-end md:gap-y-2 md:text-right">

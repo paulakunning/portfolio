@@ -1,21 +1,14 @@
 "use client";
 
-import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 import { formatMessage } from "@/i18n/format";
 
-type CopyEmailButtonProps = {
+type EmailPillProps = {
   email: string;
   labels: { copy: string; copied: string; copyFailed: string };
-  /** Sits next to the email pill in the same wrapping row. */
-  children?: ReactNode;
 };
 
-export function CopyEmailButton({
-  email,
-  labels,
-  children,
-}: CopyEmailButtonProps) {
+export function EmailPill({ email, labels }: EmailPillProps) {
   const [state, setState] = useState<"idle" | "copied" | "failed">("idle");
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
   useEffect(() => () => clearTimeout(timer.current), []);
@@ -33,9 +26,14 @@ export function CopyEmailButton({
   }
 
   return (
-    <div className="mt-10 flex flex-wrap items-center gap-3 first:mt-0">
-      <div className="inline-flex items-center gap-4 rounded-full border border-background/25 py-1 pr-1 pl-5">
-        <a href={`mailto:${email}`}>{email}</a>
+    <>
+      <div className="inline-flex max-w-full items-center gap-4 rounded-full border border-background/25 py-1 pr-1 pl-5">
+        <a
+          href={`mailto:${email}`}
+          className="min-w-0 [overflow-wrap:anywhere]"
+        >
+          {email}
+        </a>
         <button
           type="button"
           onClick={copy}
@@ -44,19 +42,18 @@ export function CopyEmailButton({
           {state === "copied" ? labels.copied : labels.copy}
         </button>
       </div>
-      {children}
       {/* Always mounted so the result is announced; on failure it is also shown. */}
       <span
         role="status"
         className={
           state === "failed"
-            ? "basis-full text-sm text-background/75"
+            ? "order-last basis-full text-sm text-background/75"
             : "sr-only"
         }
       >
         {state === "copied" && labels.copied}
         {state === "failed" && formatMessage(labels.copyFailed, { email })}
       </span>
-    </div>
+    </>
   );
 }
