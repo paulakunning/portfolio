@@ -56,10 +56,29 @@ test("Sobre mí lands on the about section from another page", async ({
       .getByRole("navigation", { name: /Principal|Main/ })
       .getByRole("link", { name: label })
       .click();
-    await expect(page).toHaveURL(new RegExp(`#sobre-mi$`));
+    await expect(page).toHaveURL(/#sobre-mi$/);
     const title = page.getByRole("heading", { level: 2, name: heading });
     await expect(title).toBeInViewport();
   }
+});
+
+test("mobile menu closes after a same-page Sobre mí link", async ({
+  page,
+  isMobile,
+}) => {
+  test.skip(!isMobile, "mobile only");
+  await page.goto("/");
+  const toggle = menuToggle(page);
+
+  await toggle.click();
+  await page
+    .locator("#site-menu")
+    .getByRole("link", { name: "Sobre mí" })
+    .click();
+  await expect(toggle).toHaveAttribute("aria-expanded", "false");
+  await expect(
+    page.getByRole("heading", { level: 2, name: "Hola, soy Paula" }),
+  ).toBeInViewport();
 });
 
 test("header CTA leads to the contact page", async ({ page }) => {

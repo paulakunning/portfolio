@@ -45,7 +45,11 @@
     position: absolute;
     inset: auto 0 0;
     height: 50%;
-    background: linear-gradient(to bottom, transparent, var(--color-background));
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      var(--color-background)
+    );
     pointer-events: none;
   }
 }

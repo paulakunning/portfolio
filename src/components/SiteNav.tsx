@@ -55,7 +55,10 @@ export function SiteNav({ locale, labels }: SiteNavProps) {
         id="site-menu"
         className={`${isOpen ? "flex" : "hidden"} absolute inset-x-0 top-[calc(100%+0.5rem)] flex-col rounded-3xl border border-line bg-background p-2 shadow-[0_16px_40px_-20px_rgb(46_42_40/0.4)] md:static md:flex md:flex-row md:items-center md:gap-6 md:rounded-none md:border-0 md:bg-transparent md:p-0 md:shadow-none`}
       >
-        <ul className="flex flex-col md:flex-row md:gap-6">
+        <ul
+          className="flex flex-col md:flex-row md:gap-6"
+          onClick={() => setOpenOn(null)}
+        >
           {links.map(({ href, label }) => {
             const current = currentState(href);
             return (
