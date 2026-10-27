@@ -26,11 +26,7 @@ export async function Footer() {
           title={cta.title}
           availability={cta.availability}
         />
-        <div className="mt-10 flex flex-wrap items-center gap-3 first:mt-0">
-          <div className="relative inline-flex items-center gap-4 rounded-full border border-background/25 py-1 pr-1 pl-5">
-            <a href={`mailto:${contactLinks.email}`}>{contactLinks.email}</a>
-            <CopyEmailButton email={contactLinks.email} labels={footer} />
-          </div>
+        <CopyEmailButton email={contactLinks.email} labels={footer}>
           <ButtonLink
             href={cvPaths[locale]}
             variant="light"
@@ -38,7 +34,7 @@ export async function Footer() {
           >
             {hero.cv}
           </ButtonLink>
-        </div>
+        </CopyEmailButton>
       </div>
 
       <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-2 md:mt-0 md:grid md:justify-items-end md:gap-y-2 md:text-right">

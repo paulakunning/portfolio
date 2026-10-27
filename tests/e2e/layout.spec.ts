@@ -157,9 +157,26 @@ test.describe("copy email", () => {
       .getByRole("contentinfo")
       .getByRole("button", { name: "Copiar" })
       .click();
-    await expect(
-      page.getByText("No se pudo copiar. El mail es paulakunning@gmail.com"),
-    ).toBeVisible();
+    const message = page.getByText(
+      "No se pudo copiar. El mail es paulakunning@gmail.com",
+    );
+    await expect(message).toBeVisible();
+
+    const cv = page
+      .getByRole("contentinfo")
+      .getByRole("link", { name: /Ver mi CV/ });
+    const [m, c] = [await message.boundingBox(), await cv.boundingBox()];
+    expect(m && c).toBeTruthy();
+    const overlaps =
+      m!.x < c!.x + c!.width &&
+      c!.x < m!.x + m!.width &&
+      m!.y < c!.y + c!.height &&
+      c!.y < m!.y + m!.height;
+    expect(overlaps).toBe(false);
+
+    // The address stays readable until the next click.
+    await page.waitForTimeout(2500);
+    await expect(message).toBeVisible();
   });
 });
 
