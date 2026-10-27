@@ -56,7 +56,12 @@ export const es = {
   },
   featured: {
     title: "Proyectos destacados",
+    subtitle: "Diseño web, desarrollo WordPress y branding.",
     viewAll: "Ver todos los proyectos",
+    viewProject: "Ver proyecto",
+    seeAll: "Ver los {count} proyectos",
+    previous: "Proyecto anterior",
+    next: "Proyecto siguiente",
   },
   experience: {
     title: "Experiencia",

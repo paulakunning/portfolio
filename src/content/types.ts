@@ -14,6 +14,8 @@ export type Project = {
   categories: Category[];
   tools: string[];
   conceptual?: boolean;
+  /** Shown in the home reel, in this file's order. */
+  featured?: boolean;
   year: number;
   role: Localized;
   /** What Paula did, in one line (card). */

@@ -17,6 +17,12 @@
   /* Mirrors the prototype's single 760px breakpoint: md: starts at 761px. */
   --breakpoint-md: 47.5625rem;
   --spacing-gutter: clamp(1rem, 4vw, 3rem);
+  /* Left edge of the 73rem column, for full-width boxes (ps-edge, scroll-ps-edge).
+     100% is the box's own width; 100vw would count the scrollbar. */
+  --spacing-edge: max(
+    var(--spacing-gutter),
+    calc((100% - 73rem) / 2 + var(--spacing-gutter))
+  );
   /* Form errors; not part of the brand palette. 6.24:1 on background. */
   --color-error: #a3332b;
   --animate-drop: drop 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;

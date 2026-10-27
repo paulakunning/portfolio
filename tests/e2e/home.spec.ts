@@ -36,11 +36,84 @@ test("links the CV for each language", async ({ page, request }) => {
   }
 });
 
-test("shows at most six featured projects", async ({ page }) => {
+test("shows the six featured projects and a link to all", async ({ page }) => {
   await page.goto("/");
-  expect(await page.getByRole("article").count()).toBeLessThanOrEqual(6);
-  await page.getByRole("link", { name: "Ver todos los proyectos" }).click();
+  await expect(page.locator("[data-reel-card]")).toHaveCount(6);
+  // Enter, not click: on desktop the card is off-screen until focus scrolls to it.
+  await page.getByRole("link", { name: "Ver los 14 proyectos" }).press("Enter");
   await expect(page).toHaveURL(/\/proyectos$/);
+});
+
+test.describe("desktop reel", () => {
+  test.skip(({ isMobile }) => isMobile, "pinned only on desktop");
+
+  test("scrolling moves the strip sideways", async ({ page }) => {
+    await page.goto("/");
+    const reel = page.locator("#proyectos");
+    await expect(reel).toHaveAttribute("data-pinned");
+    const card = page.locator("[data-reel-card]").first();
+    await reel.evaluate((el: HTMLElement) =>
+      scrollTo({ top: el.offsetTop, behavior: "instant" }),
+    );
+    const start = (await card.boundingBox())!.x;
+    await page.mouse.wheel(0, 600);
+    await expect
+      .poll(async () => (await card.boundingBox())!.x)
+      .toBeLessThan(start - 300);
+  });
+
+  test("tabbing to an off-screen card brings it into view", async ({
+    page,
+  }) => {
+    await page.goto("/");
+    const last = page.getByRole("link", {
+      name: "Ver proyecto Lucrecia Cornaglia",
+    });
+    await last.focus();
+    await expect(last).toBeInViewport();
+  });
+
+  test("a full page load on #sobre-mi lands on the about section", async ({
+    page,
+  }) => {
+    await page.goto("/#sobre-mi");
+    const title = page.getByRole("heading", {
+      level: 2,
+      name: "Hola, soy Paula",
+    });
+    await expect(title).toBeInViewport();
+    expect((await title.boundingBox())!.y).toBeLessThan(400);
+  });
+
+  test("falls back to the carousel when the window gets narrow", async ({
+    page,
+  }) => {
+    await page.goto("/");
+    await page.setViewportSize({ width: 800, height: 800 });
+    const reel = page.locator("#proyectos");
+    await expect(reel).not.toHaveAttribute("data-pinned");
+    await expect(reel).not.toHaveAttribute("style", /height/);
+    expect(
+      await page
+        .locator("[data-reel-strip]")
+        .evaluate((el) => getComputedStyle(el).transform),
+    ).toBe("none");
+  });
+});
+
+test.describe("carousel reel", () => {
+  test.use({ reducedMotion: "reduce" });
+
+  test("is a carousel moved by its buttons", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.locator("#proyectos")).not.toHaveAttribute("data-pinned");
+    await page.getByRole("button", { name: "Proyecto siguiente" }).click();
+    await expect
+      .poll(() =>
+        page.locator("[data-reel-list]").evaluate((el) => el.scrollLeft),
+      )
+      .toBeGreaterThan(0);
+  });
 });
 
 test("formats experience periods", async ({ page }) => {
