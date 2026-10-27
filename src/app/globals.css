@@ -14,6 +14,8 @@
   --color-sand-tint: #ebe5da;
   --color-surface: #fffdf9;
   --color-line: rgb(46 42 40 / 0.12);
+  /* Mirrors the prototype's single 760px breakpoint: md: starts at 761px. */
+  --breakpoint-md: 47.5625rem;
   --spacing-gutter: clamp(1rem, 4vw, 3rem);
   /* Form errors; not part of the brand palette. 6.24:1 on background. */
   --color-error: #a3332b;

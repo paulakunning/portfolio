@@ -16,7 +16,7 @@ type SiteNavProps = {
 
 // Inside the mobile menu panel links are full-width rows in the foreground color.
 const linkClass =
-  "block px-4 py-[0.85rem] text-sm leading-[1.6] uppercase tracking-[0.06em] text-foreground transition-colors hover:text-foreground md:p-0";
+  "block px-4 py-[0.85rem] text-sm leading-[1.6] uppercase tracking-[0.06em] text-foreground transition-colors hover:text-foreground md:inline md:p-0";
 const idleClass = "md:text-muted";
 
 export function SiteNav({ locale, labels }: SiteNavProps) {
@@ -87,14 +87,16 @@ export function SiteNav({ locale, labels }: SiteNavProps) {
           })}
         </ul>
         {/* A full page load: the whole document, including <html lang>, changes language. */}
-        <a
-          href={switchLocalePath(pathname, otherLocale)}
-          hrefLang={otherLocale}
-          className={`${linkClass} ${idleClass}`}
-        >
-          {labels.switchTo}
-          <span className="sr-only"> — {labels.switchToLabel}</span>
-        </a>
+        <div>
+          <a
+            href={switchLocalePath(pathname, otherLocale)}
+            hrefLang={otherLocale}
+            className={`${linkClass} ${idleClass}`}
+          >
+            {labels.switchTo}
+            <span className="sr-only"> — {labels.switchToLabel}</span>
+          </a>
+        </div>
       </div>
 
       <ButtonLink
