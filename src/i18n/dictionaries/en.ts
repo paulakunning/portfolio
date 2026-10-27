@@ -45,12 +45,14 @@ export const en: Dictionary = {
     copyright: "© {year} Paula Kunning. Córdoba, Argentina.",
   },
   hero: {
-    title: "Web Designer & WordPress / Front-End Developer",
+    title: "Digital design, from concept to screen.",
+    seeProjects: "See projects",
     cv: "View my resume",
     cvNotice: "(PDF, opens in a new tab)",
     subtitle:
-      "I design in Figma and build it in WordPress and code: responsive sites that look good and work.",
+      "I create websites that connect a good idea with thoughtful design and an intuitive experience. I can also bring those designs to the web, combining a visual eye with development skills.",
     availability: "Available for full-time remote work and freelance projects",
+    dragHint: "You can move the tools around",
   },
   featured: {
     title: "Featured projects",

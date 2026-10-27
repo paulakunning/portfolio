@@ -64,3 +64,34 @@ test("marks skills that are still being learned", async ({ page }) => {
     "Aprendiendo",
   );
 });
+
+test("hero tiles can be dragged", async ({ page, isMobile }) => {
+  test.skip(isMobile, "mouse drag");
+  await page.goto("/");
+  const tile = page.locator('[data-tile="Figma"]');
+  const before = (await tile.boundingBox())!;
+  await page.mouse.move(before.x + 30, before.y + 30);
+  await page.mouse.down();
+  await page.mouse.move(before.x + 230, before.y + 130, { steps: 5 });
+  await page.mouse.up();
+  // poll: the tile eases out of its tilted "dragging" pose after mouseup
+  await expect
+    .poll(async () => (await tile.boundingBox())!.x - before.x)
+    .toBeCloseTo(200, -1);
+  await expect
+    .poll(async () => (await tile.boundingBox())!.y - before.y)
+    .toBeCloseTo(100, -1);
+  await expect(page.getByText("Podés mover las herramientas")).toBeHidden();
+});
+
+test("only the tiles take over touch gestures", async ({ page, isMobile }) => {
+  test.skip(!isMobile, "touch");
+  await page.goto("/");
+  const touchAction = (selector: string) =>
+    page
+      .locator(selector)
+      .first()
+      .evaluate((el) => getComputedStyle(el).touchAction);
+  expect(await touchAction("[data-tile]")).toBe("none");
+  expect(await touchAction("#hero-title")).not.toBe("none");
+});

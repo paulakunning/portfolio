@@ -44,13 +44,15 @@ export const es = {
     copyright: "© {year} Paula Kunning. Córdoba, Argentina.",
   },
   hero: {
-    title: "Diseñadora Web y Desarrolladora WordPress / Front-End",
+    title: "Diseño digital, del concepto a la pantalla.",
+    seeProjects: "Ver proyectos",
     cv: "Ver mi CV",
     cvNotice: "(PDF, se abre en una pestaña nueva)",
     subtitle:
-      "Diseño en Figma y lo desarrollo: sitios responsive que se ven bien y funcionan.",
+      "Creo sitios web que conectan una buena idea con un diseño cuidado y una experiencia intuitiva. También puedo llevar esos diseños a la web, combinando criterio visual y conocimientos de desarrollo.",
     availability:
       "Disponible para trabajo remoto de tiempo completo y proyectos freelance",
+    dragHint: "Podés mover las herramientas",
   },
   featured: {
     title: "Proyectos destacados",

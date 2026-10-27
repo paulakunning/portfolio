@@ -19,6 +19,14 @@
   --spacing-gutter: clamp(1rem, 4vw, 3rem);
   /* Form errors; not part of the brand palette. 6.24:1 on background. */
   --color-error: #a3332b;
+  --animate-drop: drop 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+
+  @keyframes drop {
+    from {
+      opacity: 0;
+      transform: translateY(-14px) scale(0.9);
+    }
+  }
 }
 
 @theme inline {
