@@ -1048,6 +1048,7 @@ it('lists every path in both languages with alternates', () => {
   - both languages
   - every page
   - the form, which needs Resend configured or is expected to show the error state
+  - no placeholder content left: delete `src/content/placeholders.ts`, then `npm run typecheck` must pass
 
 - [ ] **Step 4: Commit and open PR** — `docs: add project README`
 

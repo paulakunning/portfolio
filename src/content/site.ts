@@ -17,3 +17,6 @@ export const socialChannels = [
   { id: "behance", label: "Behance", href: contactLinks.behance },
   { id: "github", label: "GitHub", href: contactLinks.github },
 ] as const;
+
+// The contact page reuses the "working" photo from the about section.
+export { workingPhoto as contactImage } from "./about";
