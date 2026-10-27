@@ -1,16 +1,23 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
+// Every variant keeps the 1px border (transparent unless outlined), like the prototype.
 const variants = {
-  primary: "bg-primary text-white hover:bg-primary-hover",
+  primary: "border-transparent bg-primary text-white hover:bg-primary-hover",
   secondary:
-    "border border-foreground/30 hover:border-foreground hover:bg-foreground/5",
-  light: "bg-background text-primary-deep hover:bg-white",
+    "border-foreground/28 hover:border-foreground hover:bg-foreground/4",
+  light: "border-transparent bg-background text-primary-deep hover:bg-white",
+} as const;
+
+const sizes = {
+  md: "min-h-11.5 text-[0.9375rem]",
+  sm: "min-h-10 text-sm",
 } as const;
 
 type ButtonLinkProps = {
   href: string;
   variant?: keyof typeof variants;
+  size?: keyof typeof sizes;
   /** When set, the link opens in a new tab and announces it to screen readers. */
   newTabNotice?: string;
   children: ReactNode;
@@ -21,12 +28,13 @@ type ButtonLinkProps = {
 export function ButtonLink({
   href,
   variant = "primary",
+  size = "md",
   newTabNotice,
   children,
   className = "",
   onClick,
 }: ButtonLinkProps) {
-  const classes = `inline-flex min-h-11.5 items-center justify-center gap-2 rounded-full px-5.5 text-[0.9375rem] font-medium whitespace-nowrap transition-colors ${variants[variant]} ${className}`;
+  const classes = `inline-flex items-center justify-center gap-2 rounded-full border px-5.5 leading-none font-medium whitespace-nowrap transition-colors ${sizes[size]} ${variants[variant]} ${className}`;
 
   if (newTabNotice) {
     return (

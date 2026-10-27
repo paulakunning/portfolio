@@ -278,3 +278,12 @@ for (const path of ["/", "/en"]) {
     expect(scrollWidth).toBeLessThanOrEqual(innerWidth);
   });
 }
+
+test("the header CTA is 40px tall", async ({ page }) => {
+  await page.goto("/");
+  const box = await page
+    .getByRole("link", { name: "Hablemos" })
+    .first()
+    .boundingBox();
+  expect(box?.height).toBe(40);
+});

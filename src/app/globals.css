@@ -60,7 +60,7 @@
   }
 
   body {
-    @apply bg-background font-sans text-foreground antialiased;
+    @apply bg-background font-sans text-[1.0625rem] leading-[1.6] text-foreground antialiased;
   }
 
   h1,

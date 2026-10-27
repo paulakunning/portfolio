@@ -16,7 +16,7 @@ type SiteNavProps = {
 
 // Inside the mobile menu panel links are full-width rows in the foreground color.
 const linkClass =
-  "block px-4 py-3.5 text-sm uppercase tracking-[0.06em] text-foreground transition-colors hover:text-foreground md:p-0";
+  "block px-4 py-[0.85rem] text-sm leading-[1.6] uppercase tracking-[0.06em] text-foreground transition-colors hover:text-foreground md:p-0";
 const idleClass = "md:text-muted";
 
 export function SiteNav({ locale, labels }: SiteNavProps) {
@@ -56,7 +56,7 @@ export function SiteNav({ locale, labels }: SiteNavProps) {
       <button
         ref={toggleRef}
         type="button"
-        className="order-last grid size-10 place-items-center rounded-full border border-foreground/30 md:hidden"
+        className="order-last grid size-10 place-items-center rounded-full border border-foreground/28 md:hidden"
         aria-expanded={isOpen}
         aria-controls="site-menu"
         aria-label={isOpen ? labels.closeMenu : labels.openMenu}
@@ -99,7 +99,8 @@ export function SiteNav({ locale, labels }: SiteNavProps) {
 
       <ButtonLink
         href={localizePath(locale, "/contacto")}
-        className="uppercase"
+        size="sm"
+        className="tracking-[0.06em] uppercase max-md:px-[0.9rem]"
         onClick={() => setOpenOn(null)}
       >
         {labels.cta}
