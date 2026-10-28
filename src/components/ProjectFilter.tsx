@@ -32,7 +32,7 @@ export function ProjectFilter({
 }: ProjectFilterProps) {
   const [active, setActive] = useState<Category | "all">("all");
   const grid = useRef<HTMLUListElement>(null);
-  const firstRun = useRef(true);
+  const lastTab = useRef(active);
   const visible = filterProjects(projects, active);
   const plural = new Intl.PluralRules(locale).select(visible.length);
   const countLabel = plural === "one" ? labels.count.one : labels.count.other;
@@ -41,6 +41,8 @@ export function ProjectFilter({
   // (or with reduced motion, see ProjectCard) they are all visible.
   useEffect(() => {
     const cards = grid.current?.querySelectorAll<HTMLElement>("article") ?? [];
+    const tabChanged = lastTab.current !== active;
+    lastTab.current = active;
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -52,9 +54,9 @@ export function ProjectFilter({
       { rootMargin: "0px 0px -10% 0px" },
     );
     for (const card of cards) {
-      // On load, what is already on screen stays as it is.
+      // Unless the tab changed, what is already on screen stays as it is.
       if (
-        firstRun.current &&
+        !tabChanged &&
         card.getBoundingClientRect().top < window.innerHeight
       ) {
         continue;
@@ -62,7 +64,6 @@ export function ProjectFilter({
       card.dataset.reveal = "hidden";
       observer.observe(card);
     }
-    firstRun.current = false;
     return () => {
       observer.disconnect();
       // A tab switch mid-reveal must not strand a card hidden.
