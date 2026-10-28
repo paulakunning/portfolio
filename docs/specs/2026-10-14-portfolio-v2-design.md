@@ -347,7 +347,7 @@ Paula confirma el permiso de cada persona antes de publicar.
 
 **Link para saltar al contenido:** "Ir al contenido" / "Skip to content", visible al recibir foco.
 
-**Header:** una píldora flotante, fija arriba y centrada, con fondo `background` al 80 % y desenfoque.
+**Header:** una píldora flotante, fija arriba y centrada, con fondo `background` al 90 % y desenfoque (el prototipo usa 80 %, pero sobre fotos el texto no llega a AA al hacer scroll).
 - "Paula *Kunning*" en serif `primary`, con tracking −0.03em y el apellido en itálica. Lleva al home del idioma actual.
 - Links Proyectos, Sobre mí (`/#sobre-mi` o `/en#sobre-mi`) y Contacto, y el selector de idioma ("EN" en español, "ES" en inglés): mayúsculas, 0.875rem, tracking 0.06em, en `muted`. La página actual va subrayada y con `aria-current="page"`; Sobre mí nunca se marca.
 - Botón "Hablemos", sólido, que lleva a `/contacto`.
