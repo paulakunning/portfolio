@@ -101,7 +101,7 @@ test("cards below the fold start hidden and appear when scrolled into view", asy
   await page.goto("/proyectos");
   const last = page.getByRole("article").last();
   await expect(last).toHaveAttribute("data-reveal", "hidden");
-  expect(await opacityOf(last)).toBe("0");
+  await expect.poll(() => opacityOf(last)).toBe("0");
   await last.scrollIntoViewIfNeeded();
   await expect(last).toHaveAttribute("data-reveal", "shown");
   await expect.poll(() => opacityOf(last)).toBe("1");
