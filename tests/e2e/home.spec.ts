@@ -98,6 +98,26 @@ test.describe("desktop reel", () => {
       .toBeLessThan(start - 300);
   });
 
+  test("cards fit between the header and the progress bar", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1280, height: 720 });
+    await page.goto("/");
+    const reel = page.locator("#proyectos");
+    await expect(reel).toHaveAttribute("data-pinned");
+    await reel.evaluate((el: HTMLElement) =>
+      scrollTo({ top: el.offsetTop, behavior: "instant" }),
+    );
+    const header = (await page.locator("header").boundingBox())!;
+    const card = (await page
+      .locator("[data-reel-card]")
+      .first()
+      .boundingBox())!;
+    expect(card.y).toBeGreaterThan(header.y + header.height);
+    // The progress bar sits 32px above the bottom edge.
+    expect(card.y + card.height).toBeLessThan(720 - 32);
+  });
+
   test("tabbing to an off-screen card brings it into view", async ({
     page,
   }) => {

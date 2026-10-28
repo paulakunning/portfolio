@@ -167,7 +167,7 @@ type Project = {
 - Se importan de forma estática desde `src/assets/projects/{slug}/`. Así Next conoce el tamaño (sin saltos de layout) y genera el placeholder borroso.
 - Los archivos fuente miden como máximo 2400px de ancho; `next/image` sirve AVIF o WebP.
 - Los originales quedan en `~/Dev/portfolio-assets`, fuera del repo.
-- La portada se recorta según dónde aparece (16:10 en el reel, 4:3 en la grilla, 16:9 en el detalle), así que lo importante tiene que estar cerca del centro.
+- La portada se recorta según dónde aparece (16:10 en el reel, 4:3 en la grilla, 16:9 en el detalle), así que lo importante tiene que estar cerca del centro. En el reel fijo, si la tarjeta no entra entre el header y la barra de progreso, la portada pierde alto (hasta la mitad) y se recorta más ancha; pedido de Paula, no está en el prototipo.
 
 **Lista inicial, en este orden:**
 
@@ -452,6 +452,7 @@ Cada página tiene un único `h1`: en el home es el título del hero.
   - el progreso del scroll (0 a 1);
   - el alto que necesita la sección fija;
   - el desplazamiento de parallax de cada imagen;
+  - el alto de la portada para que la tarjeta fija entre en la pantalla;
   - a dónde scrollear para mostrar la tarjeta que recibió el foco.
 
 **Corren en el navegador (`'use client'`):**
