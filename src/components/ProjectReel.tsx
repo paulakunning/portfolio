@@ -5,6 +5,7 @@ import {
   focusScrollOffset,
   parallaxOffset,
   reelHeight,
+  reelImageHeight,
   reelProgress,
 } from "@/lib/reel";
 import { ChevronLeftIcon, ChevronRightIcon } from "./icons";
@@ -23,7 +24,7 @@ const roundButton =
 
 type ProjectReelProps = {
   intro: ReactNode;
-  /** The `<li>` cards; project cards carry `data-reel-card`. */
+  /** The `<li>` cards; project cards carry `data-reel-card`, their cover `data-reel-image`. */
   children: ReactNode;
   labels: { previous: string; next: string };
 };
@@ -77,6 +78,16 @@ export function ProjectReel({ intro, children, labels }: ProjectReelProps) {
     };
 
     const layout = () => {
+      // Measure the cover at its natural height, then shrink it if the card would leave the screen.
+      section.style.removeProperty("--reel-image");
+      const card = cards[0]!;
+      const image = card.querySelector<HTMLElement>("[data-reel-image]")!;
+      const imageHeight = reelImageHeight(
+        image.offsetHeight,
+        card.offsetHeight - image.offsetHeight,
+        window.innerHeight,
+      );
+      section.style.setProperty("--reel-image", `${imageHeight}px`);
       const size = reelHeight(
         strip.offsetWidth,
         document.documentElement.clientWidth,
@@ -139,6 +150,7 @@ export function ProjectReel({ intro, children, labels }: ProjectReelProps) {
       window.removeEventListener("resize", layout);
       strip.removeEventListener("focusin", onFocus);
       section.style.height = "";
+      section.style.removeProperty("--reel-image");
       strip.style.transform = "";
       for (const card of cards) card.style.removeProperty("--px");
     };

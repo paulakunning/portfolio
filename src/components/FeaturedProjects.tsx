@@ -50,7 +50,8 @@ export async function FeaturedProjects() {
           className="shrink-0 basis-[min(85vw,34rem)] snap-start group-data-pinned:basis-[min(60vw,92vh)]"
         >
           <div
-            className={`aspect-[16/10] overflow-hidden rounded-3xl ${tints[i % tints.length]}`}
+            data-reel-image
+            className={`aspect-[16/10] overflow-hidden rounded-3xl group-data-pinned:max-h-(--reel-image) group-data-pinned:w-full ${tints[i % tints.length]}`}
           >
             <Image
               src={card.cover.src}
@@ -79,7 +80,7 @@ export async function FeaturedProjects() {
       <li className="shrink-0 basis-[min(60vw,20rem)] snap-start group-data-pinned:basis-[min(24vw,22rem)] group-data-pinned:self-start">
         <Link
           href={allProjects}
-          className="flex aspect-[16/10] flex-col justify-between rounded-3xl bg-primary p-8 font-serif text-[clamp(1.75rem,2.6vw,2.5rem)] leading-[1.1] text-white transition-[background-color] duration-200 ease-[ease] group-data-pinned:aspect-auto group-data-pinned:h-[calc(min(60vw,92vh)*0.625)] hover:bg-primary-hover"
+          className="flex aspect-[16/10] flex-col justify-between rounded-3xl bg-primary p-8 font-serif text-[clamp(1.75rem,2.6vw,2.5rem)] leading-[1.1] text-white transition-[background-color] duration-200 ease-[ease] group-data-pinned:aspect-auto group-data-pinned:h-[var(--reel-image,calc(min(60vw,92vh)*0.625))] hover:bg-primary-hover"
         >
           <span>
             {formatMessage(featured.seeAll, { count: projects.length })}

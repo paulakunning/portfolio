@@ -16,6 +16,23 @@ export function reelHeight(
   return { distance, height: distance + viewportHeight };
 }
 
+/**
+ * Cover height that keeps a pinned card clear of the header and the progress bar.
+ * 160: the strip's 64px top padding, plus 48px above and below the centered card.
+ * Crops the cover at most to half; a shorter window lets the card overflow.
+ */
+export function reelImageHeight(
+  naturalHeight: number,
+  textHeight: number,
+  viewportHeight: number,
+): number {
+  return clamp(
+    viewportHeight - 160 - textHeight,
+    naturalHeight / 2,
+    naturalHeight,
+  );
+}
+
 /** Image drift in px for a card, opposite to the direction of travel. */
 export function parallaxOffset(
   cardCenter: number,

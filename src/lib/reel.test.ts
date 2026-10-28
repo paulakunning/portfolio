@@ -3,6 +3,7 @@ import {
   focusScrollOffset,
   parallaxOffset,
   reelHeight,
+  reelImageHeight,
   reelProgress,
 } from "./reel";
 
@@ -25,6 +26,15 @@ describe("reelHeight", () => {
     }));
   it("never travels backwards", () =>
     expect(reelHeight(1000, 1280, 800)).toEqual({ distance: 0, height: 800 }));
+});
+
+describe("reelImageHeight", () => {
+  it("keeps the cover whole when the card fits", () =>
+    expect(reelImageHeight(460, 200, 900)).toBe(460));
+  it("shrinks the cover so the card fits", () =>
+    expect(reelImageHeight(460, 238, 800)).toBe(402));
+  it("never shrinks it below half", () =>
+    expect(reelImageHeight(460, 300, 500)).toBe(230));
 });
 
 describe("parallaxOffset", () => {
