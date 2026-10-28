@@ -491,7 +491,7 @@ Cada página tiene un único `h1`: en el home es el título del hero.
 
 - Mobile-first.
 - **Cortes:**
-  - `md` (768px) para las dos columnas y para la píldora completa del header;
+  - `md` (761px, para coincidir con el `max-width: 760px` del prototipo) para las dos columnas y para la píldora completa del header;
   - el reel queda fijo desde 900px, y lo decide `matchMedia` en `ProjectReel`.
 - **Referencia visual:** el prototipo a 390px y a 1440px.
 
