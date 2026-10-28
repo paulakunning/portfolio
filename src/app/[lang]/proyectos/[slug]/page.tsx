@@ -16,6 +16,9 @@ import { getLocale } from "@/i18n/server";
 import { pageMetadata } from "@/lib/metadata";
 import { getNextProject, getProject } from "@/lib/projects";
 
+// Every slug is prerendered, so navigating here only waits for a static payload; a Suspense fallback would just flash.
+export const instant = false;
+
 export function generateStaticParams() {
   return projects.map(({ slug }) => ({ slug }));
 }
