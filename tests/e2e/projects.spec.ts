@@ -145,6 +145,54 @@ test("no card stays hidden after switching tabs quickly", async ({ page }) => {
   await expect(page.locator('[data-reveal="hidden"]')).toHaveCount(0);
 });
 
+test("the reveal transitions the rise, not only the fade", async ({ page }) => {
+  await page.goto("/proyectos");
+  // Tailwind's translate-y sets `translate`, which a `transform` transition ignores.
+  const property = await page
+    .getByRole("article")
+    .last()
+    .evaluate((el) => getComputedStyle(el).transitionProperty);
+  expect(property.split(", ")).toContain("translate");
+});
+
+test("going back keeps the cards already seen", async ({ page }) => {
+  await page.goto("/proyectos");
+  await page.evaluate(() => window.scrollTo(0, 1500));
+  const link = page.getByRole("link", { name: "Don Higinio" });
+  await link.scrollIntoViewIfNeeded();
+  await link.click();
+  await expect(page).toHaveURL(/\/proyectos\/don-higinio$/);
+  // Back reuses this window, so the observer survives the round trip.
+  await page.evaluate(() => {
+    const w = window as unknown as { rehidden: number };
+    w.rehidden = 0;
+    new MutationObserver((records) => {
+      for (const { target } of records) {
+        const card = target as HTMLElement;
+        const { top, bottom } = card.getBoundingClientRect();
+        if (
+          card.dataset.reveal === "hidden" &&
+          top < window.innerHeight &&
+          bottom > 0
+        )
+          w.rehidden++;
+      }
+    }).observe(document.body, {
+      attributes: true,
+      attributeFilter: ["data-reveal"],
+      subtree: true,
+    });
+  });
+  await page.goBack();
+  await expect(page).toHaveURL(/\/proyectos$/);
+  await page.waitForTimeout(500);
+  expect(
+    await page.evaluate(
+      () => (window as unknown as { rehidden: number }).rehidden,
+    ),
+  ).toBe(0);
+});
+
 test.describe("without JavaScript", () => {
   test.use({ javaScriptEnabled: false });
   test("every card is visible", async ({ page }) => {
@@ -163,6 +211,11 @@ test.describe("with reduced motion", () => {
   test.use({ reducedMotion: "reduce" });
   test("cards are never hidden", async ({ page }) => {
     await page.goto("/proyectos");
+    // JS did run (the observer is wired); the hidden look just doesn't apply.
+    await expect(page.getByRole("article").last()).toHaveAttribute(
+      "data-reveal",
+      "hidden",
+    );
     expect(
       await page
         .getByRole("article")
