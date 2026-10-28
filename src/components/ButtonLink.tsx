@@ -50,6 +50,15 @@ export function ButtonLink({
     );
   }
 
+  // A same-page anchor: next/link's scroll handling would pull focus back to the target.
+  if (href.startsWith("#")) {
+    return (
+      <a href={href} className={classes} onClick={onClick}>
+        {children}
+      </a>
+    );
+  }
+
   return (
     <Link href={href} className={classes} onClick={onClick}>
       {children}

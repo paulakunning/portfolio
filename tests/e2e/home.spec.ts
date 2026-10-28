@@ -109,6 +109,37 @@ test.describe("desktop reel", () => {
     await expect(last).toBeInViewport();
   });
 
+  test("a mouse click on a reel link follows it", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.locator("#proyectos")).toHaveAttribute("data-pinned");
+    await page
+      .locator("#proyectos")
+      .evaluate((el: HTMLElement) =>
+        scrollTo({ top: el.offsetTop, behavior: "instant" }),
+      );
+    // delay: the page must not move between mousedown and mouseup
+    await page
+      .getByRole("link", { name: "Ver proyecto Don Higinio" })
+      .click({ delay: 100 });
+    await expect(page).toHaveURL(/\/proyectos\/don-higinio$/);
+  });
+
+  test("Enter on Ver proyectos leaves focus in the reel", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.locator("#proyectos")).toHaveAttribute("data-pinned");
+    const button = page.getByRole("link", {
+      name: "Ver proyectos",
+      exact: true,
+    });
+    await button.focus();
+    await button.press("Enter");
+    await page.keyboard.press("Tab");
+    await expect(
+      page.getByRole("link", { name: "Ver todos los proyectos" }),
+    ).toBeFocused();
+    expect(await page.evaluate(() => scrollY)).toBeGreaterThan(400);
+  });
+
   test("a full page load on #sobre-mi lands on the about section", async ({
     page,
   }) => {

@@ -97,6 +97,8 @@ export function ProjectReel({ intro, children, labels }: ProjectReelProps) {
     // Tabbing into an off-screen card scrolls the page until it's centered.
     const onFocus = (event: FocusEvent) => {
       const target = event.target as HTMLElement;
+      // Mouse focus must not move the page under the pointer (the click would be lost).
+      if (!target.matches(":focus-visible")) return;
       const item = target.closest<HTMLElement>("[data-reel-card]") ?? target;
       const offset =
         item.getBoundingClientRect().left - strip.getBoundingClientRect().left;
