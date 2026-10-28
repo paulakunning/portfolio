@@ -93,3 +93,16 @@ test.describe("without JavaScript", () => {
     ).toBeVisible();
   });
 });
+
+test("the form fits on a 1280×800 screen", async ({ page, isMobile }) => {
+  test.skip(isMobile, "desktop layout");
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto("/contacto");
+  const submit = (await page
+    .getByRole("button", { name: "Enviar mensaje" })
+    .boundingBox())!;
+  expect(submit.y + submit.height).toBeLessThanOrEqual(800);
+  await expect(
+    page.getByRole("img", { name: /Paula sonriendo/ }),
+  ).toBeVisible();
+});

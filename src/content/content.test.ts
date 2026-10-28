@@ -8,10 +8,10 @@ import { skills } from "./skills";
 const specOrder = [
   "don-higinio",
   "factchequeado-lab",
-  "tecnofast-peru",
   "gea-logistics",
   "javier-carrizo",
   "arqci",
+  "tecnofast-peru",
   "olatrek",
   "friosur",
   "aeropuerto-el-loa",
@@ -37,13 +37,12 @@ describe("projects", () => {
     expect(known).toEqual(specOrder.filter((slug) => known.includes(slug)));
   });
 
-  it("features six projects that mix categories", () => {
+  it("features five projects that mix categories", () => {
     expect(projects.filter((p) => p.featured).map((p) => p.slug)).toEqual([
       "don-higinio",
       "factchequeado-lab",
       "gea-logistics",
       "dede-digital",
-      "uniform",
       "lucrecia-cornaglia",
     ]);
   });

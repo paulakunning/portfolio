@@ -22,12 +22,10 @@ export function ProjectFacts({ project, locale, labels }: ProjectFactsProps) {
   ];
 
   return (
-    <dl className="grid gap-6 border-y border-foreground/15 py-8 sm:grid-cols-2 lg:grid-cols-4">
+    <dl className="grid grid-cols-2 gap-x-8 gap-y-6">
       {facts.map(([term, value]) => (
-        <div key={term}>
-          <dt className="text-xs font-semibold tracking-wide text-primary uppercase">
-            {term}
-          </dt>
+        <div key={term} className="border-t border-line pt-3">
+          <dt className="text-sm leading-[inherit] text-muted">{term}</dt>
           <dd className="mt-1">{value}</dd>
         </div>
       ))}

@@ -10,7 +10,6 @@ export type ProjectCardData = {
   name: string;
   href: string;
   categories: Category[];
-  tools: string[];
   conceptual: boolean;
   role: string;
   year: number;
@@ -24,7 +23,6 @@ export function toCardData(project: Project, locale: Locale): ProjectCardData {
     name: project.name,
     href: localizePath(locale, `/proyectos/${project.slug}`),
     categories: project.categories,
-    tools: project.tools,
     conceptual: project.conceptual ?? false,
     role: project.role[locale],
     year: project.year,
@@ -36,13 +34,10 @@ export function toCardData(project: Project, locale: Locale): ProjectCardData {
 export function filterProjects<T extends { categories: readonly Category[] }>(
   items: readonly T[],
   category: Category | "all",
-  limit?: number,
 ): T[] {
-  const matching =
-    category === "all"
-      ? [...items]
-      : items.filter((item) => item.categories.includes(category));
-  return matching.slice(0, limit);
+  return category === "all"
+    ? [...items]
+    : items.filter((item) => item.categories.includes(category));
 }
 
 export function getProject(slug: string): Project | undefined {

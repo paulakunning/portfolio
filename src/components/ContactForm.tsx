@@ -28,7 +28,9 @@ const fieldOrder: ContactField[] = ["name", "email", "reason", "message"];
 const initialState: ContactState = { status: "idle" };
 
 const inputClasses =
-  "mt-2 block w-full rounded-lg border border-foreground/30 bg-background px-4 py-3 text-foreground aria-[invalid=true]:border-error";
+  "block w-full rounded-[0.875rem] border border-foreground/25 bg-background px-4 py-[0.85rem] text-foreground focus-visible:border-primary focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary aria-[invalid=true]:border-error";
+const fieldClasses = "grid content-start gap-[0.45rem]";
+const labelClasses = "text-[0.9375rem] font-medium";
 
 export function ContactForm({ locale, labels }: ContactFormProps) {
   const [state, formAction, pending] = useActionState(
@@ -77,7 +79,7 @@ export function ContactForm({ locale, labels }: ContactFormProps) {
     if (!code) return null;
     const limits = field === "reason" ? {} : contactLimits[field];
     return (
-      <p id={`${field}-error`} className="mt-2 text-sm text-error">
+      <p id={`${field}-error`} className="text-sm text-error">
         {formatMessage(labels.errors[code], limits)}
       </p>
     );
@@ -95,12 +97,7 @@ export function ContactForm({ locale, labels }: ContactFormProps) {
   };
 
   return (
-    <form
-      ref={formRef}
-      action={formAction}
-      onSubmit={handleSubmit}
-      className="grid gap-6"
-    >
+    <form ref={formRef} action={formAction} onSubmit={handleSubmit}>
       <input type="hidden" name="locale" value={locale} />
       {/* Honeypot: invisible to people and assistive tech, filled by bots. */}
       <div
@@ -113,9 +110,9 @@ export function ContactForm({ locale, labels }: ContactFormProps) {
         </label>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
-        <div>
-          <label htmlFor="contact-name" className="font-medium">
+      <div className="grid gap-x-5 gap-y-6 md:grid-cols-2">
+        <div className={fieldClasses}>
+          <label htmlFor="contact-name" className={labelClasses}>
             {labels.name}
           </label>
           <input
@@ -133,8 +130,8 @@ export function ContactForm({ locale, labels }: ContactFormProps) {
           {errorMessage("name")}
         </div>
 
-        <div>
-          <label htmlFor="contact-email" className="font-medium">
+        <div className={fieldClasses}>
+          <label htmlFor="contact-email" className={labelClasses}>
             {labels.email}
           </label>
           <input
@@ -150,52 +147,51 @@ export function ContactForm({ locale, labels }: ContactFormProps) {
           />
           {errorMessage("email")}
         </div>
-      </div>
 
-      <div>
-        <label htmlFor="contact-reason" className="font-medium">
-          {labels.reason}
-        </label>
-        <select
-          id="contact-reason"
-          name="reason"
-          required
-          defaultValue={values?.reason ?? ""}
-          className={inputClasses}
-          {...errorProps("reason")}
-        >
-          <option value="" disabled>
-            {labels.reasonPlaceholder}
-          </option>
-          {contactReasons.map((reason) => (
-            <option key={reason} value={reason}>
-              {labels.reasons[reason]}
+        <div className={`${fieldClasses} md:col-span-2`}>
+          <label htmlFor="contact-reason" className={labelClasses}>
+            {labels.reason}
+          </label>
+          <select
+            id="contact-reason"
+            name="reason"
+            required
+            defaultValue={values?.reason ?? ""}
+            className={`${inputClasses} appearance-none bg-[url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%232e2a28'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M6%209l6%206%206-6'/%3E%3C/svg%3E")] bg-[right_1rem_center] bg-no-repeat pr-11`}
+            {...errorProps("reason")}
+          >
+            <option value="" disabled>
+              {labels.reasonPlaceholder}
             </option>
-          ))}
-        </select>
-        {errorMessage("reason")}
-      </div>
+            {contactReasons.map((reason) => (
+              <option key={reason} value={reason}>
+                {labels.reasons[reason]}
+              </option>
+            ))}
+          </select>
+          {errorMessage("reason")}
+        </div>
 
-      <div>
-        <label htmlFor="contact-message" className="font-medium">
-          {labels.message}
-        </label>
-        <textarea
-          id="contact-message"
-          name="message"
-          rows={6}
-          required
-          minLength={contactLimits.message.min}
-          maxLength={contactLimits.message.max}
-          defaultValue={values?.message}
-          className={inputClasses}
-          {...errorProps("message")}
-        />
-        {errorMessage("message")}
+        <div className={`${fieldClasses} md:col-span-2`}>
+          <label htmlFor="contact-message" className={labelClasses}>
+            {labels.message}
+          </label>
+          <textarea
+            id="contact-message"
+            name="message"
+            required
+            minLength={contactLimits.message.min}
+            maxLength={contactLimits.message.max}
+            defaultValue={values?.message}
+            className={`${inputClasses} min-h-40 resize-y`}
+            {...errorProps("message")}
+          />
+          {errorMessage("message")}
+        </div>
       </div>
 
       {state.status === "error" && (
-        <p role="alert" className="rounded-lg bg-accent/40 p-4">
+        <p role="alert" className="mt-6 rounded-lg bg-accent/40 p-4">
           {errorBefore}
           <a
             href={`mailto:${contactLinks.email}`}
@@ -210,7 +206,7 @@ export function ContactForm({ locale, labels }: ContactFormProps) {
       <button
         type="submit"
         disabled={pending}
-        className="justify-self-start rounded-full bg-primary px-8 py-3 text-sm font-medium tracking-wide text-background uppercase transition-colors hover:bg-primary/85 disabled:opacity-60"
+        className="mt-8 inline-flex min-h-11.5 cursor-pointer items-center justify-center rounded-full bg-primary px-5.5 text-[0.9375rem] leading-none font-medium whitespace-nowrap text-white transition-colors hover:bg-primary-hover disabled:opacity-60"
       >
         {pending ? labels.sending : labels.submit}
       </button>

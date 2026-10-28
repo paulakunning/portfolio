@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/PageHero";
 import { ProjectFilter } from "@/components/ProjectFilter";
 import { projects } from "@/content/projects";
 import { getDictionary } from "@/i18n/get-dictionary";
@@ -24,16 +23,16 @@ export default async function ProjectsPage() {
 
   return (
     <>
-      <PageHero>
-        <h1 className="text-4xl md:text-5xl">{dictionary.projects.title}</h1>
-      </PageHero>
-      <section className="content-width py-16 md:py-20">
-        <ProjectFilter
-          locale={locale}
-          projects={projects.map((project) => toCardData(project, locale))}
-          labels={dictionary.projects}
-        />
-      </section>
+      <ProjectFilter
+        locale={locale}
+        projects={projects.map((project) => toCardData(project, locale))}
+        labels={dictionary.projects}
+        heading={
+          <h1 className="max-w-[14ch] text-[clamp(2.75rem,5vw,4.5rem)] tracking-[-0.035em]">
+            {dictionary.projects.title}
+          </h1>
+        }
+      />
     </>
   );
 }
