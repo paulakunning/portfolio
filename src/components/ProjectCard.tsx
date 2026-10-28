@@ -3,58 +3,50 @@ import Link from "next/link";
 import type { Dictionary } from "@/i18n/dictionaries/es";
 import type { ProjectCardData } from "@/lib/projects";
 
+const tints = ["bg-lilac-tint", "bg-rose-tint", "bg-sand-tint"];
+const ease = "cubic-bezier(0.2,0.8,0.2,1)";
+
 type ProjectCardProps = {
   project: ProjectCardData;
   labels: Dictionary["projects"];
-  headingLevel: 2 | 3;
+  index: number;
 };
 
-export function ProjectCard({
-  project,
-  labels,
-  headingLevel,
-}: ProjectCardProps) {
-  const Heading = headingLevel === 2 ? "h2" : "h3";
-  const tags = [
-    ...project.categories.map((category) => labels.categories[category]),
-    ...project.tools,
-  ];
-
+/** ProjectFilter sets data-reveal on the article; the hidden look only applies with motion allowed. */
+export function ProjectCard({ project, labels, index }: ProjectCardProps) {
   return (
-    <article className="group relative flex h-full flex-col">
-      <div className="overflow-hidden rounded-2xl">
+    <article
+      className="group relative motion-safe:transition-[opacity,transform] motion-safe:duration-900 motion-safe:data-[reveal=hidden]:translate-y-10 motion-safe:data-[reveal=hidden]:opacity-0"
+      style={{
+        transitionTimingFunction: ease,
+        transitionDelay: index % 2 === 1 ? "120ms" : undefined,
+      }}
+    >
+      <div
+        className={`aspect-[4/3] overflow-hidden rounded-3xl ${tints[index % tints.length]}`}
+      >
         <Image
           src={project.cover.src}
           alt={project.cover.alt}
-          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+          sizes="(min-width: 761px) 48vw, 100vw"
           placeholder="blur"
-          className="aspect-[16/11] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="size-full object-cover [transition:transform_0.5s_cubic-bezier(0.2,0.8,0.2,1),scale_1.4s_cubic-bezier(0.2,0.8,0.2,1)] group-hover:transform-[scale(1.03)] motion-safe:group-data-[reveal=hidden]:scale-108"
         />
       </div>
-      <div className="mt-5 flex flex-wrap items-center gap-3">
-        <Heading className="text-2xl text-primary">
-          {/* Stretched link: the whole card is clickable, one tab stop. */}
-          <Link href={project.href} className="after:absolute after:inset-0">
-            {project.name}
-          </Link>
-        </Heading>
+      <h2 className="mt-5 text-[clamp(1.6rem,2.4vw,2.1rem)]">
+        {/* Stretched link: the whole card is clickable, one tab stop. */}
+        <Link href={project.href} className="after:absolute after:inset-0">
+          {project.name}
+        </Link>
+      </h2>
+      <p className="mt-[0.4rem] flex flex-wrap items-center gap-x-3 gap-y-2 text-sm leading-[1.6] text-muted">
+        {project.role}, {project.year}
         {project.conceptual && (
-          <span className="rounded-full bg-accent px-3 py-0.5 text-xs font-medium tracking-wide uppercase">
+          <span className="rounded-full border border-line px-2.5 py-0.5 text-[0.8125rem]">
             {labels.conceptual}
           </span>
         )}
-      </div>
-      <ul className="mt-3 flex flex-wrap gap-2">
-        {tags.map((tag) => (
-          <li
-            key={tag}
-            className="rounded-full border border-primary px-3 py-0.5 text-xs font-medium tracking-wide text-primary uppercase"
-          >
-            {tag}
-          </li>
-        ))}
-      </ul>
-      <p className="mt-3">{project.summary}</p>
+      </p>
     </article>
   );
 }

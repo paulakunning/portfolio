@@ -4,6 +4,10 @@ import { pages } from "./pages";
 
 for (const path of pages) {
   test(`has no axe violations: ${path}`, async ({ page }) => {
+    // Cards not yet revealed are transparent on purpose; check the settled page.
+    if (path.endsWith("/proyectos")) {
+      await page.emulateMedia({ reducedMotion: "reduce" });
+    }
     await page.goto(path);
     const { violations } = await new AxeBuilder({ page }).analyze();
     expect(violations).toEqual([]);

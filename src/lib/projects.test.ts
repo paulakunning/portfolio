@@ -45,16 +45,6 @@ describe("filterProjects", () => {
       "h",
     ]);
   });
-
-  it("applies the limit after filtering", () => {
-    const limited = filterProjects(list, "all", 6);
-    expect(limited).toHaveLength(6);
-    expect(limited[0]?.slug).toBe("a");
-  });
-
-  it("ignores a limit larger than the result", () => {
-    expect(slugs(filterProjects(list, "branding", 6))).toEqual(["b", "f"]);
-  });
 });
 
 describe("getNextProject", () => {

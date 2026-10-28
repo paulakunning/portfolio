@@ -1,10 +1,12 @@
 import type { ReactNode } from "react";
 
-/** Dark top section every page starts with; the header sits on top of it. */
+/** Light dotted header every page starts with; the nav pill floats over it. */
 export function PageHero({ children }: { children: ReactNode }) {
   return (
-    <section className="bg-foreground text-background">
-      <div className="content-width pt-36 pb-20">{children}</div>
-    </section>
+    <header className="dot-grid relative pt-36 pb-12">
+      <div className="relative z-1 content-width [&_h1]:text-[clamp(2.75rem,6vw,5rem)] [&_h1]:tracking-[-0.035em]">
+        {children}
+      </div>
+    </header>
   );
 }

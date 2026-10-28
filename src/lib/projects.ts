@@ -36,13 +36,10 @@ export function toCardData(project: Project, locale: Locale): ProjectCardData {
 export function filterProjects<T extends { categories: readonly Category[] }>(
   items: readonly T[],
   category: Category | "all",
-  limit?: number,
 ): T[] {
-  const matching =
-    category === "all"
-      ? [...items]
-      : items.filter((item) => item.categories.includes(category));
-  return matching.slice(0, limit);
+  return category === "all"
+    ? [...items]
+    : items.filter((item) => item.categories.includes(category));
 }
 
 export function getProject(slug: string): Project | undefined {

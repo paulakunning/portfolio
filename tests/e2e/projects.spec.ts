@@ -83,3 +83,59 @@ test("links out to the live site or Behance in a new tab", async ({ page }) => {
   await expect(link).toHaveAttribute("target", "_blank");
   await expect(link).toHaveAttribute("href", "https://dhmayorista.com.ar/");
 });
+
+test("shows the project count next to the tabs", async ({ page }) => {
+  await page.goto("/proyectos");
+  await expect(page.getByText("14 proyectos")).toBeVisible();
+});
+
+test("cards appear when scrolled into view", async ({ page }) => {
+  await page.goto("/proyectos");
+  const last = page.getByRole("article").last();
+  await last.scrollIntoViewIfNeeded();
+  await expect
+    .poll(() => last.evaluate((el) => getComputedStyle(el).opacity))
+    .toBe("1");
+});
+
+test("no card stays hidden after switching tabs quickly", async ({ page }) => {
+  await page.goto("/proyectos");
+  const filters = page.getByRole("group", {
+    name: "Filtrar proyectos por categoría",
+  });
+  await filters.getByRole("button", { name: "Branding" }).click();
+  await filters.getByRole("button", { name: "Todos" }).click();
+  for (const card of await page.getByRole("article").all()) {
+    await card.scrollIntoViewIfNeeded();
+    await expect
+      .poll(() => card.evaluate((el) => getComputedStyle(el).opacity))
+      .toBe("1");
+  }
+});
+
+test.describe("without JavaScript", () => {
+  test.use({ javaScriptEnabled: false });
+  test("every card is visible", async ({ page }) => {
+    await page.goto("/proyectos");
+    await expect(page.getByRole("article")).toHaveCount(14);
+    expect(
+      await page
+        .getByRole("article")
+        .last()
+        .evaluate((el) => getComputedStyle(el).opacity),
+    ).toBe("1");
+  });
+});
+
+test.describe("with reduced motion", () => {
+  test.use({ reducedMotion: "reduce" });
+  test("cards are never hidden", async ({ page }) => {
+    await page.goto("/proyectos");
+    expect(
+      await page
+        .getByRole("article")
+        .last()
+        .evaluate((el) => getComputedStyle(el).opacity),
+    ).toBe("1");
+  });
+});
