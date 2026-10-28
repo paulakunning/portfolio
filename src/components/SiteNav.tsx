@@ -91,6 +91,7 @@ export function SiteNav({ locale, labels }: SiteNavProps) {
           })}
         </ul>
         {/* A full page load: the whole document, including <html lang>, changes language. */}
+        {/* One flex item, so the menu lays the list and the EN link out as two blocks. */}
         <div>
           <a
             href={switchLocalePath(pathname, otherLocale)}

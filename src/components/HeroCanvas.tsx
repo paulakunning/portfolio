@@ -85,8 +85,10 @@ export function HeroCanvas({
                 "--i": i,
                 "--x": `${t.x}%`,
                 "--y": `${t.y}%`,
-                "--mx": `${t.mobile?.x}%`,
-                "--my": `${t.mobile?.y}%`,
+                ...(t.mobile && {
+                  "--mx": `${t.mobile.x}%`,
+                  "--my": `${t.mobile.y}%`,
+                }),
               } as CSSProperties
             }
             className={`group pointer-events-auto absolute top-(--y) left-(--x) grid cursor-grab touch-none place-items-center border border-line shadow-[0_12px_24px_-14px_rgb(46_42_40/0.35)] transition-[rotate,scale,box-shadow] duration-200 select-none data-dragging:cursor-grabbing data-dragging:shadow-[0_26px_40px_-18px_rgb(46_42_40/0.45)] motion-safe:animate-drop motion-safe:[animation-delay:calc(var(--i)*60ms_+_150ms)] motion-safe:data-dragging:scale-106 motion-safe:data-dragging:rotate-[-3deg] max-md:top-(--my) max-md:left-(--mx) ${

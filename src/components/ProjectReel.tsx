@@ -65,13 +65,14 @@ export function ProjectReel({ intro, children, labels }: ProjectReelProps) {
       );
       strip.style.transform = `translate3d(${-progress * distance}px, 0, 0)`;
       bar.style.setProperty("--p", String(progress));
-      for (const card of cards) {
+      // Read every rect, then write: no layout thrash between cards.
+      const width = document.documentElement.clientWidth;
+      const drifts = cards.map((card) => {
         const box = card.getBoundingClientRect();
-        const drift = parallaxOffset(
-          box.left + box.width / 2,
-          window.innerWidth,
-        );
-        card.style.setProperty("--px", `${drift.toFixed(1)}px`);
+        return parallaxOffset(box.left + box.width / 2, width);
+      });
+      for (const [i, card] of cards.entries()) {
+        card.style.setProperty("--px", `${drifts[i]!.toFixed(1)}px`);
       }
     };
 
@@ -108,7 +109,7 @@ export function ProjectReel({ intro, children, labels }: ProjectReelProps) {
         focusScrollOffset(
           offset,
           item.offsetWidth,
-          window.innerWidth,
+          document.documentElement.clientWidth,
           distance,
         );
       window.scrollTo({ top, behavior: "instant" });

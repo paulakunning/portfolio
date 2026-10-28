@@ -18,42 +18,45 @@ export async function Testimonials() {
         {labels.title}
       </h2>
       <ul className="grid items-start gap-x-[clamp(2rem,5vw,5rem)] gap-y-6 md:grid-cols-[7fr_5fr]">
-        {testimonials.map((testimonial, index) => (
-          <li
-            key={testimonial.author}
-            className={index === 0 ? "md:row-span-2" : undefined}
-          >
-            <figure
-              className={
-                index === 0
-                  ? undefined
-                  : "rounded-3xl border border-line bg-surface p-7"
-              }
+        {testimonials.map((testimonial, index) => {
+          const big = index === 0;
+          return (
+            <li
+              key={testimonial.author}
+              className={big ? "md:row-span-2" : undefined}
             >
-              <blockquote
+              <figure
                 className={
-                  index === 0
-                    ? "font-serif text-[clamp(1.35rem,2vw,1.65rem)] leading-[1.45] tracking-[-0.01em]"
-                    : undefined
+                  big
+                    ? undefined
+                    : "rounded-3xl border border-line bg-surface p-7"
                 }
               >
-                {index === 0 && (
-                  <span
-                    aria-hidden
-                    className="block h-13 text-[5rem] leading-none text-primary"
-                  >
-                    “
-                  </span>
-                )}
-                <p>{testimonial.quote[locale]}</p>
-              </blockquote>
-              <figcaption className="mt-5 grid text-[0.9375rem]">
-                <span className="font-medium">{testimonial.author}</span>
-                <span className="text-muted">{testimonial.role[locale]}</span>
-              </figcaption>
-            </figure>
-          </li>
-        ))}
+                <blockquote
+                  className={
+                    big
+                      ? "font-serif text-[clamp(1.35rem,2vw,1.65rem)] leading-[1.45] tracking-[-0.01em]"
+                      : undefined
+                  }
+                >
+                  {big && (
+                    <span
+                      aria-hidden
+                      className="block h-13 text-[5rem] leading-none text-primary"
+                    >
+                      “
+                    </span>
+                  )}
+                  <p>{testimonial.quote[locale]}</p>
+                </blockquote>
+                <figcaption className="mt-5 grid text-[0.9375rem]">
+                  <span className="font-medium">{testimonial.author}</span>
+                  <span className="text-muted">{testimonial.role[locale]}</span>
+                </figcaption>
+              </figure>
+            </li>
+          );
+        })}
       </ul>
     </section>
   );
