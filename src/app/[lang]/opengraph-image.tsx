@@ -1,39 +1,16 @@
 import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
-import { isLocale, locales } from "@/i18n/config";
+import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-// generateImageMetadata (not a static `alt`) is what lets the alt follow the language.
-export async function generateImageMetadata({
-  params,
-}: {
-  params: Promise<{ lang: string }>;
-}) {
-  const { lang } = await params;
-  if (!isLocale(lang)) return [];
-  return [
-    {
-      id: "home",
-      alt: getDictionary(lang).meta.home.title,
-      size,
-      contentType,
-    },
-  ];
-}
-
-// Without this the route is not prerendered and every request 500s with DYNAMIC_SERVER_USAGE under cacheComponents.
-export function generateStaticParams() {
-  return locales.map((lang) => ({ lang, __metadata_id__: "home" }));
-}
-
 const font = (file: string) =>
   readFile(join(process.cwd(), "src/assets/fonts", file));
 
-// Fonts (@fontsource 5.3.0) are read once at module load: with cacheComponents, file IO inside the handler fails at request time.
+// Fonts (@fontsource 5.3.0) are read once at module load, as in the Next docs example.
 const [playfair, playfairItalic, dmSans] = await Promise.all([
   font("playfair-display-latin-400-normal.woff"),
   font("playfair-display-latin-400-italic.woff"),

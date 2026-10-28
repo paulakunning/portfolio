@@ -22,7 +22,7 @@ export function pageMetadata({
   const { meta } = getDictionary(locale);
   const url = localizePath(locale, path);
   // The [lang] image file convention is dropped once a page sets its own openGraph/twitter, so set it here.
-  const images = [`/${locale}/opengraph-image/home`];
+  const images = [{ url: `/${locale}/opengraph-image`, alt: meta.home.title }];
   const socialTitle =
     typeof title === "string" ? `${title} — ${meta.siteName}` : title.absolute;
 

@@ -40,7 +40,7 @@ for (const path of [
       .locator('meta[name="twitter:image"]')
       .getAttribute("content");
     expect(og).toBeTruthy();
-    expect(twitter).toBeTruthy();
+    expect(twitter).toBe(og);
 
     const response = await request.get(new URL(og!).pathname);
     expect(response.status()).toBe(200);
