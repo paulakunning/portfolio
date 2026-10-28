@@ -98,6 +98,8 @@ export const en: Dictionary = {
       links: { live: "Visit site", behance: "View on Behance" },
       back: "Back to projects",
       next: "Next project",
+      about: "About the project",
+      more: "More projects",
     },
   },
   cta: {

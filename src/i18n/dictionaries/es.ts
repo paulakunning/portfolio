@@ -98,6 +98,8 @@ export const es = {
       links: { live: "Ir a la web", behance: "Ver en Behance" },
       back: "Volver a proyectos",
       next: "Siguiente proyecto",
+      about: "Sobre el proyecto",
+      more: "Más proyectos",
     },
   },
   cta: {

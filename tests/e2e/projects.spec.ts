@@ -41,8 +41,30 @@ test("opens a project and walks to the next one", async ({ page }) => {
   await page.getByRole("link", { name: /Factchequeado Lab/ }).click();
   await expect(page).toHaveURL(/\/proyectos\/factchequeado-lab$/);
 
-  await page.getByRole("link", { name: "Volver a proyectos" }).click();
+  await page
+    .getByRole("navigation", { name: "Más proyectos" })
+    .getByRole("link", { name: "Volver a proyectos" })
+    .click();
   await expect(page).toHaveURL(/\/proyectos$/);
+});
+
+test("the closing navigation offers next project and back", async ({
+  page,
+}) => {
+  await page.goto("/proyectos/don-higinio");
+  const more = page.getByRole("navigation", { name: "Más proyectos" });
+  await expect(
+    more.getByRole("link", { name: "Siguiente proyecto: Factchequeado Lab" }),
+  ).toBeVisible();
+  await more.getByRole("link", { name: "Volver a proyectos" }).click();
+  await expect(page).toHaveURL(/\/proyectos$/);
+});
+
+test("the body sits under its own heading", async ({ page }) => {
+  await page.goto("/en/proyectos/don-higinio");
+  await expect(
+    page.getByRole("heading", { level: 2, name: "About the project" }),
+  ).toBeVisible();
 });
 
 test("wraps from the last project to the first", async ({ page }) => {
