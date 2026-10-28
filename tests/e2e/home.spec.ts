@@ -157,6 +157,13 @@ test.describe("desktop reel", () => {
   test("pinning later doesn't jump back to the #hash", async ({ page }) => {
     await page.setViewportSize({ width: 800, height: 800 });
     await page.goto("/#sobre-mi");
+    // Wait for hydration (the carousel button works): widening before it makes this the initial pin.
+    await expect(async () => {
+      await page.getByRole("button", { name: "Proyecto siguiente" }).click();
+      expect(
+        await page.locator("[data-reel-list]").evaluate((el) => el.scrollLeft),
+      ).toBeGreaterThan(0);
+    }).toPass();
     await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
     await page.setViewportSize({ width: 1280, height: 800 });
     await expect(page.locator("#proyectos")).toHaveAttribute("data-pinned");
