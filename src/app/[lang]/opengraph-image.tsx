@@ -25,6 +25,7 @@ export async function generateImageMetadata({
   ];
 }
 
+// Without this the route is not prerendered and every request 500s with DYNAMIC_SERVER_USAGE under cacheComponents.
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang, __metadata_id__: "home" }));
 }
@@ -32,7 +33,7 @@ export function generateStaticParams() {
 const font = (file: string) =>
   readFile(join(process.cwd(), "src/assets/fonts", file));
 
-// Read once at module load: file IO inside the handler would opt the image out of prerendering.
+// Fonts (@fontsource 5.3.0) are read once at module load: with cacheComponents, file IO inside the handler fails at request time.
 const [playfair, playfairItalic, dmSans] = await Promise.all([
   font("playfair-display-latin-400-normal.woff"),
   font("playfair-display-latin-400-italic.woff"),

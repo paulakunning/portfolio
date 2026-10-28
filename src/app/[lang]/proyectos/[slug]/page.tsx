@@ -36,9 +36,11 @@ export async function generateMetadata({
     title: project.name,
     description: project.summary[locale],
   });
+  const images = [project.cover.src.src];
   return {
     ...metadata,
-    openGraph: { ...metadata.openGraph, images: [project.cover.src.src] },
+    openGraph: { ...metadata.openGraph, images },
+    twitter: { ...metadata.twitter, images },
   };
 }
 
