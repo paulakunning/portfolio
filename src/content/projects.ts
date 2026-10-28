@@ -17,6 +17,7 @@ export const projects: Project[] = [
   {
     slug: "don-higinio",
     name: "Don Higinio",
+    featured: true,
     categories: ["web-design", "web-development"],
     tools: ["Figma", "WordPress"],
     year: 2026,
@@ -46,6 +47,7 @@ export const projects: Project[] = [
   {
     slug: "factchequeado-lab",
     name: "Factchequeado Lab",
+    featured: true,
     categories: ["web-design", "web-development"],
     tools: ["Figma", "WordPress"],
     year: 2026,
@@ -84,6 +86,7 @@ export const projects: Project[] = [
   {
     slug: "gea-logistics",
     name: "GEA Logistics",
+    featured: true,
     categories: ["web-development"],
     tools: ["WordPress"],
     year: 2026,
@@ -217,6 +220,7 @@ export const projects: Project[] = [
   {
     slug: "dede-digital",
     name: "DéDé Digital",
+    featured: true,
     categories: ["web-design"],
     tools: ["Figma"],
     year: 2026,
@@ -268,6 +272,7 @@ export const projects: Project[] = [
   {
     slug: "uniform",
     name: "Uniform",
+    featured: true,
     categories: ["branding", "web-design"],
     tools: ["Adobe Illustrator", "Figma"],
     conceptual: true,
@@ -294,6 +299,7 @@ export const projects: Project[] = [
   {
     slug: "lucrecia-cornaglia",
     name: "Lucrecia Cornaglia",
+    featured: true,
     categories: ["branding"],
     tools: ["Adobe Illustrator"],
     year: 2026,

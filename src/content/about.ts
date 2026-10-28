@@ -1,6 +1,5 @@
 import portrait from "@/assets/about/1.jpg";
 import working from "@/assets/about/2.jpg";
-import mirror from "@/assets/about/3.jpg";
 import type { ProjectImage } from "./types";
 
 export const workingPhoto: ProjectImage = {
@@ -18,15 +17,3 @@ export const portraitPhoto: ProjectImage = {
     en: "Paula smiling, chin resting on her hand in front of her laptop",
   },
 };
-
-export const aboutPhotos: ProjectImage[] = [
-  portraitPhoto,
-  workingPhoto,
-  {
-    src: mirror,
-    alt: {
-      es: "Paula sacándose una selfie en el espejo con su notebook bajo el brazo",
-      en: "Paula taking a mirror selfie with her laptop under her arm",
-    },
-  },
-];

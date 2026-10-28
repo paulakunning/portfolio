@@ -84,4 +84,11 @@ describe("toCardData", () => {
       conceptual: false,
     });
   });
+
+  it("carries the role and year for the card meta", () => {
+    expect(toCardData(list[0]!, "es")).toMatchObject({
+      role: "Rol",
+      year: 2025,
+    });
+  });
 });

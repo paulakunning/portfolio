@@ -27,7 +27,7 @@ export function EmailPill({ email, labels }: EmailPillProps) {
 
   return (
     <>
-      <div className="inline-flex max-w-full items-center gap-4 rounded-full border border-background/25 py-1 pr-1 pl-5">
+      <div className="inline-flex max-w-full items-center gap-4 rounded-full border border-background/25 p-[0.3rem] pl-5">
         <a
           href={`mailto:${email}`}
           className="min-w-0 [overflow-wrap:anywhere]"
@@ -37,7 +37,7 @@ export function EmailPill({ email, labels }: EmailPillProps) {
         <button
           type="button"
           onClick={copy}
-          className="min-h-9 rounded-full bg-background/12 px-4 text-sm font-medium transition-colors hover:bg-background/20"
+          className="min-h-9 rounded-full bg-background/12 px-4 text-sm leading-normal font-medium transition-colors hover:bg-background/20"
         >
           {state === "copied" ? labels.copied : labels.copy}
         </button>

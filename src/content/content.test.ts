@@ -37,6 +37,17 @@ describe("projects", () => {
     expect(known).toEqual(specOrder.filter((slug) => known.includes(slug)));
   });
 
+  it("features six projects that mix categories", () => {
+    expect(projects.filter((p) => p.featured).map((p) => p.slug)).toEqual([
+      "don-higinio",
+      "factchequeado-lab",
+      "gea-logistics",
+      "dede-digital",
+      "uniform",
+      "lucrecia-cornaglia",
+    ]);
+  });
+
   it("every project is complete in both languages", () => {
     for (const project of projects) {
       expect(project.categories.length, project.slug).toBeGreaterThan(0);
@@ -63,11 +74,8 @@ describe("skills", () => {
     ).toEqual(["Next.js", "Framer"]);
   });
 
-  it("skills end with Illustrator and Photoshop", () => {
-    expect(skills.slice(-2).map((skill) => skill.name)).toEqual([
-      "Adobe Illustrator",
-      "Adobe Photoshop",
-    ]);
+  it("skills end with Illustrator", () => {
+    expect(skills.at(-1)?.name).toBe("Adobe Illustrator");
   });
 });
 

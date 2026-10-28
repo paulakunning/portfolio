@@ -16,7 +16,7 @@ type SiteNavProps = {
 
 // Inside the mobile menu panel links are full-width rows in the foreground color.
 const linkClass =
-  "block px-4 py-3.5 text-sm uppercase tracking-[0.06em] text-foreground transition-colors hover:text-foreground md:p-0";
+  "block px-4 py-[0.85rem] text-sm leading-[1.6] uppercase tracking-[0.06em] text-foreground transition-colors hover:text-foreground md:inline md:p-0";
 const idleClass = "md:text-muted";
 
 export function SiteNav({ locale, labels }: SiteNavProps) {
@@ -56,13 +56,17 @@ export function SiteNav({ locale, labels }: SiteNavProps) {
       <button
         ref={toggleRef}
         type="button"
-        className="order-last grid size-10 place-items-center rounded-full border border-foreground/30 md:hidden"
+        className="order-last grid size-10 place-items-center rounded-full border border-foreground/28 md:hidden"
         aria-expanded={isOpen}
         aria-controls="site-menu"
         aria-label={isOpen ? labels.closeMenu : labels.openMenu}
         onClick={() => setOpenOn(isOpen ? null : pathname)}
       >
-        {isOpen ? <CloseIcon /> : <MenuIcon />}
+        {isOpen ? (
+          <CloseIcon width={18} height={18} strokeWidth={1.8} />
+        ) : (
+          <MenuIcon width={18} height={18} strokeWidth={1.8} />
+        )}
       </button>
 
       <div
@@ -87,19 +91,23 @@ export function SiteNav({ locale, labels }: SiteNavProps) {
           })}
         </ul>
         {/* A full page load: the whole document, including <html lang>, changes language. */}
-        <a
-          href={switchLocalePath(pathname, otherLocale)}
-          hrefLang={otherLocale}
-          className={`${linkClass} ${idleClass}`}
-        >
-          {labels.switchTo}
-          <span className="sr-only"> — {labels.switchToLabel}</span>
-        </a>
+        {/* One flex item, so the menu lays the list and the EN link out as two blocks. */}
+        <div>
+          <a
+            href={switchLocalePath(pathname, otherLocale)}
+            hrefLang={otherLocale}
+            className={`${linkClass} ${idleClass}`}
+          >
+            {labels.switchTo}
+            <span className="sr-only"> — {labels.switchToLabel}</span>
+          </a>
+        </div>
       </div>
 
       <ButtonLink
         href={localizePath(locale, "/contacto")}
-        className="uppercase"
+        size="sm"
+        className="tracking-[0.06em] uppercase max-md:px-[0.9rem]"
         onClick={() => setOpenOn(null)}
       >
         {labels.cta}

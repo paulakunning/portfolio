@@ -12,6 +12,8 @@ export type ProjectCardData = {
   categories: Category[];
   tools: string[];
   conceptual: boolean;
+  role: string;
+  year: number;
   summary: string;
   cover: { src: StaticImageData; alt: string };
 };
@@ -24,6 +26,8 @@ export function toCardData(project: Project, locale: Locale): ProjectCardData {
     categories: project.categories,
     tools: project.tools,
     conceptual: project.conceptual ?? false,
+    role: project.role[locale],
+    year: project.year,
     summary: project.summary[locale],
     cover: { src: project.cover.src, alt: project.cover.alt[locale] },
   };

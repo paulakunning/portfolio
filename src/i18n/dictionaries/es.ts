@@ -44,34 +44,37 @@ export const es = {
     copyright: "© {year} Paula Kunning. Córdoba, Argentina.",
   },
   hero: {
-    title: "Diseñadora Web y Desarrolladora WordPress / Front-End",
+    title: "Diseño digital, del concepto a la pantalla.",
+    seeProjects: "Ver proyectos",
     cv: "Ver mi CV",
     cvNotice: "(PDF, se abre en una pestaña nueva)",
     subtitle:
-      "Diseño en Figma y lo desarrollo: sitios responsive que se ven bien y funcionan.",
+      "Creo sitios web que conectan una buena idea con un diseño cuidado y una experiencia intuitiva. También puedo llevar esos diseños a la web, combinando criterio visual y conocimientos de desarrollo.",
     availability:
       "Disponible para trabajo remoto de tiempo completo y proyectos freelance",
+    dragHint: "Podés mover las herramientas",
   },
   featured: {
     title: "Proyectos destacados",
+    subtitle: "Diseño web, desarrollo WordPress y branding.",
     viewAll: "Ver todos los proyectos",
+    viewProject: "Ver proyecto",
+    seeAll: "Ver los {count} proyectos",
+    previous: "Proyecto anterior",
+    next: "Proyecto siguiente",
   },
   experience: {
     title: "Experiencia",
     present: "Actualidad",
-  },
-  skills: {
-    title: "Habilidades",
-    learning: "Aprendiendo",
   },
   about: {
     title: "Hola, soy Paula",
     paragraphs: [
       "Diseño sitios web en Figma y los llevo a la realidad en WordPress y código, así que lo que se diseña es lo que se publica.",
       "Tengo más de 3 años de experiencia: trabajé 2 años y medio en una agencia de marketing digital desarrollando sitios corporativos, y hoy tomo proyectos freelance que combinan diseño y desarrollo.",
-      "Antes de dedicarme a esto fui contadora pública. Cambié de carrera en 2022, y esa mirada de negocio, ordenada y atenta al detalle sigue presente en cada proyecto.",
-      "Hoy estoy profundizando en React, Next.js y TypeScript, y aprendiendo Framer. Vivo en Córdoba, Argentina, y trabajo en remoto en español e inglés.",
     ],
+    tools: "Herramientas que uso",
+    learning: "Ahora estoy aprendiendo {list}.",
   },
   testimonials: {
     title: "Testimonios",

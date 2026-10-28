@@ -14,9 +14,25 @@
   --color-sand-tint: #ebe5da;
   --color-surface: #fffdf9;
   --color-line: rgb(46 42 40 / 0.12);
+  /* Mirrors the prototype's single 760px breakpoint: md: starts at 761px. */
+  --breakpoint-md: 47.5625rem;
   --spacing-gutter: clamp(1rem, 4vw, 3rem);
+  /* Left edge of the 73rem column, for full-width boxes (ps-edge, scroll-ps-edge).
+     100% is the containing block (the scrollport for scroll-padding); 100vw would count the scrollbar. */
+  --spacing-edge: max(
+    var(--spacing-gutter),
+    calc((100% - 73rem) / 2 + var(--spacing-gutter))
+  );
   /* Form errors; not part of the brand palette. 6.24:1 on background. */
   --color-error: #a3332b;
+  --animate-drop: drop 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+
+  @keyframes drop {
+    from {
+      opacity: 0;
+      transform: translateY(-14px) scale(0.9);
+    }
+  }
 }
 
 @theme inline {
@@ -56,11 +72,12 @@
 
 @layer base {
   html {
+    /* For focus: keeps focused elements clear of the fixed pill. Anchor targets cancel it (-scroll-mt-22) to land at the top, like the prototype. */
     scroll-padding-top: 5.5rem;
   }
 
   body {
-    @apply bg-background font-sans text-foreground antialiased;
+    @apply bg-background font-sans text-[1.0625rem] leading-[1.6] text-foreground antialiased;
   }
 
   h1,
