@@ -17,6 +17,3 @@ export const socialChannels = [
   { id: "behance", label: "Behance", href: contactLinks.behance },
   { id: "github", label: "GitHub", href: contactLinks.github },
 ] as const;
-
-// The contact page shows the portrait photo from the about section.
-export { portraitPhoto } from "./about";

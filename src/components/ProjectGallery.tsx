@@ -6,10 +6,9 @@ type ProjectGalleryProps = { images: ProjectImage[]; locale: Locale };
 
 export function ProjectGallery({ images, locale }: ProjectGalleryProps) {
   return (
-    <ul className="mx-auto grid max-w-[73rem] gap-6 px-gutter pt-20 md:grid-cols-2">
-      {images.map((image, index) => (
-        // Index keys: the list is static and may repeat the same image.
-        <li key={index}>
+    <ul className="content-width grid gap-6 pt-20 md:grid-cols-2">
+      {images.map((image) => (
+        <li key={image.src.src}>
           <Image
             src={image.src}
             alt={image.alt[locale]}

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ButtonLink } from "@/components/ButtonLink";
 import { ContactForm } from "@/components/ContactForm";
-import { cvPaths, portraitPhoto } from "@/content/site";
+import { portraitPhoto } from "@/content/about";
+import { cvPaths } from "@/content/site";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { getLocale } from "@/i18n/server";
 import { pageMetadata } from "@/lib/metadata";
@@ -23,7 +24,7 @@ export default async function ContactPage() {
   const { contact, hero } = getDictionary(locale);
 
   return (
-    <section className="mx-auto grid max-w-[73rem] gap-x-[clamp(2rem,6vw,6rem)] gap-y-12 px-gutter pt-30 pb-28 md:grid-cols-[5fr_7fr] md:pt-36">
+    <section className="content-width grid gap-x-[clamp(2rem,6vw,6rem)] gap-y-12 pt-30 pb-28 md:grid-cols-[5fr_7fr] md:pt-36">
       <div>
         <Image
           src={portraitPhoto.src}
