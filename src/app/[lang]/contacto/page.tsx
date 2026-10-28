@@ -28,7 +28,9 @@ export default async function ContactPage() {
       <PageHero>
         <div className="grid items-center gap-12 md:grid-cols-2">
           <div>
-            <h1 className="text-4xl italic md:text-6xl">{contact.title}</h1>
+            <h1 className="text-[clamp(2.75rem,6vw,5rem)] tracking-[-0.035em] italic">
+              {contact.title}
+            </h1>
             <p className="mt-6 max-w-xl text-lg">{contact.intro}</p>
             <ButtonLink
               href={cvPaths[locale]}

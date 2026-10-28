@@ -28,7 +28,7 @@ export default async function ProjectsPage() {
         projects={projects.map((project) => toCardData(project, locale))}
         labels={dictionary.projects}
         heading={
-          <h1 className="max-w-[14ch] text-[clamp(2.75rem,5vw,4.5rem)]!">
+          <h1 className="max-w-[14ch] text-[clamp(2.75rem,5vw,4.5rem)] tracking-[-0.035em]">
             {dictionary.projects.title}
           </h1>
         }

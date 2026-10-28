@@ -1,4 +1,4 @@
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test, type Locator, type Page } from "@playwright/test";
 
 const pathnameOf = (page: Page) => new URL(page.url()).pathname;
 const menuToggle = (page: Page) =>
@@ -86,16 +86,25 @@ test("links out to the live site or Behance in a new tab", async ({ page }) => {
 
 test("shows the project count next to the tabs", async ({ page }) => {
   await page.goto("/proyectos");
-  await expect(page.getByText("14 proyectos")).toBeVisible();
+  const count = page.getByText("14 proyectos");
+  await expect(count).toBeVisible();
+  // Not the old sr-only 1px box.
+  expect((await count.boundingBox())?.width).toBeGreaterThan(50);
 });
 
-test("cards appear when scrolled into view", async ({ page }) => {
+const opacityOf = (card: Locator) =>
+  card.evaluate((el) => getComputedStyle(el).opacity);
+
+test("cards below the fold start hidden and appear when scrolled into view", async ({
+  page,
+}) => {
   await page.goto("/proyectos");
   const last = page.getByRole("article").last();
+  await expect(last).toHaveAttribute("data-reveal", "hidden");
+  expect(await opacityOf(last)).toBe("0");
   await last.scrollIntoViewIfNeeded();
-  await expect
-    .poll(() => last.evaluate((el) => getComputedStyle(el).opacity))
-    .toBe("1");
+  await expect(last).toHaveAttribute("data-reveal", "shown");
+  await expect.poll(() => opacityOf(last)).toBe("1");
 });
 
 test("no card stays hidden after switching tabs quickly", async ({ page }) => {
@@ -105,12 +114,13 @@ test("no card stays hidden after switching tabs quickly", async ({ page }) => {
   });
   await filters.getByRole("button", { name: "Branding" }).click();
   await filters.getByRole("button", { name: "Todos" }).click();
-  for (const card of await page.getByRole("article").all()) {
+  const cards = page.getByRole("article");
+  await expect(cards.last()).toHaveAttribute("data-reveal", "hidden");
+  for (const card of await cards.all()) {
     await card.scrollIntoViewIfNeeded();
-    await expect
-      .poll(() => card.evaluate((el) => getComputedStyle(el).opacity))
-      .toBe("1");
+    await expect.poll(() => opacityOf(card)).toBe("1");
   }
+  await expect(page.locator('[data-reveal="hidden"]')).toHaveCount(0);
 });
 
 test.describe("without JavaScript", () => {

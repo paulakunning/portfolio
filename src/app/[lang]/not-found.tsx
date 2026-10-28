@@ -10,7 +10,9 @@ export default async function NotFound() {
 
   return (
     <PageHero>
-      <h1 className="text-4xl md:text-5xl">{notFound.title}</h1>
+      <h1 className="text-[clamp(2.75rem,6vw,5rem)] tracking-[-0.035em]">
+        {notFound.title}
+      </h1>
       <p className="mt-4 text-lg">{notFound.body}</p>
       <Link
         href={localizePath(locale, "/")}

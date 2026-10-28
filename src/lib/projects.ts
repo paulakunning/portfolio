@@ -10,7 +10,6 @@ export type ProjectCardData = {
   name: string;
   href: string;
   categories: Category[];
-  tools: string[];
   conceptual: boolean;
   role: string;
   year: number;
@@ -24,7 +23,6 @@ export function toCardData(project: Project, locale: Locale): ProjectCardData {
     name: project.name,
     href: localizePath(locale, `/proyectos/${project.slug}`),
     categories: project.categories,
-    tools: project.tools,
     conceptual: project.conceptual ?? false,
     role: project.role[locale],
     year: project.year,

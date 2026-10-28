@@ -57,7 +57,9 @@ export default async function ProjectPage({
           className="aspect-video w-full rounded-2xl object-cover"
         />
         <div className="mt-10 flex flex-wrap items-center gap-4">
-          <h1 className="text-4xl md:text-6xl">{project.name}</h1>
+          <h1 className="text-[clamp(2.75rem,6vw,5rem)] tracking-[-0.035em]">
+            {project.name}
+          </h1>
           {project.conceptual && (
             <span className="rounded-full bg-accent px-3 py-1 text-xs font-medium tracking-wide text-foreground uppercase">
               {labels.conceptual}

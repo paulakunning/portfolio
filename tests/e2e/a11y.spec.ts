@@ -4,7 +4,7 @@ import { pages } from "./pages";
 
 for (const path of pages) {
   test(`has no axe violations: ${path}`, async ({ page }) => {
-    // Cards not yet revealed are transparent on purpose; check the settled page.
+    // axe scans the settled page; the reveal's hidden/fading cards are transparent on purpose and are not scanned.
     if (path.endsWith("/proyectos")) {
       await page.emulateMedia({ reducedMotion: "reduce" });
     }
