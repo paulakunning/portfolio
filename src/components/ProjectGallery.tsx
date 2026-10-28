@@ -13,7 +13,7 @@ export function ProjectGallery({ images, locale }: ProjectGalleryProps) {
           <Image
             src={image.src}
             alt={image.alt[locale]}
-            sizes="(min-width: 768px) 50vw, 100vw"
+            sizes="(min-width: 1168px) 524px, (min-width: 761px) 50vw, 100vw"
             placeholder="blur"
             className="aspect-[4/3] w-full rounded-3xl bg-sand-tint object-cover"
           />
