@@ -40,7 +40,6 @@ import tecnofastCover from "@/assets/projects/tecnofast-peru/cover.jpg";
 import uniform1 from "@/assets/projects/uniform/1.jpg";
 import uniform2 from "@/assets/projects/uniform/2.jpg";
 import uniformCover from "@/assets/projects/uniform/cover.jpg";
-import { pendingBody } from "./placeholders";
 import type { Project } from "./types";
 
 const webDevelopment = { es: "Desarrollo web", en: "Web development" };
@@ -56,15 +55,17 @@ export const projects: Project[] = [
     year: 2026,
     role: { es: "Diseño + desarrollo", en: "Design + development" },
     summary: {
-      es: "Sitio corporativo para una distribuidora mayorista. Diseño de interfaz en Figma y desarrollo en WordPress.",
-      en: "Corporate site for a wholesale distributor. UI design in Figma and WordPress development.",
+      es: "Diseño y desarrollo de un sitio web corporativo para una distribuidora mayorista, con foco en fortalecer su presencia digital, comunicar su identidad y facilitar el contacto con potenciales clientes.",
+      en: "Design and development of a corporate website for a wholesale distributor, focused on strengthening its online presence, communicating its identity and making it easy for potential customers to get in touch.",
     },
     body: {
       es: [
-        "Sitio corporativo para una distribuidora mayorista. Se realizó el diseño en Figma y el desarrollo en WordPress con Elementor Pro.",
+        "Don Higinio es una distribuidora mayorista que buscaba fortalecer su presencia digital y comunicar su identidad de manera profesional. El objetivo fue desarrollar un sitio web que presentara a la empresa, facilitara el contacto con potenciales clientes y permitiera consultar sus zonas de cobertura.",
+        "Diseñé la interfaz desde cero en Figma y desarrollé el sitio con WordPress y Elementor. La implementación incluyó formularios de contacto, carruseles de marcas, mapas interactivos para visualizar las zonas de cobertura y un diseño responsive, adaptado a distintos dispositivos.",
       ],
       en: [
-        "Corporate site for a wholesale distributor. Designed in Figma and built in WordPress with Elementor Pro.",
+        "Don Higinio is a wholesale distributor that wanted to strengthen its online presence and present its identity professionally. The goal was a website that introduced the company, made it easy for potential customers to get in touch and let them check its coverage areas.",
+        "I designed the interface from scratch in Figma and built the site with WordPress and Elementor. The build included contact forms, brand carousels, interactive maps of the coverage areas and a responsive layout that adapts to different devices.",
       ],
     },
     cover: {
@@ -101,10 +102,19 @@ export const projects: Project[] = [
     year: 2026,
     role: { es: "Diseño + desarrollo", en: "Design + development" },
     summary: {
-      es: "Landing para un laboratorio de divulgación sobre IA. Diseño en Figma y desarrollo en WordPress, con contenido administrable por el equipo del cliente.",
-      en: "Landing page for an AI information lab. Figma design and WordPress development, with content managed by the client's team.",
+      es: "Diseño y desarrollo de una web para un laboratorio de innovación que comparte información, herramientas y recursos sobre inteligencia artificial. Una experiencia visual organizada en grillas, pensada para facilitar la navegación y permitir que el contenido se actualice fácilmente.",
+      en: "Design and development of a website for an innovation lab that shares information, tools and resources about artificial intelligence. A grid-based visual experience, built for easy browsing and easy content updates.",
     },
-    body: pendingBody,
+    body: {
+      es: [
+        "Factchequeado Lab es un espacio dedicado a compartir información, herramientas y recursos sobre inteligencia artificial y sus aplicaciones. El desafío fue organizar los contenidos en una web de una sola página que facilitara el acceso a la información y mantuviera una presentación visual clara y coherente.",
+        "Diseñé la interfaz desde cero en Figma y desarrollé el sitio en WordPress con Elementor Pro. Trabajé en los estilos visuales y en un sistema de grillas y tarjetas que permite presentar los contenidos de forma ordenada y facilita su actualización desde el administrador, manteniendo la estructura de la página a medida que se incorpora nueva información.",
+      ],
+      en: [
+        "Factchequeado Lab is a space for sharing information, tools and resources about artificial intelligence and its uses. The challenge was to organize the content into a single-page site that made the information easy to reach and kept the presentation clear and consistent.",
+        "I designed the interface from scratch in Figma and built the site in WordPress with Elementor Pro. I worked on the visual styles and on a system of grids and cards that presents the content in an orderly way and makes it easy to update from the WordPress admin, keeping the page structure intact as new information is added.",
+      ],
+    },
     cover: {
       src: factchequeadoCover,
       alt: {
@@ -142,10 +152,19 @@ export const projects: Project[] = [
       en: "Development + ongoing maintenance",
     },
     summary: {
-      es: "Sitio B2B de logística. Desarrollo a partir del diseño del cliente y mantenimiento continuo.",
-      en: "B2B logistics site. Development from the client's design, plus ongoing maintenance.",
+      es: "Desarrollo de un sitio web corporativo para una empresa de logística, implementado en WordPress con Elementor Pro a partir de un diseño de referencia.",
+      en: "Development of a corporate website for a logistics company, built in WordPress with Elementor Pro from a reference design.",
     },
-    body: pendingBody,
+    body: {
+      es: [
+        "El proyecto consistió en desarrollar el sitio web corporativo de GEA Logistics, con el objetivo de establecer una presencia digital profesional y comunicar su propuesta de servicios.",
+        "Me encargué de implementar el diseño en WordPress con Elementor Pro, trasladando la estructura y los lineamientos visuales de referencia a un sitio funcional. El trabajo se centró en la construcción de las páginas y la adaptación de la propuesta al entorno web.",
+      ],
+      en: [
+        "The project was to build the corporate website of GEA Logistics, to give the company a professional online presence and communicate the services it offers.",
+        "I implemented the design in WordPress with Elementor Pro, turning the reference structure and visual guidelines into a working site. The work focused on building the pages and adapting the design to the web.",
+      ],
+    },
     cover: {
       src: geaCover,
       alt: {
@@ -179,10 +198,19 @@ export const projects: Project[] = [
     year: 2026,
     role: webDevelopment,
     summary: {
-      es: "Desarrollo del sitio web en WordPress a partir del diseño del cliente y mantenimiento continuo.",
-      en: "WordPress website development from the client's design, plus ongoing maintenance.",
+      es: "Desarrollo de una web one page para una marca personal, implementada en WordPress con Elementor a partir de un diseño visual predefinido.",
+      en: "Development of a one-page website for a personal brand, built in WordPress with Elementor from an existing visual design.",
     },
-    body: pendingBody,
+    body: {
+      es: [
+        "El proyecto consistió en desarrollar una web one page para la marca personal de Javier Carrizo, con el objetivo de construir una presencia digital profesional y comunicar su propuesta de manera clara.",
+        "Me encargué de implementar el diseño en WordPress con Elementor, trasladando la propuesta visual al entorno web y adaptando su estructura para lograr una experiencia coherente y funcional.",
+      ],
+      en: [
+        "The project was to build a one-page website for Javier Carrizo's personal brand, to establish a professional online presence and communicate the brand's offering clearly.",
+        "I implemented the design in WordPress with Elementor, bringing the visual design to the web and adapting its structure into a consistent, functional experience.",
+      ],
+    },
     cover: {
       src: javierCarrizoCover,
       alt: {
@@ -216,10 +244,19 @@ export const projects: Project[] = [
     year: 2026,
     role: webDevelopment,
     summary: {
-      es: "Desarrollo del sitio en WordPress a partir del diseño del cliente.",
-      en: "WordPress site development from the client's design.",
+      es: "Desarrollo de un sitio web corporativo para un estudio de arquitectura especializado en instalaciones, implementado en WordPress con Elementor.",
+      en: "Development of a corporate website for an architecture firm specializing in building services, built in WordPress with Elementor.",
     },
-    body: pendingBody,
+    body: {
+      es: [
+        "ARQCI es un estudio de arquitectura especializado en instalaciones que necesitaba una presencia digital para comunicar sus servicios y presentar su propuesta profesional.",
+        "Me encargué de desarrollar el sitio en WordPress con Elementor, implementando el diseño visual existente y trasladándolo a una experiencia web funcional. El objetivo fue mantener la coherencia visual del proyecto y organizar la información de manera clara para facilitar la navegación.",
+      ],
+      en: [
+        "ARQCI is an architecture firm specializing in building services that needed an online presence to communicate its services and present its professional offering.",
+        "I built the site in WordPress with Elementor, implementing the existing visual design as a working website. The goal was to keep the project visually consistent and to organize the information clearly so the site is easy to navigate.",
+      ],
+    },
     cover: {
       src: arqciCover,
       alt: {
@@ -249,14 +286,23 @@ export const projects: Project[] = [
     slug: "tecnofast-peru",
     name: "Tecnofast Perú",
     categories: ["web-development"],
-    tools: ["Bricks Builder"],
+    tools: ["WordPress", "Bricks Builder"],
     year: 2025,
     role: webDevelopment,
     summary: {
-      es: "Sitio corporativo rehecho en Bricks Builder, con un cotizador desarrollado a medida.",
-      en: "Corporate site rebuilt in Bricks Builder, with a custom-built quote calculator.",
+      es: "Desarrollo de un sitio web corporativo para una empresa de soluciones modulares, con catálogo de productos y un sistema de cotización online. Implementado en WordPress con Bricks Builder, combinando funcionalidades personalizadas y un enfoque centrado en el rendimiento.",
+      en: "Development of a corporate website for a modular solutions company, with a product catalog and an online quote system. Built in WordPress with Bricks Builder, combining custom features with a focus on performance.",
     },
-    body: pendingBody,
+    body: {
+      es: [
+        "Tecnofast Perú necesitaba un sitio web corporativo para presentar sus soluciones modulares, mostrar su catálogo de productos y facilitar las consultas comerciales. El proyecto tomó como referencia el sitio de Tecnofast Chile, adaptando su estructura y funcionalidades a una nueva implementación.",
+        "Participé en el desarrollo con WordPress y Bricks Builder, utilizando HTML, CSS y código personalizado para implementar el flujo de cotización integrado con WooCommerce, desde la selección de productos hasta el envío de la solicitud. El trabajo combinó funcionalidades a medida con un enfoque orientado al rendimiento y a una experiencia de navegación ágil.",
+      ],
+      en: [
+        "Tecnofast Perú needed a corporate website to present its modular solutions, show its product catalog and make sales inquiries easier. The project took the Tecnofast Chile site as a reference, adapting its structure and features into a new build.",
+        "I worked on the development with WordPress and Bricks Builder, using HTML, CSS and custom code to build the quote flow integrated with WooCommerce, from choosing products to sending the request. The work combined custom features with a focus on performance and fast, smooth browsing.",
+      ],
+    },
     cover: {
       src: tecnofastCover,
       alt: {
@@ -290,10 +336,19 @@ export const projects: Project[] = [
     year: 2024,
     role: webDevelopment,
     summary: {
-      es: "Desarrollo del sitio en WordPress y Elementor Pro a partir del diseño del cliente.",
-      en: "Site development in WordPress and Elementor Pro from the client's design.",
+      es: "Desarrollo de un sitio web corporativo para una agencia de turismo deportivo especializada en viajes a carreras y maratones. Una plataforma para descubrir próximos destinos, conocer las propuestas de cada carrera y facilitar el contacto con la agencia.",
+      en: "Development of a corporate website for a sports travel agency specializing in trips to races and marathons. A place to discover upcoming destinations, see what each race trip offers and get in touch with the agency.",
     },
-    body: pendingBody,
+    body: {
+      es: [
+        "Olatrek organiza viajes a carreras y maratones en Argentina y el mundo. El objetivo del sitio era presentar su oferta de viajes, destacar las próximas carreras y facilitar el acceso a la información para que los corredores pudieran conocer las propuestas y realizar consultas.",
+        "Me encargué del desarrollo del sitio en WordPress con Elementor Pro, implementando un diseño previamente definido. La estructura permite organizar las carreras por destino y presentar información relevante de cada experiencia, con accesos directos al contacto para acompañar el proceso de consulta.",
+      ],
+      en: [
+        "Olatrek organizes trips to races and marathons in Argentina and around the world. The site needed to present its trips, highlight upcoming races and make the information easy to find, so runners could explore the options and send inquiries.",
+        "I built the site in WordPress with Elementor Pro from an existing design. The structure organizes races by destination and presents the key information for each trip, with direct links to contact the agency along the way.",
+      ],
+    },
     cover: {
       src: olatrekCover,
       alt: {
@@ -327,10 +382,19 @@ export const projects: Project[] = [
     year: 2024,
     role: webDevelopment,
     summary: {
-      es: "Desarrollo del sitio web para un cliente de la agencia de marketing digital Canal Cero, con diseño del equipo de la agencia.",
-      en: "Website build for a client of the digital marketing agency Canal Cero, designed by the agency's design team.",
+      es: "Desarrollo de un sitio web corporativo para una empresa pesquera chilena, orientado a presentar sus productos, comunicar su actividad y fortalecer su presencia digital en los mercados nacionales e internacionales.",
+      en: "Development of a corporate website for a Chilean fishing company, built to present its products, communicate what it does and strengthen its online presence in domestic and international markets.",
     },
-    body: pendingBody,
+    body: {
+      es: [
+        "Friosur es una empresa pesquera chilena dedicada a la elaboración y comercialización de productos del mar para distintos mercados. El sitio web reúne información institucional, presenta su catálogo de productos y comunica sus operaciones, con el objetivo de acercar su propuesta comercial a clientes de Chile y el mundo.",
+        "Me encargué del desarrollo del sitio en WordPress con Bricks Builder, implementando el diseño proporcionado y trasladando su propuesta visual a una web funcional. Mi trabajo se centró en la construcción de las páginas y la implementación de la estructura definida para presentar los contenidos de forma clara y organizada.",
+      ],
+      en: [
+        "Friosur is a Chilean fishing company that produces and sells seafood for several markets. The website brings together company information, presents its product catalog and describes its operations, to bring its offering closer to customers in Chile and around the world.",
+        "I built the site in WordPress with Bricks Builder, implementing the design I was given and turning it into a working website. My work focused on building the pages and implementing the planned structure to present the content clearly and in an organized way.",
+      ],
+    },
     cover: {
       src: friosurCover,
       alt: {
@@ -364,10 +428,19 @@ export const projects: Project[] = [
     year: 2024,
     role: webDevelopment,
     summary: {
-      es: "Desarrollo del sitio web del Aeropuerto El Loa, cliente de la agencia de marketing digital Canal Cero, con diseño del equipo de la agencia.",
-      en: "Website build for El Loa Airport, a client of the digital marketing agency Canal Cero, designed by the agency's design team.",
+      es: "Desarrollo de un sitio web corporativo para el Aeropuerto El Loa, implementado en WordPress con Bricks Builder e integrado con una API meteorológica para mostrar información del clima en tiempo real.",
+      en: "Development of the corporate website for El Loa Airport, built in WordPress with Bricks Builder and connected to a weather API to show live weather information.",
     },
-    body: pendingBody,
+    body: {
+      es: [
+        "El proyecto consistió en desarrollar el sitio web corporativo del Aeropuerto El Loa, en Calama, Chile, con el objetivo de ofrecer un espacio digital para consultar información relevante sobre el aeropuerto y sus servicios.",
+        "Me encargué de la implementación del sitio en WordPress con Bricks Builder, trabajando a partir de un diseño existente. Además, desarrollé una integración con una API meteorológica para mostrar información actualizada del clima directamente en la barra de navegación, incorporando datos dinámicos a la interfaz.",
+      ],
+      en: [
+        "The project was to build the corporate website of El Loa Airport in Calama, Chile, as an online place to look up information about the airport and its services.",
+        "I built the site in WordPress with Bricks Builder from an existing design. I also built an integration with a weather API that shows up-to-date weather information right in the navigation bar, bringing live data into the interface.",
+      ],
+    },
     cover: {
       src: elLoaCover,
       alt: {
@@ -401,10 +474,19 @@ export const projects: Project[] = [
     year: 2025,
     role: webDevelopment,
     summary: {
-      es: "Desarrollo de la página web de una coach motivacional a partir de un diseño en Figma.",
-      en: "Website build for a motivational coach from a Figma design.",
+      es: "Desarrollo de un sitio web para la marca personal de una life coach, orientado a comunicar su propuesta profesional y conectar su presencia digital con sus contenidos en Instagram.",
+      en: "Development of a personal brand website for a life coach, built to present the coach's professional offering and connect the site with the brand's Instagram content.",
     },
-    body: pendingBody,
+    body: {
+      es: [
+        "Burning Wanderlust es la marca personal de una life coach que buscaba trasladar su propuesta profesional al entorno digital y contar con un espacio propio para presentar su trabajo.",
+        "Me encargué del desarrollo del sitio en WordPress con Elementor Pro, implementando un diseño previamente definido e integrando un plugin para mostrar publicaciones de Instagram. De esta manera, el sitio combina su presencia web con sus contenidos en redes sociales.",
+      ],
+      en: [
+        "Burning Wanderlust is a life coach's personal brand. The goal was to bring the coaching offering online, with a dedicated space to present the work.",
+        "I built the site in WordPress with Elementor Pro from an existing design, and integrated a plugin that shows Instagram posts. This way the site brings together the brand's web presence and its social media content.",
+      ],
+    },
     cover: {
       src: burningCover,
       alt: {
@@ -439,10 +521,19 @@ export const projects: Project[] = [
     year: 2026,
     role: { es: "Diseño web", en: "Web design" },
     summary: {
-      es: "Rediseño web en alemán para una freelancer.",
-      en: "German-language website redesign for a freelancer.",
+      es: "Diseño de una web para una agencia de email marketing, con un enfoque visual que simplifica la presentación de sus servicios y comunica su propuesta de forma clara y profesional.",
+      en: "Website design for an email marketing agency, with a visual approach that simplifies how its services are presented and communicates its offering clearly and professionally.",
     },
-    body: pendingBody,
+    body: {
+      es: [
+        "DéDé Digital necesitaba renovar su presencia digital con una web que presentara sus servicios de forma más visual, clara y profesional. El principal desafío era transformar una estructura con demasiado texto en una experiencia más dinámica, que facilitara la comprensión de su propuesta y permitiera identificar rápidamente sus servicios.",
+        "Diseñé la interfaz en Figma, trabajando en la jerarquía de contenidos, la organización de la información y la composición visual. Además, al tratarse de un sitio en alemán, tuve en cuenta la extensión de las palabras al definir los espacios y las proporciones de los elementos, buscando mantener una interfaz equilibrada y legible.",
+      ],
+      en: [
+        "DéDé Digital needed to refresh its online presence with a website that presented its services in a more visual, clear and professional way. The main challenge was turning a text-heavy structure into a more dynamic experience that made the offering easier to understand and the services quick to find.",
+        "I designed the interface in Figma, working on the content hierarchy, the information structure and the visual composition. Since the site is in German, I accounted for long words when setting the spacing and proportions of each element, to keep the interface balanced and readable.",
+      ],
+    },
     cover: {
       src: dedeCover,
       alt: {
@@ -480,10 +571,19 @@ export const projects: Project[] = [
     year: 2026,
     role: { es: "Diseño web", en: "Web design" },
     summary: {
-      es: "Diseño conceptual de una página web para una coach de bienestar.",
-      en: "Concept website design for a wellness coach.",
+      es: "Diseño conceptual de una landing page para un programa de bienestar de seis semanas. Una experiencia digital pensada para comunicar el valor del programa y convertir el interés de las visitantes en inscripciones.",
+      en: "Concept design of a landing page for a six-week wellness program. A digital experience built to communicate the program's value and turn visitors' interest into sign-ups.",
     },
-    body: pendingBody,
+    body: {
+      es: [
+        "Amanda Wellness Coach es una landing page conceptual para un programa de bienestar de seis semanas, dirigido a mujeres que buscan incorporar hábitos sostenibles y mejorar sus rutinas cotidianas. El objetivo fue crear una experiencia digital clara y cercana que comunicara la propuesta de valor del programa y motivara a las visitantes a inscribirse.",
+        "El diseño combina una estética serena con una estructura organizada, jerarquías visuales claras y llamados a la acción estratégicamente ubicados. También definí la dirección visual a través de la paleta cromática, las tipografías y un logotipo tipográfico, buscando transmitir confianza y crear una experiencia coherente, enfocada en la legibilidad y la conversión.",
+      ],
+      en: [
+        "Amanda Wellness Coach is a concept landing page for a six-week wellness program for women who want to build sustainable habits and improve their daily routines. The goal was a clear, warm digital experience that communicated the program's value and encouraged visitors to sign up.",
+        "The design pairs a calm look with an organized structure, clear visual hierarchy and well-placed calls to action. I also set the visual direction through the color palette, the typefaces and a wordmark, aiming to build trust and create a consistent experience focused on readability and conversion.",
+      ],
+    },
     cover: {
       src: amandaCover,
       alt: {
@@ -521,10 +621,19 @@ export const projects: Project[] = [
     year: 2026,
     role: { es: "Diseño gráfico y web", en: "Graphic and web design" },
     summary: {
-      es: "Diseño conceptual de branding y página web para una marca de ropa urbana.",
-      en: "Concept branding and website design for a streetwear brand.",
+      es: "Identidad visual para una marca conceptual de indumentaria unisex que reinterpreta los básicos cotidianos a través de una estética minimalista, contemporánea y atemporal.",
+      en: "Visual identity for a concept unisex clothing brand that reinterprets everyday basics through a minimal, contemporary and timeless look.",
     },
-    body: pendingBody,
+    body: {
+      es: [
+        "UNIFORM es una marca conceptual de indumentaria unisex dirigida a una comunidad creativa que busca prendas versátiles para el día a día. La propuesta parte de la idea de reinterpretar los básicos cotidianos a través de una estética minimalista, funcional y atemporal, combinando la comodidad del streetwear con una mirada más sofisticada.",
+        "La identidad visual se construyó a partir de un lenguaje gráfico modular, una paleta sobria y una tipografía de carácter contemporáneo. El sistema busca transmitir solidez y versatilidad, creando una marca reconocible y coherente con su propuesta de elevated dailywear.",
+      ],
+      en: [
+        "UNIFORM is a concept unisex clothing brand for a creative community looking for versatile everyday pieces. The idea is to reinterpret everyday basics through a minimal, functional and timeless look, combining the comfort of streetwear with a more refined eye.",
+        "The visual identity is built on a modular graphic language, a restrained palette and a contemporary typeface. The system aims to convey strength and versatility, creating a recognizable brand that fits its elevated dailywear concept.",
+      ],
+    },
     cover: {
       src: uniformCover,
       alt: {
@@ -562,10 +671,19 @@ export const projects: Project[] = [
     year: 2026,
     role: { es: "Diseño gráfico", en: "Graphic design" },
     summary: {
-      es: "Diseño de identidad visual para una contadora especializada en costos y rentabilidad.",
-      en: "Visual identity design for an accountant specializing in costs and profitability.",
+      es: "Identidad visual para una marca personal especializada en costos y rentabilidad. Un sistema gráfico que combina profesionalismo, claridad y una estética contemporánea para comunicar su propuesta de valor.",
+      en: "Visual identity for a personal brand specializing in costs and profitability. A graphic system that combines professionalism, clarity and a contemporary look to communicate the brand's value.",
     },
-    body: pendingBody,
+    body: {
+      es: [
+        "Lucrecia Cornaglia es una marca personal enfocada en el asesoramiento en costos y rentabilidad, orientado a acompañar a empresas y negocios en la toma de decisiones. El objetivo fue construir una identidad visual profesional y reconocible, capaz de transmitir confianza, claridad y una mirada estratégica.",
+        "Desarrollé un sistema de identidad visual que combina una paleta de verdes, azules y tonos neutros con una tipografía de personalidad distintiva y un isotipo propio. La propuesta se extiende a distintas aplicaciones de marca, como tarjetas personales y piezas de comunicación, manteniendo una estética coherente y alineada con los valores del negocio.",
+      ],
+      en: [
+        "Lucrecia Cornaglia is a personal brand focused on cost and profitability consulting, helping companies and businesses make decisions. The goal was a professional, recognizable visual identity that conveys trust, clarity and a strategic outlook.",
+        "I developed a visual identity system that pairs a palette of greens, blues and neutrals with a distinctive typeface and a custom symbol. It extends to several brand applications, such as business cards and communication pieces, keeping a consistent look aligned with the business's values.",
+      ],
+    },
     cover: {
       src: lucreciaCover,
       alt: {

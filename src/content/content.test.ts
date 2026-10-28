@@ -4,7 +4,7 @@ import { experience } from "./experience";
 import { projects } from "./projects";
 import { skills } from "./skills";
 
-// Spec §4 order; projects can be missing while their content is pending.
+// Spec §4 order.
 const specOrder = [
   "don-higinio",
   "factchequeado-lab",
@@ -31,10 +31,7 @@ describe("projects", () => {
   });
 
   it("projects keep the spec order", () => {
-    expect(slugs[0]).toBe("don-higinio");
-    expect(slugs.at(-1)).toBe("lucrecia-cornaglia");
-    const known = slugs.filter((slug) => specOrder.includes(slug));
-    expect(known).toEqual(specOrder.filter((slug) => known.includes(slug)));
+    expect(slugs).toEqual(specOrder);
   });
 
   it("features five projects that mix categories", () => {
