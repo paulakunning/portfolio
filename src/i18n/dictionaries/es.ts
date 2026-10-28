@@ -72,8 +72,6 @@ export const es = {
     paragraphs: [
       "Diseño sitios web en Figma y los llevo a la realidad en WordPress y código, así que lo que se diseña es lo que se publica.",
       "Tengo más de 3 años de experiencia: trabajé 2 años y medio en una agencia de marketing digital desarrollando sitios corporativos, y hoy tomo proyectos freelance que combinan diseño y desarrollo.",
-      "Antes de dedicarme a esto fui contadora pública. Cambié de carrera en 2022, y esa mirada de negocio, ordenada y atenta al detalle sigue presente en cada proyecto.",
-      "Hoy estoy profundizando en React, Next.js y TypeScript, y aprendiendo Framer. Vivo en Córdoba, Argentina, y trabajo en remoto en español e inglés.",
     ],
     tools: "Herramientas que uso",
     learning: "Ahora estoy aprendiendo {list}.",

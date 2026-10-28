@@ -74,11 +74,8 @@ describe("skills", () => {
     ).toEqual(["Next.js", "Framer"]);
   });
 
-  it("skills end with Illustrator and Photoshop", () => {
-    expect(skills.slice(-2).map((skill) => skill.name)).toEqual([
-      "Adobe Illustrator",
-      "Adobe Photoshop",
-    ]);
+  it("skills end with Illustrator", () => {
+    expect(skills.at(-1)?.name).toBe("Adobe Illustrator");
   });
 });
 
