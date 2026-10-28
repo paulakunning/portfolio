@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ButtonLink } from "@/components/ButtonLink";
 import { ArrowLeftIcon, ArrowUpRightIcon } from "@/components/icons";
+import { tagClass } from "@/components/ProjectCard";
 import { PageHero } from "@/components/PageHero";
 import { ProjectFacts } from "@/components/ProjectFacts";
 import { ProjectGallery } from "@/components/ProjectGallery";
@@ -63,9 +64,7 @@ export default async function ProjectPage({
             {project.name}
           </h1>
           {project.conceptual && (
-            <span className="rounded-full bg-accent px-3 py-1 text-xs font-medium tracking-wide text-foreground uppercase">
-              {labels.conceptual}
-            </span>
+            <span className={tagClass}>{labels.conceptual}</span>
           )}
         </div>
         <div className="mt-8 grid gap-x-[clamp(2rem,6vw,6rem)] gap-y-8 md:grid-cols-[7fr_5fr]">
@@ -92,6 +91,7 @@ export default async function ProjectPage({
           alt={project.cover.alt[locale]}
           sizes="(min-width: 1168px) 1072px, 100vw"
           placeholder="blur"
+          loading="eager"
           fetchPriority="high"
           className="aspect-video w-full rounded-[2rem] object-cover"
         />
@@ -99,7 +99,7 @@ export default async function ProjectPage({
 
       <section
         aria-labelledby="body-title"
-        className="mx-auto grid max-w-[73rem] gap-x-[clamp(2rem,6vw,6rem)] gap-y-5 px-gutter pt-20 md:grid-cols-[4fr_8fr]"
+        className="content-width grid gap-x-[clamp(2rem,6vw,6rem)] gap-y-5 pt-20 md:grid-cols-[4fr_8fr]"
       >
         <h2 id="body-title" className="text-[clamp(1.75rem,2.6vw,2.25rem)]">
           {labels.detail.about}
@@ -114,7 +114,7 @@ export default async function ProjectPage({
       <ProjectGallery images={project.gallery} locale={locale} />
 
       {next && (
-        <div className="mx-auto max-w-[73rem] px-gutter pt-24 pb-28">
+        <div className="content-width pt-24 pb-28">
           <ProjectNav locale={locale} next={next} labels={labels.detail} />
         </div>
       )}
