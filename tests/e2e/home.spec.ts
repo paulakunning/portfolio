@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { disableScrollAnchoring } from "./no-scroll-anchoring";
 
 test("renders the home sections in order", async ({ page }) => {
   await page.goto("/");
@@ -102,11 +103,11 @@ test.describe("desktop reel", () => {
   }) => {
     await page.goto("/");
     await expect(page.locator("#proyectos")).toHaveAttribute("data-pinned");
-    const last = page.getByRole("link", {
-      name: "Ver proyecto Lucrecia Cornaglia",
-    });
-    await last.focus();
-    await expect(last).toBeInViewport();
+    await page.getByRole("link", { name: "Ver proyecto Uniform" }).focus();
+    await page.keyboard.press("Tab");
+    await expect(
+      page.getByRole("link", { name: "Ver proyecto Lucrecia Cornaglia" }),
+    ).toBeInViewport();
   });
 
   test("a mouse click on a reel link follows it", async ({ page }) => {
@@ -143,16 +144,7 @@ test.describe("desktop reel", () => {
   test("a full page load on #sobre-mi lands on the about section", async ({
     page,
   }) => {
-    // Chromium's scroll anchoring would hide a missing re-scroll; Safari has none.
-    await page.addInitScript(() => {
-      new MutationObserver((_, observer) => {
-        if (!document.head) return;
-        const style = document.createElement("style");
-        style.textContent = "html { overflow-anchor: none }";
-        document.head.append(style);
-        observer.disconnect();
-      }).observe(document, { childList: true, subtree: true });
-    });
+    await disableScrollAnchoring(page);
     await page.goto("/#sobre-mi");
     const title = page.getByRole("heading", {
       level: 2,
@@ -195,20 +187,29 @@ test.describe("desktop reel", () => {
   });
 });
 
-test.describe("carousel reel", () => {
-  test.use({ reducedMotion: "reduce" });
+for (const reducedMotion of ["reduce", "no-preference"] as const) {
+  test.describe(`carousel reel, ${reducedMotion} motion`, () => {
+    // Without reduced motion the reel only stays a carousel on the narrow project.
+    test.skip(
+      ({ isMobile }) => reducedMotion === "no-preference" && !isMobile,
+      "pinned on desktop",
+    );
+    test.use({ reducedMotion });
 
-  test("is a carousel moved by its buttons", async ({ page }) => {
-    await page.goto("/");
-    await expect(page.locator("#proyectos")).not.toHaveAttribute("data-pinned");
-    await page.getByRole("button", { name: "Proyecto siguiente" }).click();
-    await expect
-      .poll(() =>
-        page.locator("[data-reel-list]").evaluate((el) => el.scrollLeft),
-      )
-      .toBeGreaterThan(0);
+    test("is a carousel moved by its buttons", async ({ page }) => {
+      await page.goto("/");
+      await expect(page.locator("#proyectos")).not.toHaveAttribute(
+        "data-pinned",
+      );
+      await page.getByRole("button", { name: "Proyecto siguiente" }).click();
+      await expect
+        .poll(() =>
+          page.locator("[data-reel-list]").evaluate((el) => el.scrollLeft),
+        )
+        .toBeGreaterThan(0);
+    });
   });
-});
+}
 
 test("formats experience periods", async ({ page }) => {
   await page.goto("/");
@@ -223,6 +224,7 @@ test("hero tiles can be dragged", async ({ page, isMobile }) => {
   test.skip(isMobile, "mouse drag");
   await page.goto("/");
   const tile = page.locator('[data-tile="Figma"]');
+  await expect(page.getByText("Podés mover las herramientas")).toBeVisible();
   const before = (await tile.boundingBox())!;
   await page.mouse.move(before.x + 30, before.y + 30);
   await page.mouse.down();

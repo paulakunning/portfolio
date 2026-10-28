@@ -1,4 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
+import { disableScrollAnchoring } from "./no-scroll-anchoring";
 
 const pathnameOf = (page: Page) => new URL(page.url()).pathname;
 const menuToggle = (page: Page) =>
@@ -84,6 +85,7 @@ test("Sobre mí lands on the about section from another page", async ({
   page,
   isMobile,
 }) => {
+  await disableScrollAnchoring(page);
   const cases: [string, string, string][] = [
     ["/proyectos", "Sobre mí", "Hola, soy Paula"],
     ["/en/proyectos", "About", "Hi, I'm Paula"],
@@ -98,6 +100,10 @@ test("Sobre mí lands on the about section from another page", async ({
     await expect(page).toHaveURL(/#sobre-mi$/);
     const title = page.getByRole("heading", { level: 2, name: heading });
     await expect(title).toBeInViewport();
+    // the section top, not the heading: on mobile the heading sits below the photo
+    expect((await page.locator("#sobre-mi").boundingBox())!.y).toBeLessThan(
+      400,
+    );
   }
 });
 
