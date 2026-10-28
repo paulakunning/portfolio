@@ -18,5 +18,5 @@ export const socialChannels = [
   { id: "github", label: "GitHub", href: contactLinks.github },
 ] as const;
 
-// The contact page reuses the "working" photo from the about section.
-export { workingPhoto as contactImage } from "./about";
+// The contact page shows the portrait photo from the about section.
+export { portraitPhoto } from "./about";
