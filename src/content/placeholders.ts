@@ -1,15 +1,6 @@
-// shortcut: stand-ins while Paula sends the missing project copy and images.
+// shortcut: stand-in while Paula sends the missing project copy.
 // Delete this file before launch; TypeScript then lists every leftover.
-import pending from "@/assets/projects/pending.png";
 import type { Localized } from "@/i18n/config";
-import type { ProjectImage } from "./types";
-
-export const pendingImage: ProjectImage = {
-  src: pending,
-  alt: { es: "Imagen pendiente", en: "Image pending" },
-};
-
-export const pendingGallery: ProjectImage[] = [pendingImage, pendingImage];
 
 export const pendingBody: Localized<string[]> = {
   es: [

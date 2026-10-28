@@ -151,7 +151,7 @@ type Project = {
 **Reglas:**
 - El orden del array es el orden en pantalla.
 - "Siguiente proyecto" toma el que sigue en el array; el del último es el primero.
-- El reel del home muestra los proyectos con `featured: true`, en el orden del array. Son 6 y mezclan categorías, porque el home no tiene pestañas: Don Higinio, Factchequeado Lab, GEA Logistics, DéDé Digital, Uniform y Lucrecia Cornaglia.
+- El reel del home muestra los proyectos con `featured: true`, en el orden del array. Son 5 y mezclan categorías, porque el home no tiene pestañas: Don Higinio, Factchequeado Lab, GEA Logistics, DéDé Digital y Lucrecia Cornaglia.
 
 **Etiquetas:**
 
@@ -175,10 +175,10 @@ type Project = {
 |---|---|---|---|---|---|
 | 1 | `don-higinio` | Don Higinio | web-design, web-development | Figma, WordPress | live |
 | 2 | `factchequeado-lab` | Factchequeado Lab | web-design, web-development | Figma, WordPress | live |
-| 3 | `tecnofast-peru` | Tecnofast Perú | web-development | Bricks Builder | live |
-| 4 | `gea-logistics` | GEA Logistics | web-development | WordPress | live |
-| 5 | `javier-carrizo` | Javier Carrizo | web-development | WordPress | live |
-| 6 | `arqci` | ARQCI | web-development | WordPress | live |
+| 3 | `gea-logistics` | GEA Logistics | web-development | WordPress | live |
+| 4 | `javier-carrizo` | Javier Carrizo | web-development | WordPress | live |
+| 5 | `arqci` | ARQCI | web-development | WordPress | live |
+| 6 | `tecnofast-peru` | Tecnofast Perú | web-development | Bricks Builder | live |
 | 7 | `olatrek` | Olatrek | a confirmar | a confirmar | a confirmar |
 | 8 | `friosur` | Friosur | a confirmar | a confirmar | a confirmar |
 | 9 | `aeropuerto-el-loa` | Aeropuerto El Loa | a confirmar | a confirmar | a confirmar |
@@ -624,7 +624,7 @@ type ContactState =
 |---|---|
 | `src/lib/contact/schema.test.ts` | datos válidos, cada regla de cada campo, recorte de espacios |
 | `src/app/[lang]/contacto/actions.test.ts` | con `sendContactEmail` simulado: éxito, datos inválidos (no envía), trampa (no envía, devuelve éxito), fallo de Resend (devuelve `error` con valores), dry run |
-| `src/content/content.test.ts` | slugs únicos con formato `kebab-case`, al menos una categoría, galería de 2 a 4 imágenes, URLs `https`, 6 proyectos `featured` |
+| `src/content/content.test.ts` | slugs únicos con formato `kebab-case`, al menos una categoría, galería de 2 a 4 imágenes, URLs `https`, 5 proyectos `featured` |
 | `src/lib/projects.test.ts` | `filterProjects` por categoría, `getNextProject` (incluida la vuelta al primero), `getProject` con slug inexistente |
 | `src/lib/canvas.test.ts` | la posición en % con el puntero dentro del lienzo, y limitada a los bordes cuando sale |
 | `src/lib/reel.test.ts` | progreso 0 y 1 en los extremos y limitado afuera de ellos; alto de la sección; parallax con signo opuesto al desplazamiento; destino del foco para la primera tarjeta, una del medio y la última |

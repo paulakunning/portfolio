@@ -72,9 +72,9 @@ test("links the CV for each language", async ({ page, request }) => {
   }
 });
 
-test("shows the six featured projects and a link to all", async ({ page }) => {
+test("shows the five featured projects and a link to all", async ({ page }) => {
   await page.goto("/");
-  await expect(page.locator("[data-reel-card]")).toHaveCount(6);
+  await expect(page.locator("[data-reel-card]")).toHaveCount(5);
   // Enter, not click: on desktop the card is off-screen until focus scrolls to it.
   await page.getByRole("link", { name: "Ver los 14 proyectos" }).press("Enter");
   await expect(page).toHaveURL(/\/proyectos$/);
@@ -103,7 +103,7 @@ test.describe("desktop reel", () => {
   }) => {
     await page.goto("/");
     await expect(page.locator("#proyectos")).toHaveAttribute("data-pinned");
-    await page.getByRole("link", { name: "Ver proyecto Uniform" }).focus();
+    await page.getByRole("link", { name: "Ver proyecto DéDé Digital" }).focus();
     await page.keyboard.press("Tab");
     await expect(
       page.getByRole("link", { name: "Ver proyecto Lucrecia Cornaglia" }),
