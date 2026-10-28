@@ -67,10 +67,6 @@ export const en: Dictionary = {
     title: "Experience",
     present: "Present",
   },
-  skills: {
-    title: "Skills",
-    learning: "Learning",
-  },
   about: {
     title: "Hi, I'm Paula",
     paragraphs: [
@@ -79,6 +75,8 @@ export const en: Dictionary = {
       "Before this I was a public accountant. I changed careers in 2022, and that business mindset, organized and detail-oriented, shows up in every project.",
       "I'm currently going deeper into React, Next.js and TypeScript, and learning Framer. I live in Córdoba, Argentina, and work remotely in English and Spanish.",
     ],
+    tools: "Tools I use",
+    learning: "Currently learning {list}.",
   },
   testimonials: {
     title: "Testimonials",

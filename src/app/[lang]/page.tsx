@@ -3,7 +3,6 @@ import { About } from "@/components/About";
 import { ExperienceList } from "@/components/ExperienceList";
 import { FeaturedProjects } from "@/components/FeaturedProjects";
 import { Hero } from "@/components/Hero";
-import { SkillsGrid } from "@/components/SkillsGrid";
 import { Testimonials } from "@/components/Testimonials";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { getLocale } from "@/i18n/server";
@@ -25,9 +24,8 @@ export default function HomePage() {
     <>
       <Hero />
       <FeaturedProjects />
-      <ExperienceList />
-      <SkillsGrid />
       <About />
+      <ExperienceList />
       <Testimonials />
     </>
   );

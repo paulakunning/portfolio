@@ -4,12 +4,47 @@ test("renders the home sections in order", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 2 })).toHaveText([
     "Proyectos destacados",
-    "Experiencia",
-    "Habilidades",
     "Hola, soy Paula",
+    "Experiencia",
     "Testimonios",
     "¿Tenés una idea en mente? Me encantaría hacerla realidad",
   ]);
+});
+
+test("lists the tools and what Paula is learning", async ({ page }) => {
+  const cases = [
+    ["/", "Hola, soy Paula", "Ahora estoy aprendiendo Next.js y Framer."],
+    ["/en", "Hi, I'm Paula", "Currently learning Next.js and Framer."],
+  ] as const;
+  for (const [path, region, line] of cases) {
+    await page.goto(path);
+    const about = page.getByRole("region", { name: region });
+    await expect(
+      about.getByRole("listitem").filter({ hasText: "Figma" }),
+    ).toHaveCount(1);
+    await expect(
+      about.getByRole("listitem").filter({ hasText: "Next.js" }),
+    ).toHaveCount(0);
+    await expect(about.getByText(line)).toBeVisible();
+  }
+});
+
+test("the experience title stops beside the last job", async ({
+  page,
+  isMobile,
+}) => {
+  test.skip(isMobile, "sticky only from md");
+  await page.goto("/");
+  const section = page.getByRole("region", { name: "Experiencia" });
+  await section.evaluate((el) =>
+    scrollTo({
+      top: el.getBoundingClientRect().bottom + scrollY - 150,
+      behavior: "instant",
+    }),
+  );
+  const title = await section.getByRole("heading", { level: 2 }).boundingBox();
+  const lastJob = await section.locator("[data-job]").last().boundingBox();
+  expect(Math.abs(title!.y - lastJob!.y)).toBeLessThan(2);
 });
 
 test("links the CV for each language", async ({ page, request }) => {
@@ -151,19 +186,6 @@ test("formats experience periods", async ({ page }) => {
 
   await page.goto("/en");
   await expect(page.getByText("July 2025 — Present")).toBeVisible();
-});
-
-test("marks skills that are still being learned", async ({ page }) => {
-  await page.goto("/");
-  const skills = page
-    .getByRole("region", { name: "Habilidades" })
-    .getByRole("listitem");
-  for (const name of ["Next.js", "Framer"]) {
-    await expect(skills.filter({ hasText: name })).toContainText("Aprendiendo");
-  }
-  await expect(skills.filter({ hasText: "Figma" })).not.toContainText(
-    "Aprendiendo",
-  );
 });
 
 test("hero tiles can be dragged", async ({ page, isMobile }) => {

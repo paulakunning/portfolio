@@ -67,10 +67,6 @@ export const es = {
     title: "Experiencia",
     present: "Actualidad",
   },
-  skills: {
-    title: "Habilidades",
-    learning: "Aprendiendo",
-  },
   about: {
     title: "Hola, soy Paula",
     paragraphs: [
@@ -79,6 +75,8 @@ export const es = {
       "Antes de dedicarme a esto fui contadora pública. Cambié de carrera en 2022, y esa mirada de negocio, ordenada y atenta al detalle sigue presente en cada proyecto.",
       "Hoy estoy profundizando en React, Next.js y TypeScript, y aprendiendo Framer. Vivo en Córdoba, Argentina, y trabajo en remoto en español e inglés.",
     ],
+    tools: "Herramientas que uso",
+    learning: "Ahora estoy aprendiendo {list}.",
   },
   testimonials: {
     title: "Testimonios",
