@@ -157,7 +157,7 @@ export function ContactForm({ locale, labels }: ContactFormProps) {
             name="reason"
             required
             defaultValue={values?.reason ?? ""}
-            className={`${inputClasses} appearance-none bg-[url("data:image/svg+xml,%3Csvg_xmlns='http://www.w3.org/2000/svg'_width='16'_height='16'_viewBox='0_0_24_24'_fill='none'_stroke='%232e2a28'_stroke-width='2'_stroke-linecap='round'_stroke-linejoin='round'%3E%3Cpath_d='M6_9l6_6_6-6'/%3E%3C/svg%3E")] bg-[right_1rem_center] bg-no-repeat pr-11`}
+            className={`${inputClasses} appearance-none bg-[url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%232e2a28'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M6%209l6%206%206-6'/%3E%3C/svg%3E")] bg-[right_1rem_center] bg-no-repeat pr-11`}
             {...errorProps("reason")}
           >
             <option value="" disabled>
