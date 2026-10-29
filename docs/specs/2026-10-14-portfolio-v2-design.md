@@ -477,7 +477,7 @@ Cada página tiene un único `h1`: en el home es el título del hero.
 - **Layout:** `Header` y `Footer`. El `Footer` absorbe el cierre, así que `ContactCta` se elimina.
 - **Home:** `Hero`, `FeaturedProjects` (arma el reel), `About`, `ExperienceList` y `Testimonials`. `About` absorbe las herramientas, así que `SkillsGrid` se elimina.
 - **Proyectos:** `PageHero` (el encabezado con puntos), `ProjectCard`, `ProjectFacts`, `ProjectGallery` y `ProjectNav`.
-- **Compartido:** `ButtonLink`, con las variantes `primary` (sólido), `secondary` (outline) y `light` (para el footer).
+- **Compartido:** `ButtonLink`, con las variantes `primary` (sólido), `secondary` (outline, con fondo `background` para que no se vean los puntos del hero; en el prototipo es transparente, pedido de Paula) y `light` (para el footer).
 
 ### Pestañas — `ProjectFilter`
 

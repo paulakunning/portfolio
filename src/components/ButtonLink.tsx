@@ -4,8 +4,9 @@ import type { ReactNode } from "react";
 // Every variant keeps the 1px border (transparent unless outlined), like the prototype.
 const variants = {
   primary: "border-transparent bg-primary text-white hover:bg-primary-hover",
+  // Solid, unlike the prototype's see-through outline: the hero's dot grid showed through. The hover is the same 4% tint, mixed in.
   secondary:
-    "border-foreground/28 hover:border-foreground hover:bg-foreground/4",
+    "border-foreground/28 bg-background hover:border-foreground hover:bg-[color-mix(in_oklab,var(--color-foreground)_4%,var(--color-background))]",
   light: "border-transparent bg-background text-primary-deep hover:bg-white",
 } as const;
 
