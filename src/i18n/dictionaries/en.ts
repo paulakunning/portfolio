@@ -56,7 +56,7 @@ export const en: Dictionary = {
   },
   featured: {
     title: "Featured projects",
-    subtitle: "Web design, WordPress development and branding.",
+    subtitle: "Web Design, WordPress Development and Branding.",
     viewAll: "View all projects",
     viewProject: "View project",
     seeAll: "See all {count} projects",

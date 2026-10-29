@@ -306,7 +306,7 @@ Paula confirma el permiso de cada persona antes de publicar.
 | Header | Sobre mí | About |
 | Hero, botón | Ver proyectos | See projects |
 | Hero, aviso | Podés mover las herramientas | You can move the tools around |
-| Reel, bajada | Diseño Web, Desarrollo WordPress y Branding. | Web design, WordPress development and branding. |
+| Reel, bajada | Diseño Web, Desarrollo WordPress y Branding. | Web Design, WordPress Development and Branding. |
 | Reel, tarjeta | Ver proyecto | View project |
 | Reel, tarjeta final | Ver los {count} proyectos | See all {count} projects |
 | Reel, botones del carrusel | Proyecto anterior / Proyecto siguiente | Previous project / Next project |
