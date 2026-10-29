@@ -93,7 +93,7 @@ export default async function ProjectPage({
         </div>
       </PageHero>
 
-      <Reveal className="content-width mt-4">
+      <Reveal className="content-width mt-4 motion-safe:animate-enter">
         <Image
           src={project.cover.src}
           alt={project.cover.alt[locale]}

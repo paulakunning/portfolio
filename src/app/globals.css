@@ -26,11 +26,21 @@
   /* Form errors; not part of the brand palette. 6.24:1 on background. */
   --color-error: #a3332b;
   --animate-drop: drop 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+  /* Page entrance. It starts at 1% opacity, not 0: Chrome treats a paint at 0 as not shown, so the page's
+     largest element (LCP) would only count once the fade ends. Keep that element undelayed too. */
+  --animate-enter: enter 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
 
   @keyframes drop {
     from {
       opacity: 0;
       transform: translateY(-14px) scale(0.9);
+    }
+  }
+
+  @keyframes enter {
+    from {
+      opacity: 0.01;
+      translate: 0 1rem;
     }
   }
 }

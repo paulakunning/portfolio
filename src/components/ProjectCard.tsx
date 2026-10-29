@@ -14,12 +14,16 @@ type ProjectCardProps = {
   index: number;
 };
 
-/** ProjectFilter sets data-reveal on the article; the hidden look only applies with motion allowed. */
+/**
+ * ProjectFilter sets data-reveal on the article; the hidden look only applies with motion allowed.
+ * The first row enters with the page instead.
+ */
 export function ProjectCard({ project, labels, index }: ProjectCardProps) {
+  const delay = index % 2 === 1 ? "120ms" : undefined;
   return (
     <article
-      className="group relative motion-safe:[transition:opacity_0.9s_ease-out,translate_0.9s_cubic-bezier(0.2,0.8,0.2,1)] motion-safe:not-print:data-[reveal=hidden]:translate-y-10 motion-safe:not-print:data-[reveal=hidden]:opacity-0"
-      style={{ transitionDelay: index % 2 === 1 ? "120ms" : undefined }}
+      className={`group relative motion-safe:[transition:opacity_0.9s_ease-out,translate_0.9s_cubic-bezier(0.2,0.8,0.2,1)] motion-safe:not-print:data-[reveal=hidden]:translate-y-10 motion-safe:not-print:data-[reveal=hidden]:opacity-0 ${index < 2 ? "motion-safe:animate-enter" : ""}`}
+      style={{ transitionDelay: delay, animationDelay: delay }}
     >
       <div
         className={`aspect-[4/3] overflow-hidden rounded-3xl ${tints[index % tints.length]}`}

@@ -26,7 +26,7 @@ export default async function ContactPage() {
 
   return (
     <section className="content-width grid gap-x-[clamp(2rem,6vw,6rem)] gap-y-12 pt-30 pb-28 md:grid-cols-[5fr_7fr] md:pt-36">
-      <div>
+      <div className="motion-safe:animate-enter">
         <Image
           src={portraitPhoto.src}
           alt={portraitPhoto.alt[locale]}
@@ -50,7 +50,7 @@ export default async function ContactPage() {
           {hero.cv}
         </ButtonLink>
       </div>
-      <Reveal className="self-start rounded-[2rem] border border-line bg-surface p-[clamp(1.5rem,4vw,2.75rem)] shadow-[0_24px_50px_-36px_rgb(46_42_40/0.4)]">
+      <Reveal className="self-start rounded-[2rem] border border-line bg-surface p-[clamp(1.5rem,4vw,2.75rem)] shadow-[0_24px_50px_-36px_rgb(46_42_40/0.4)] motion-safe:animate-enter motion-safe:[animation-delay:150ms]">
         <ContactForm locale={locale} labels={contact.form} />
       </Reveal>
     </section>

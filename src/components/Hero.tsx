@@ -17,14 +17,14 @@ export async function Hero() {
       <div className="relative z-1 max-w-[44rem] text-center">
         <h1
           id="hero-title"
-          className="text-[clamp(2.6rem,6.4vw,5.5rem)] leading-[1.02] tracking-[-0.035em] text-balance"
+          className="text-[clamp(2.6rem,6.4vw,5.5rem)] leading-[1.02] tracking-[-0.035em] text-balance motion-safe:animate-enter"
         >
           {hero.title}
         </h1>
-        <p className="mx-auto mt-6 max-w-[33rem] text-[clamp(1.0625rem,1.5vw,1.25rem)] text-muted">
+        <p className="mx-auto mt-6 max-w-[33rem] text-[clamp(1.0625rem,1.5vw,1.25rem)] text-muted motion-safe:animate-enter">
           {hero.subtitle}
         </p>
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
+        <div className="mt-8 flex flex-wrap justify-center gap-3 motion-safe:animate-enter motion-safe:[animation-delay:150ms]">
           <ButtonLink href="#proyectos">{hero.seeProjects}</ButtonLink>
           <ButtonLink
             href={cvPaths[locale]}
@@ -34,7 +34,7 @@ export async function Hero() {
             {hero.cv}
           </ButtonLink>
         </div>
-        <p className="mt-7 text-sm leading-[1.6] text-muted before:mr-[0.6rem] before:inline-block before:size-2 before:rounded-full before:bg-[#4f8a5b] before:align-[0.1em] before:shadow-[0_0_0_4px_rgb(79_138_91/0.16)] before:content-['']">
+        <p className="mt-7 text-sm leading-[1.6] text-muted before:mr-[0.6rem] before:inline-block before:size-2 before:rounded-full before:bg-[#4f8a5b] before:align-[0.1em] before:shadow-[0_0_0_4px_rgb(79_138_91/0.16)] before:content-[''] motion-safe:animate-enter motion-safe:[animation-delay:300ms]">
           {hero.availability}
         </p>
       </div>
