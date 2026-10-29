@@ -125,7 +125,7 @@ export const es = {
       submit: "Enviar mensaje",
       sending: "Enviando…",
       successTitle: "¡Gracias por escribirme!",
-      successBody: "Recibí tu mensaje y te respondo a la brevedad.",
+      successBody: "Recibí tu mensaje y voy a responderte a la brevedad.",
       error: "No pude enviar tu mensaje. Probá de nuevo o escribime a {email}.",
       errors: {
         required: "Completá este campo.",

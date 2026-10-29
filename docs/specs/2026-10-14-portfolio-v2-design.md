@@ -46,7 +46,7 @@ Lo construido en los PRs #1 a #7 sigue igual: rutas e idiomas, contenido, formul
 ### Fuera de alcance (por ahora)
 
 - Recordar dónde quedaron las herramientas arrastradas: vuelven a su lugar al recargar.
-- Animaciones además de las de la sección 5 (lienzo, reel y aparición de proyectos).
+- Animaciones además de las de la sección 5 (lienzo, reel, entrada de cada página y aparición de bloques).
 - Sección "Proyectos de código".
 - Abrir los proyectos en pop-up con URL propia (intercepting routes). Se puede sumar después sobre las páginas de detalle sin rehacerlas.
 - Blog, CMS, analytics, captcha, guardar mensajes en base de datos, Storybook, hooks de pre-commit, tests visuales por capturas.
@@ -345,6 +345,11 @@ Paula confirma el permiso de cada persona antes de publicar.
 - Los encabezados de proyectos y del detalle llevan de fondo la grilla de puntos del hero, que se desvanece hacia abajo.
 - Ningún link interno anima el scroll (`scroll-behavior` queda en `auto`). Con scroll suave, ir a "Sobre mí" o "Volver arriba" recorría todo el reel.
 
+**Movimiento** (pedido de Paula, no está en el prototipo):
+- **Entrada:** al cargar, lo de arriba de cada página sube 1rem y aparece en 0.8s (`animate-enter`). Arranca en 1 % de opacidad y no en 0: Chrome no cuenta como pintado algo en 0, así que el LCP recién llegaría al terminar el fundido. El elemento LCP de cada página entra sin demora; lo que viene después (botones, disponibilidad, formulario) se demora 150 a 300ms.
+- **Aparición:** el resto de los bloques aparecen la primera vez que entran en pantalla, con el mismo movimiento que las tarjetas de `/proyectos` (`Reveal`). Los que ya se ven al cargar, o que quedaron arriba, no se esconden.
+- Sin JavaScript se ve todo, y con movimiento reducido no hay animación.
+
 **Link para saltar al contenido:** "Ir al contenido" / "Skip to content", visible al recibir foco.
 
 **Header:** una píldora flotante, fija arriba y centrada, con fondo `background` al 90 % y desenfoque (el prototipo usa 80 %, pero sobre fotos el texto no llega a AA al hacer scroll).
@@ -386,7 +391,7 @@ Cada página tiene un único `h1`: en el home es el título del hero.
    - Al cargar, las fichas entran con una caída corta, escalonada cada 60ms.
    - Abajo, el aviso "Podés mover las herramientas" se oculta después del primer arrastre.
    - Las fichas son decorativas (`aria-hidden`), porque las herramientas también están como texto en Sobre mí.
-   - **Mobile:** 8 fichas, en una banda arriba y otra abajo del texto; sin foto.
+   - **Mobile:** 8 fichas sin foto, cuatro arriba y cuatro abajo del texto, sueltas y no en filas (el prototipo las alinea en dos bandas; pedido de Paula).
 2. **Proyectos destacados, el reel** (`id="proyectos"`):
    - **Contenido:** título "Proyectos destacados", bajada, "Ver todos los proyectos", una tarjeta por cada proyecto `featured` y una tarjeta final `primary` con "Ver los 14 proyectos →".
    - **Cada tarjeta:** imagen 16:10, nombre (`h3`), rol y año, resumen y botón "Ver proyecto".
@@ -436,7 +441,7 @@ Cada página tiene un único `h1`: en el home es el título del hero.
 ### Contacto — `/contacto`
 
 - Dos columnas (5/12 y 7/12).
-- A la izquierda: el retrato de Paula (9rem, cuadrado, oculto en mobile), el `h1`, el texto y "Ver mi CV" (outline).
+- A la izquierda: la foto de Paula del hero (9rem, cuadrada, oculta en mobile), el `h1`, el texto y "Ver mi CV" (outline).
 - A la derecha: el formulario (sección 7) en una tarjeta `surface` con borde y sombra suave.
 - Todo entra en una pantalla de 1280×800.
 - El footer va sin título ni línea de disponibilidad.
@@ -740,9 +745,9 @@ Se deja en `~/Dev/portfolio-assets`. La implementación no se bloquea por esto: 
 - [ ] Logo en SVG y favicon.
 - [x] Fotos:
   - Sobre mí: Paula trabajando;
-  - contacto: el retrato;
   - hero: `paula-perfil.jpg`, que hoy está en el prototipo;
-  - la foto del espejo queda sin uso.
+  - contacto: la misma del hero;
+  - el retrato y la foto del espejo quedan sin uso.
 
 **Por cada proyecto:**
 - [ ] Imagen de tarjeta y 2 a 4 imágenes para el detalle.

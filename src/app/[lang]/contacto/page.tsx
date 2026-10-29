@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ButtonLink } from "@/components/ButtonLink";
 import { ContactForm } from "@/components/ContactForm";
+import { Reveal } from "@/components/Reveal";
 import { portraitPhoto } from "@/content/about";
 import { cvPaths } from "@/content/site";
 import { getDictionary } from "@/i18n/get-dictionary";
@@ -25,14 +26,14 @@ export default async function ContactPage() {
 
   return (
     <section className="content-width grid gap-x-[clamp(2rem,6vw,6rem)] gap-y-12 pt-30 pb-28 md:grid-cols-[5fr_7fr] md:pt-36">
-      <div>
+      <div className="motion-safe:animate-enter">
         <Image
           src={portraitPhoto.src}
           alt={portraitPhoto.alt[locale]}
           sizes="9rem"
           placeholder="blur"
           fetchPriority="high"
-          className="mb-8 size-36 rounded-3xl object-cover object-[50%_30%] max-md:hidden"
+          className="mb-8 size-36 rounded-3xl object-cover max-md:hidden"
         />
         <h1 className="text-[clamp(2.75rem,5.4vw,4.5rem)] tracking-[-0.035em]">
           {contact.title}
@@ -49,9 +50,9 @@ export default async function ContactPage() {
           {hero.cv}
         </ButtonLink>
       </div>
-      <div className="self-start rounded-[2rem] border border-line bg-surface p-[clamp(1.5rem,4vw,2.75rem)] shadow-[0_24px_50px_-36px_rgb(46_42_40/0.4)]">
+      <Reveal className="self-start rounded-[2rem] border border-line bg-surface p-[clamp(1.5rem,4vw,2.75rem)] shadow-[0_24px_50px_-36px_rgb(46_42_40/0.4)] motion-safe:animate-enter motion-safe:[animation-delay:150ms]">
         <ContactForm locale={locale} labels={contact.form} />
-      </div>
+      </Reveal>
     </section>
   );
 }

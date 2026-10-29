@@ -43,9 +43,16 @@ test("the experience title stops beside the last job", async ({
       behavior: "instant",
     }),
   );
-  const title = await section.getByRole("heading", { level: 2 }).boundingBox();
-  const lastJob = await section.locator("[data-job]").last().boundingBox();
-  expect(Math.abs(title!.y - lastJob!.y)).toBeLessThan(2);
+  // poll: the title may still be rising in from the scroll reveal
+  await expect
+    .poll(async () => {
+      const title = await section
+        .getByRole("heading", { level: 2 })
+        .boundingBox();
+      const lastJob = await section.locator("[data-job]").last().boundingBox();
+      return Math.abs(title!.y - lastJob!.y);
+    })
+    .toBeLessThan(2);
 });
 
 test("links the CV for each language", async ({ page, request }) => {
@@ -277,4 +284,71 @@ test("only the tiles take over touch gestures", async ({ page, isMobile }) => {
       .evaluate((el) => getComputedStyle(el).touchAction);
   expect(await touchAction("[data-tile]")).toBe("none");
   expect(await touchAction("#hero-title")).not.toBe("none");
+});
+
+test.describe("mobile hero tiles", () => {
+  test.skip(({ isMobile }) => !isMobile, "mobile layout");
+
+  for (const viewport of [
+    { width: 360, height: 640 },
+    { width: 390, height: 844 },
+  ]) {
+    test(`stay scattered and clear of the text at ${viewport.width}px`, async ({
+      page,
+    }) => {
+      await page.setViewportSize(viewport);
+      // No drop-in animation, so the boxes are final.
+      await page.emulateMedia({ reducedMotion: "reduce" });
+      await page.goto("/");
+      const text = (await page
+        .locator("#hero-title")
+        .locator("..")
+        .boundingBox())!;
+      const header = (await page.locator("header").boundingBox())!;
+      const hint = (await page
+        .getByText("Podés mover las herramientas")
+        .boundingBox())!;
+      const tiles = await page.locator("[data-tile]:visible").all();
+      expect(tiles).toHaveLength(8);
+      const tops = new Set<number>();
+      for (const tile of tiles) {
+        const box = (await tile.boundingBox())!;
+        tops.add(Math.round(box.y));
+        const bottom = box.y + box.height;
+        if (bottom < text.y) {
+          expect(box.y).toBeGreaterThan(header.y + header.height);
+        } else {
+          expect(box.y).toBeGreaterThan(text.y + text.height);
+          expect(bottom).toBeLessThan(hint.y);
+        }
+      }
+      // Not lined up in rows.
+      expect(tops.size).toBeGreaterThan(4);
+    });
+  }
+});
+
+test("blocks below the fold fade in when scrolled into view", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const photo = page.locator("#sobre-mi .reveal").first();
+  const opacity = () => photo.evaluate((el) => getComputedStyle(el).opacity);
+  await expect(photo).toHaveAttribute("data-reveal", "hidden");
+  await expect.poll(opacity).toBe("0");
+  await photo.scrollIntoViewIfNeeded();
+  await expect(photo).toHaveAttribute("data-reveal", "shown");
+  await expect.poll(opacity).toBe("1");
+});
+
+test.describe("with reduced motion", () => {
+  test.use({ reducedMotion: "reduce" });
+  test("blocks are never hidden", async ({ page }) => {
+    await page.goto("/");
+    const footer = page.locator(".reveal:has(footer)");
+    await expect(footer).toHaveAttribute("data-reveal", "hidden");
+    expect(await footer.evaluate((el) => getComputedStyle(el).opacity)).toBe(
+      "1",
+    );
+  });
 });

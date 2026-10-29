@@ -1,4 +1,4 @@
-import portrait from "@/assets/about/1.jpg";
+import portrait from "@/assets/about/profile.jpg";
 import working from "@/assets/about/2.jpg";
 import type { ProjectImage } from "./types";
 
@@ -13,7 +13,7 @@ export const workingPhoto: ProjectImage = {
 export const portraitPhoto: ProjectImage = {
   src: portrait,
   alt: {
-    es: "Paula sonriendo, con el mentón apoyado en la mano frente a su notebook",
-    en: "Paula smiling, chin resting on her hand in front of her laptop",
+    es: "Paula sonriendo, con la mejilla apoyada en la mano, frente a su notebook y una taza",
+    en: "Paula smiling, cheek resting on her hand, in front of her laptop and a mug",
   },
 };
