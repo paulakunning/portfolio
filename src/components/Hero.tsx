@@ -12,7 +12,7 @@ export async function Hero() {
   return (
     <section
       aria-labelledby="hero-title"
-      className="dot-grid relative grid min-h-svh place-items-center overflow-hidden px-gutter pt-28 pb-24 after:h-[35%] max-md:pt-40 max-md:pb-36"
+      className="dot-grid relative grid min-h-svh place-items-center overflow-hidden px-gutter pt-28 pb-24 after:h-[35%] max-md:pt-44 max-md:pb-40"
     >
       <div className="relative z-1 max-w-[44rem] text-center">
         <h1
