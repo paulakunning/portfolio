@@ -44,19 +44,19 @@ export const es = {
     copyright: "© {year} Paula Kunning. Córdoba, Argentina.",
   },
   hero: {
-    title: "Diseño digital, del concepto a la pantalla.",
+    title: "Diseño Web + Desarrollo",
     seeProjects: "Ver proyectos",
     cv: "Ver mi CV",
     cvNotice: "(PDF, se abre en una pestaña nueva)",
     subtitle:
-      "Creo sitios web que conectan una buena idea con un diseño cuidado y una experiencia intuitiva. También puedo llevar esos diseños a la web, combinando criterio visual y conocimientos de desarrollo.",
+      "Creo páginas web en Figma y puedo hacerlas realidad con código o herramientas no-code.",
     availability:
-      "Disponible para trabajo remoto de tiempo completo y proyectos freelance",
+      "Disponible para trabajo remoto full-time y proyectos freelance",
     dragHint: "Podés mover las herramientas",
   },
   featured: {
     title: "Proyectos destacados",
-    subtitle: "Diseño web, desarrollo WordPress y branding.",
+    subtitle: "Diseño Web, Desarrollo WordPress y Branding.",
     viewAll: "Ver todos los proyectos",
     viewProject: "Ver proyecto",
     seeAll: "Ver los {count} proyectos",
@@ -70,8 +70,9 @@ export const es = {
   about: {
     title: "Hola, soy Paula",
     paragraphs: [
-      "Diseño sitios web en Figma y los llevo a la realidad en WordPress y código, así que lo que se diseña es lo que se publica.",
-      "Tengo más de 3 años de experiencia: trabajé 2 años y medio en una agencia de marketing digital desarrollando sitios corporativos, y hoy tomo proyectos freelance que combinan diseño y desarrollo.",
+      "Diseño páginas web en Figma y las hago realidad con WordPress o código.",
+      "Tengo más de 3 años de experiencia trabajando en desarrollo web para una agencia de marketing digital y en proyectos freelance. Trabajé en sitios corporativos y tiendas online, y también diseño identidades visuales y piezas gráficas que complementan mi trabajo web.",
+      "Actualmente, estoy abierta a nuevas oportunidades laborales y proyectos freelance, especialmente en diseño y desarrollo web.",
     ],
     tools: "Herramientas que uso",
     learning: "Ahora estoy aprendiendo {list}.",
@@ -105,7 +106,7 @@ export const es = {
   cta: {
     title: "¿Tenés una idea en mente? Me encantaría hacerla realidad",
     availability:
-      "Busco un puesto remoto como diseñadora web o desarrolladora WordPress / front-end, y también tomo proyectos freelance.",
+      "Busco un puesto remoto como Diseñadora Web o Desarrolladora WordPress / Front-End, y también tomo proyectos freelance.",
   },
   contact: {
     title: "¿Tenés un proyecto en mente?",

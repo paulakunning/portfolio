@@ -45,18 +45,18 @@ export const en: Dictionary = {
     copyright: "© {year} Paula Kunning. Córdoba, Argentina.",
   },
   hero: {
-    title: "Digital design, from concept to screen.",
+    title: "Web Design + Development",
     seeProjects: "See projects",
     cv: "View my resume",
     cvNotice: "(PDF, opens in a new tab)",
     subtitle:
-      "I create websites that connect a good idea with thoughtful design and an intuitive experience. I can also bring those designs to the web, combining a visual eye with development skills.",
+      "I create websites in Figma and can bring them to life with code or no-code tools.",
     availability: "Available for full-time remote work and freelance projects",
     dragHint: "You can move the tools around",
   },
   featured: {
     title: "Featured projects",
-    subtitle: "Web design, WordPress development and branding.",
+    subtitle: "Web Design, WordPress Development and Branding.",
     viewAll: "View all projects",
     viewProject: "View project",
     seeAll: "See all {count} projects",
@@ -70,8 +70,9 @@ export const en: Dictionary = {
   about: {
     title: "Hi, I'm Paula",
     paragraphs: [
-      "I design websites in Figma and build them in WordPress and code, so what gets designed is what ships.",
-      "I have 3+ years of experience: I spent 2.5 years at a digital marketing agency building corporate sites, and I now take freelance projects that combine design and development.",
+      "I design websites in Figma and bring them to life with WordPress or code.",
+      "I have over 3 years of experience working in web development, both at a digital marketing agency and on freelance projects. I've worked on corporate websites and online stores, and I also design brand identities and graphic assets that complement my web design work.",
+      "Currently, I'm open to new job opportunities and freelance projects, especially in web design and development.",
     ],
     tools: "Tools I use",
     learning: "Currently learning {list}.",
@@ -105,7 +106,7 @@ export const en: Dictionary = {
   cta: {
     title: "Have an idea in mind? I'd love to bring it to life",
     availability:
-      "I'm looking for a remote role as a web designer or WordPress / front-end developer, and I also take on freelance projects.",
+      "I'm looking for a remote role as a Web Designer or WordPress / Front-End Developer, and I also take on freelance projects.",
   },
   contact: {
     title: "Have a project in mind?",

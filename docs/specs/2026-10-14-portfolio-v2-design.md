@@ -267,28 +267,30 @@ Paula confirma el permiso de cada persona antes de publicar.
 
 **Hero:**
 - **Título:**
-  - ES: "Diseño digital, del concepto a la pantalla."
-  - EN: "Digital design, from concept to screen."
+  - ES: "Diseño Web + Desarrollo"
+  - EN: "Web Design + Development"
 - **Subtítulo:**
-  - ES: "Creo sitios web que conectan una buena idea con un diseño cuidado y una experiencia intuitiva. También puedo llevar esos diseños a la web, combinando criterio visual y conocimientos de desarrollo."
-  - EN: "I create websites that connect a good idea with thoughtful design and an intuitive experience. I can also bring those designs to the web, combining a visual eye with development skills."
+  - ES: "Creo páginas web en Figma y puedo hacerlas realidad con código o herramientas no-code."
+  - EN: "I create websites in Figma and can bring them to life with code or no-code tools."
 - El rol ("Diseñadora Web y Desarrolladora WordPress / Front-End") sigue en el título de la página, así que se mantiene para SEO.
 - **Disponibilidad:**
-  - ES: "Disponible para trabajo remoto de tiempo completo y proyectos freelance"
+  - ES: "Disponible para trabajo remoto full-time y proyectos freelance"
   - EN: "Available for full-time remote work and freelance projects"
 
 **Sobre mí:** el título es "Hola, soy Paula" / "Hi, I'm Paula". Los párrafos van textuales:
 
 - **ES:**
-  1. "Diseño sitios web en Figma y los llevo a la realidad en WordPress y código, así que lo que se diseña es lo que se publica."
-  2. "Tengo más de 3 años de experiencia: trabajé 2 años y medio en una agencia de marketing digital desarrollando sitios corporativos, y hoy tomo proyectos freelance que combinan diseño y desarrollo."
+  1. "Diseño páginas web en Figma y las hago realidad con WordPress o código."
+  2. "Tengo más de 3 años de experiencia trabajando en desarrollo web para una agencia de marketing digital y en proyectos freelance. Trabajé en sitios corporativos y tiendas online, y también diseño identidades visuales y piezas gráficas que complementan mi trabajo web."
+  3. "Actualmente, estoy abierta a nuevas oportunidades laborales y proyectos freelance, especialmente en diseño y desarrollo web."
 - **EN:**
-  1. "I design websites in Figma and build them in WordPress and code, so what gets designed is what ships."
-  2. "I have 3+ years of experience: I spent 2.5 years at a digital marketing agency building corporate sites, and I now take freelance projects that combine design and development."
+  1. "I design websites in Figma and bring them to life with WordPress or code."
+  2. "I have over 3 years of experience working in web development, both at a digital marketing agency and on freelance projects. I've worked on corporate websites and online stores, and I also design brand identities and graphic assets that complement my web design work."
+  3. "Currently, I'm open to new job opportunities and freelance projects, especially in web design and development."
 
 **Cierre (va en el footer):**
 - **Título:** "¿Tenés una idea en mente? Me encantaría hacerla realidad"
-- **Línea de disponibilidad:** "Busco un puesto remoto como diseñadora web o desarrolladora WordPress / front-end, y también tomo proyectos freelance."
+- **Línea de disponibilidad:** "Busco un puesto remoto como Diseñadora Web o Desarrolladora WordPress / Front-End, y también tomo proyectos freelance."
 - La versión en inglés la traduce Claude.
 
 **Contacto:**
@@ -304,7 +306,7 @@ Paula confirma el permiso de cada persona antes de publicar.
 | Header | Sobre mí | About |
 | Hero, botón | Ver proyectos | See projects |
 | Hero, aviso | Podés mover las herramientas | You can move the tools around |
-| Reel, bajada | Diseño web, desarrollo WordPress y branding. | Web design, WordPress development and branding. |
+| Reel, bajada | Diseño Web, Desarrollo WordPress y Branding. | Web Design, WordPress Development and Branding. |
 | Reel, tarjeta | Ver proyecto | View project |
 | Reel, tarjeta final | Ver los {count} proyectos | See all {count} projects |
 | Reel, botones del carrusel | Proyecto anterior / Proyecto siguiente | Previous project / Next project |
@@ -380,7 +382,7 @@ Cada página tiene un único `h1`: en el home es el título del hero.
 1. **Hero, un lienzo tipo Figma:**
    - Ocupa toda la pantalla, con fondo de grilla de puntos que se desvanece abajo.
    - Al centro, en este orden:
-     - el título (`h1`, tracking −0.035em, con `text-wrap: balance` para que corte "Diseño digital, / del concepto / a la pantalla.") y el subtítulo;
+     - el título (`h1`, tracking −0.035em, con `text-wrap: balance` para que, si corta, las líneas queden parejas) y el subtítulo;
      - "Ver proyectos" (sólido, baja al reel) y "Ver mi CV" (outline, abre el PDF del idioma en una pestaña nueva y lo indica en un texto oculto para lectores de pantalla);
      - la línea de disponibilidad, con un punto verde.
    - Alrededor hay 11 fichas con íconos de herramientas, sobre fondos `lilac-tint`, `rose-tint` o `surface`, y una ficha más grande con la foto de Paula, rotulada "Paula.jpg".
@@ -475,7 +477,7 @@ Cada página tiene un único `h1`: en el home es el título del hero.
 - **Layout:** `Header` y `Footer`. El `Footer` absorbe el cierre, así que `ContactCta` se elimina.
 - **Home:** `Hero`, `FeaturedProjects` (arma el reel), `About`, `ExperienceList` y `Testimonials`. `About` absorbe las herramientas, así que `SkillsGrid` se elimina.
 - **Proyectos:** `PageHero` (el encabezado con puntos), `ProjectCard`, `ProjectFacts`, `ProjectGallery` y `ProjectNav`.
-- **Compartido:** `ButtonLink`, con las variantes `primary` (sólido), `secondary` (outline) y `light` (para el footer).
+- **Compartido:** `ButtonLink`, con las variantes `primary` (sólido), `secondary` (outline, con fondo `background` para que no se vean los puntos del hero; en el prototipo es transparente, pedido de Paula) y `light` (para el footer).
 
 ### Pestañas — `ProjectFilter`
 
