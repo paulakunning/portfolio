@@ -6,10 +6,8 @@ const notFoundPages = ["/no-existe", "/en/no-existe"];
 
 for (const path of [...pages, ...notFoundPages]) {
   test(`has no axe violations: ${path}`, async ({ page }) => {
-    // axe scans the settled page; the reveal's hidden/fading cards are transparent on purpose and are not scanned.
-    if (path.endsWith("/proyectos")) {
-      await page.emulateMedia({ reducedMotion: "reduce" });
-    }
+    // axe scans the settled page; the reveal's hidden/fading blocks are transparent on purpose and are not scanned.
+    await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto(path);
     // The dot-grid makes axe report contrast as "incomplete" (background gradient); the dots don't change it, so drop them.
     await page.addStyleTag({

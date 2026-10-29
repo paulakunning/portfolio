@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ButtonLink } from "@/components/ButtonLink";
 import { ContactForm } from "@/components/ContactForm";
+import { Reveal } from "@/components/Reveal";
 import { portraitPhoto } from "@/content/about";
 import { cvPaths } from "@/content/site";
 import { getDictionary } from "@/i18n/get-dictionary";
@@ -49,9 +50,9 @@ export default async function ContactPage() {
           {hero.cv}
         </ButtonLink>
       </div>
-      <div className="self-start rounded-[2rem] border border-line bg-surface p-[clamp(1.5rem,4vw,2.75rem)] shadow-[0_24px_50px_-36px_rgb(46_42_40/0.4)]">
+      <Reveal className="self-start rounded-[2rem] border border-line bg-surface p-[clamp(1.5rem,4vw,2.75rem)] shadow-[0_24px_50px_-36px_rgb(46_42_40/0.4)]">
         <ContactForm locale={locale} labels={contact.form} />
-      </div>
+      </Reveal>
     </section>
   );
 }

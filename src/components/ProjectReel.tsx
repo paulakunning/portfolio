@@ -9,6 +9,7 @@ import {
   reelProgress,
 } from "@/lib/reel";
 import { ChevronLeftIcon, ChevronRightIcon } from "./icons";
+import { Reveal } from "./Reveal";
 
 const pinQuery =
   "(min-width: 900px) and (prefers-reduced-motion: no-preference)";
@@ -181,35 +182,37 @@ export function ProjectReel({ intro, children, labels }: ProjectReelProps) {
           data-reel-strip
           className="group-data-pinned:flex group-data-pinned:w-max group-data-pinned:items-center group-data-pinned:gap-[6vw] group-data-pinned:ps-edge group-data-pinned:pe-[8vw] group-data-pinned:pt-16 group-data-pinned:will-change-transform"
         >
-          <div className="mb-8 max-w-[calc(36rem+var(--spacing-edge))] ps-edge pe-gutter group-data-pinned:m-0 group-data-pinned:shrink-0 group-data-pinned:basis-[min(30rem,30vw)] group-data-pinned:p-0">
+          <Reveal className="mb-8 max-w-[calc(36rem+var(--spacing-edge))] ps-edge pe-gutter group-data-pinned:m-0 group-data-pinned:shrink-0 group-data-pinned:basis-[min(30rem,30vw)] group-data-pinned:p-0">
             {intro}
-          </div>
-          {/* relative keeps the sr-only spans inside the scroller */}
-          <ul
-            ref={listRef}
-            data-reel-list
-            className="relative flex snap-x snap-mandatory scroll-ps-edge scroll-pe-gutter [scrollbar-width:none] gap-4 overflow-x-auto ps-edge pe-gutter group-data-pinned:gap-[4vw] group-data-pinned:overflow-visible group-data-pinned:p-0 [&::-webkit-scrollbar]:hidden"
-          >
-            {children}
-          </ul>
-          <div className="mt-7 flex gap-2 ps-edge pe-gutter group-data-pinned:hidden">
-            <button
-              type="button"
-              aria-label={labels.previous}
-              onClick={() => scrollList(-1)}
-              className={roundButton}
+          </Reveal>
+          <Reveal>
+            {/* relative keeps the sr-only spans inside the scroller */}
+            <ul
+              ref={listRef}
+              data-reel-list
+              className="relative flex snap-x snap-mandatory scroll-ps-edge scroll-pe-gutter [scrollbar-width:none] gap-4 overflow-x-auto ps-edge pe-gutter group-data-pinned:gap-[4vw] group-data-pinned:overflow-visible group-data-pinned:p-0 [&::-webkit-scrollbar]:hidden"
             >
-              <ChevronLeftIcon width={18} height={18} strokeWidth={1.8} />
-            </button>
-            <button
-              type="button"
-              aria-label={labels.next}
-              onClick={() => scrollList(1)}
-              className={roundButton}
-            >
-              <ChevronRightIcon width={18} height={18} strokeWidth={1.8} />
-            </button>
-          </div>
+              {children}
+            </ul>
+            <div className="mt-7 flex gap-2 ps-edge pe-gutter group-data-pinned:hidden">
+              <button
+                type="button"
+                aria-label={labels.previous}
+                onClick={() => scrollList(-1)}
+                className={roundButton}
+              >
+                <ChevronLeftIcon width={18} height={18} strokeWidth={1.8} />
+              </button>
+              <button
+                type="button"
+                aria-label={labels.next}
+                onClick={() => scrollList(1)}
+                className={roundButton}
+              >
+                <ChevronRightIcon width={18} height={18} strokeWidth={1.8} />
+              </button>
+            </div>
+          </Reveal>
         </div>
         <div
           aria-hidden="true"

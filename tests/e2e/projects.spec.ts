@@ -142,7 +142,7 @@ test("no card stays hidden after switching tabs quickly", async ({ page }) => {
     await card.scrollIntoViewIfNeeded();
     await expect.poll(() => opacityOf(card)).toBe("1");
   }
-  await expect(page.locator('[data-reveal="hidden"]')).toHaveCount(0);
+  await expect(page.locator('article[data-reveal="hidden"]')).toHaveCount(0);
 });
 
 test("the reveal transitions the rise, not only the fade", async ({ page }) => {
@@ -191,6 +191,32 @@ test("going back keeps the cards already seen", async ({ page }) => {
       () => (window as unknown as { rehidden: number }).rehidden,
     ),
   ).toBe(0);
+});
+
+test("after a client navigation, blocks below the new fold start hidden", async ({
+  page,
+}) => {
+  await page.goto("/proyectos");
+  // From deep in the grid: Next resets the scroll only after the new page mounts.
+  const link = page.getByRole("link", { name: "Lucrecia Cornaglia" });
+  await link.scrollIntoViewIfNeeded();
+  await link.click();
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    "Lucrecia Cornaglia",
+  );
+  // The footer stays as it was: the layout keeps it across pages.
+  const belowFold = () =>
+    page.evaluate(() =>
+      [...document.querySelectorAll<HTMLElement>("main .reveal")]
+        .filter(
+          (el) =>
+            el.getClientRects().length > 0 &&
+            el.getBoundingClientRect().top >= window.innerHeight,
+        )
+        .map((el) => el.dataset.reveal ?? "unset"),
+    );
+  await expect.poll(belowFold).not.toContain("unset");
+  expect(new Set(await belowFold())).toEqual(new Set(["hidden"]));
 });
 
 test.describe("without JavaScript", () => {

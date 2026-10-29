@@ -9,6 +9,7 @@ import { PageHero } from "@/components/PageHero";
 import { ProjectFacts } from "@/components/ProjectFacts";
 import { ProjectGallery } from "@/components/ProjectGallery";
 import { ProjectNav } from "@/components/ProjectNav";
+import { Reveal } from "@/components/Reveal";
 import { projects } from "@/content/projects";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { localizePath } from "@/i18n/routing";
@@ -92,7 +93,7 @@ export default async function ProjectPage({
         </div>
       </PageHero>
 
-      <div className="content-width mt-4">
+      <Reveal className="content-width mt-4">
         <Image
           src={project.cover.src}
           alt={project.cover.alt[locale]}
@@ -102,28 +103,30 @@ export default async function ProjectPage({
           fetchPriority="high"
           className="aspect-video w-full rounded-[2rem] object-cover"
         />
-      </div>
+      </Reveal>
 
-      <section
-        aria-labelledby="body-title"
-        className="content-width grid gap-x-[clamp(2rem,6vw,6rem)] gap-y-5 pt-20 md:grid-cols-[4fr_8fr]"
-      >
-        <h2 id="body-title" className="text-[clamp(1.75rem,2.6vw,2.25rem)]">
-          {labels.detail.about}
-        </h2>
-        <div className="flex max-w-[40rem] flex-col gap-5 text-[1.1875rem]">
-          {project.body[locale].map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
-      </section>
+      <Reveal>
+        <section
+          aria-labelledby="body-title"
+          className="content-width grid gap-x-[clamp(2rem,6vw,6rem)] gap-y-5 pt-20 md:grid-cols-[4fr_8fr]"
+        >
+          <h2 id="body-title" className="text-[clamp(1.75rem,2.6vw,2.25rem)]">
+            {labels.detail.about}
+          </h2>
+          <div className="flex max-w-[40rem] flex-col gap-5 text-[1.1875rem]">
+            {project.body[locale].map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+        </section>
+      </Reveal>
 
       <ProjectGallery images={project.gallery} locale={locale} />
 
       {next && (
-        <div className="content-width pt-24 pb-28">
+        <Reveal className="content-width pt-24 pb-28">
           <ProjectNav locale={locale} next={next} labels={labels.detail} />
-        </div>
+        </Reveal>
       )}
     </>
   );

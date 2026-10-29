@@ -3,6 +3,7 @@ import { DM_Sans, Playfair_Display } from "next/font/google";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { Reveal } from "@/components/Reveal";
 import { isLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { SITE_URL } from "@/lib/metadata";
@@ -62,7 +63,9 @@ export default async function RootLayout({
         <main id="main" tabIndex={-1} className="outline-none">
           {children}
         </main>
-        <Footer />
+        <Reveal>
+          <Footer />
+        </Reveal>
       </body>
     </html>
   );
