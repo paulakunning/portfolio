@@ -32,7 +32,7 @@ export default async function ContactPage() {
           sizes="9rem"
           placeholder="blur"
           fetchPriority="high"
-          className="mb-8 size-36 rounded-3xl object-cover object-[50%_30%] max-md:hidden"
+          className="mb-8 size-36 rounded-3xl object-cover max-md:hidden"
         />
         <h1 className="text-[clamp(2.75rem,5.4vw,4.5rem)] tracking-[-0.035em]">
           {contact.title}
