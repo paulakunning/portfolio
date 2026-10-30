@@ -182,7 +182,7 @@ export function ProjectReel({ intro, children, labels }: ProjectReelProps) {
           data-reel-strip
           className="group-data-pinned:flex group-data-pinned:w-max group-data-pinned:items-center group-data-pinned:gap-[6vw] group-data-pinned:ps-edge group-data-pinned:pe-[8vw] group-data-pinned:pt-16 group-data-pinned:will-change-transform"
         >
-          <Reveal className="mb-8 max-w-[calc(36rem+var(--spacing-edge))] ps-edge pe-gutter group-data-pinned:m-0 group-data-pinned:shrink-0 group-data-pinned:basis-[min(30rem,30vw)] group-data-pinned:p-0">
+          <Reveal className="mb-8 max-w-[calc(36rem+var(--spacing-edge))] ps-edge pe-gutter group-data-pinned:m-0 group-data-pinned:w-[min(30rem,30vw)] group-data-pinned:shrink-0 group-data-pinned:p-0">
             {intro}
           </Reveal>
           <Reveal>

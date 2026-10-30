@@ -47,7 +47,7 @@ export async function FeaturedProjects() {
         <li
           key={card.slug}
           data-reel-card
-          className="shrink-0 basis-[min(85vw,34rem)] snap-start group-data-pinned:basis-[min(60vw,92vh)]"
+          className="w-[min(85vw,34rem)] shrink-0 snap-start group-data-pinned:w-[min(60vw,92vh)]"
         >
           {/* Clickable for the mouse ("Ver" cursor); keyboard and screen readers use Ver proyecto. */}
           <Link
@@ -82,7 +82,7 @@ export async function FeaturedProjects() {
           </div>
         </li>
       ))}
-      <li className="shrink-0 basis-[min(60vw,20rem)] snap-start group-data-pinned:basis-[min(24vw,22rem)] group-data-pinned:self-start">
+      <li className="w-[min(60vw,20rem)] shrink-0 snap-start group-data-pinned:w-[min(24vw,22rem)] group-data-pinned:self-start">
         <Link
           href={allProjects}
           data-cursor="dark"

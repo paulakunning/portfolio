@@ -89,6 +89,9 @@ test("shows the five featured projects and a link to all", async ({ page }) => {
 
 test.describe("desktop reel", () => {
   test.skip(({ isMobile }) => isMobile, "pinned only on desktop");
+  // Safari's Tab skips links unless "Press Tab to highlight each item" is on; Option+Tab always reaches them.
+  const tabKey = (browserName: string) =>
+    browserName === "webkit" ? "Alt+Tab" : "Tab";
 
   test("scrolling moves the strip sideways", async ({ page }) => {
     await page.goto("/");
@@ -103,6 +106,22 @@ test.describe("desktop reel", () => {
     await expect
       .poll(async () => (await card.boundingBox())!.x)
       .toBeLessThan(start - 300);
+  });
+
+  test("the strip travels until the last card is in view", async ({ page }) => {
+    await page.goto("/");
+    const reel = page.locator("#proyectos");
+    await expect(reel).toHaveAttribute("data-pinned");
+    // The last scroll position that keeps the reel pinned.
+    await reel.evaluate((el: HTMLElement) =>
+      scrollTo({
+        top: el.offsetTop + el.offsetHeight - innerHeight,
+        behavior: "instant",
+      }),
+    );
+    await expect(
+      page.getByRole("link", { name: "Ver los 14 proyectos" }),
+    ).toBeInViewport({ ratio: 1 });
   });
 
   test("cards fit between the header and the progress bar", async ({
@@ -127,11 +146,12 @@ test.describe("desktop reel", () => {
 
   test("tabbing to an off-screen card brings it into view", async ({
     page,
+    browserName,
   }) => {
     await page.goto("/");
     await expect(page.locator("#proyectos")).toHaveAttribute("data-pinned");
     await page.getByRole("link", { name: "Ver proyecto DéDé Digital" }).focus();
-    await page.keyboard.press("Tab");
+    await page.keyboard.press(tabKey(browserName));
     await expect(
       page.getByRole("link", { name: "Ver proyecto Lucrecia Cornaglia" }),
     ).toBeInViewport();
@@ -152,7 +172,10 @@ test.describe("desktop reel", () => {
     await expect(page).toHaveURL(/\/proyectos\/don-higinio$/);
   });
 
-  test("Enter on Ver proyectos leaves focus in the reel", async ({ page }) => {
+  test("Enter on Ver proyectos leaves focus in the reel", async ({
+    page,
+    browserName,
+  }) => {
     await page.goto("/");
     await expect(page.locator("#proyectos")).toHaveAttribute("data-pinned");
     const button = page.getByRole("link", {
@@ -161,7 +184,7 @@ test.describe("desktop reel", () => {
     });
     await button.focus();
     await button.press("Enter");
-    await page.keyboard.press("Tab");
+    await page.keyboard.press(tabKey(browserName));
     await expect(
       page.getByRole("link", { name: "Ver todos los proyectos" }),
     ).toBeFocused();
