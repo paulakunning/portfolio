@@ -57,25 +57,21 @@
   padding-inline: var(--spacing-gutter);
 }
 
-/* The element must be relative; its children need relative z-1 to sit above the fade. */
+/* The element must be relative; its children need relative z-1 to sit above the dots.
+   The dots fade out with a mask, not a paper overlay, so the cursor glow behind them still shows.
+   --dot-grid-fade: where the fade starts. */
 @utility dot-grid {
-  background-image: radial-gradient(
-    circle,
-    rgb(109 78 104 / 0.2) 1px,
-    transparent 1.6px
-  );
-  background-size: 24px 24px;
-
   &::after {
     content: "";
     position: absolute;
-    inset: auto 0 0;
-    height: 50%;
-    background: linear-gradient(
-      to bottom,
-      transparent,
-      var(--color-background)
+    inset: 0;
+    background-image: radial-gradient(
+      circle,
+      rgb(109 78 104 / 0.2) 1px,
+      transparent 1.6px
     );
+    background-size: 24px 24px;
+    mask-image: linear-gradient(black var(--dot-grid-fade, 50%), transparent);
     pointer-events: none;
   }
 }
@@ -115,5 +111,16 @@
   :focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 3px;
+  }
+
+  /* The Cursor component draws the arrow with a mouse; !important beats cursor-* utilities. */
+  [data-custom-cursor],
+  [data-custom-cursor] * {
+    cursor: none !important;
+  }
+
+  /* Fields keep the native caret, so people see where they type. */
+  [data-custom-cursor] :is(input, textarea, select) {
+    cursor: auto !important;
   }
 }
