@@ -28,6 +28,7 @@ export function ProjectNav({ locale, next, labels }: ProjectNavProps) {
       </div>
       <Link
         href={localizePath(locale, `/proyectos/${next.slug}`)}
+        data-cursor="view"
         className="group grid items-center gap-8 pt-8 md:grid-cols-[1fr_auto]"
       >
         <strong className="flex items-center gap-4 font-serif text-[clamp(2.5rem,6vw,5rem)] leading-none font-normal tracking-[-0.035em]">

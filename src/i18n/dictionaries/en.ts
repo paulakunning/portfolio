@@ -35,6 +35,7 @@ export const en: Dictionary = {
   },
   common: {
     newTab: "(opens in a new tab)",
+    view: "View",
   },
   footer: {
     copy: "Copy",

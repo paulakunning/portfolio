@@ -23,7 +23,10 @@ export async function Footer() {
   const year = await getYear();
 
   return (
-    <footer className="mx-[clamp(0.5rem,2vw,1.5rem)] mb-[clamp(0.5rem,2vw,1.5rem)] grid rounded-[2rem] bg-primary-deep px-5 pt-10 pb-6 text-background md:grid-cols-[1fr_auto] md:items-end md:gap-x-12 md:p-[clamp(2.5rem,6vw,5rem)] [&_:focus-visible]:outline-background">
+    <footer
+      data-cursor="dark"
+      className="mx-[clamp(0.5rem,2vw,1.5rem)] mb-[clamp(0.5rem,2vw,1.5rem)] grid rounded-[2rem] bg-primary-deep px-5 pt-10 pb-6 text-background md:grid-cols-[1fr_auto] md:items-end md:gap-x-12 md:p-[clamp(2.5rem,6vw,5rem)] [&_:focus-visible]:outline-background"
+    >
       <div className="min-w-0">
         <FooterCta
           locale={locale}

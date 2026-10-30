@@ -34,6 +34,7 @@ export const es = {
   },
   common: {
     newTab: "(se abre en una pestaña nueva)",
+    view: "Ver",
   },
   footer: {
     copy: "Copiar",

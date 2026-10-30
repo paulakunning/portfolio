@@ -22,6 +22,7 @@ export function ProjectCard({ project, labels, index }: ProjectCardProps) {
   const delay = index % 2 === 1 ? "120ms" : undefined;
   return (
     <article
+      data-cursor="view"
       className={`group relative motion-safe:[transition:opacity_0.9s_ease-out,translate_0.9s_cubic-bezier(0.2,0.8,0.2,1)] motion-safe:not-print:data-[reveal=hidden]:translate-y-10 motion-safe:not-print:data-[reveal=hidden]:opacity-0 ${index < 2 ? "motion-safe:animate-enter" : ""}`}
       style={{ transitionDelay: delay, animationDelay: delay }}
     >

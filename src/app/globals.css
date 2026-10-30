@@ -112,4 +112,15 @@
     outline: 2px solid var(--color-primary);
     outline-offset: 3px;
   }
+
+  /* The Cursor component draws the arrow with a mouse; !important beats cursor-* utilities. */
+  [data-custom-cursor],
+  [data-custom-cursor] * {
+    cursor: none !important;
+  }
+
+  /* Fields keep the native caret, so people see where they type. */
+  [data-custom-cursor] :is(input, textarea, select) {
+    cursor: auto !important;
+  }
 }

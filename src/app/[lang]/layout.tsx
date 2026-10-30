@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, Playfair_Display } from "next/font/google";
 import { notFound } from "next/navigation";
+import { Cursor } from "@/components/Cursor";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Reveal } from "@/components/Reveal";
@@ -48,7 +49,7 @@ export default async function RootLayout({
 }: LayoutProps<"/[lang]">) {
   const { lang } = await params;
   if (!isLocale(lang)) notFound();
-  const { nav } = getDictionary(lang);
+  const { nav, common } = getDictionary(lang);
 
   return (
     <html lang={lang} className={`${dmSans.variable} ${playfair.variable}`}>
@@ -66,6 +67,7 @@ export default async function RootLayout({
         <Reveal>
           <Footer />
         </Reveal>
+        <Cursor view={common.view} />
       </body>
     </html>
   );
