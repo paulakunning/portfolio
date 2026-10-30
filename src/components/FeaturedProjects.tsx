@@ -47,7 +47,7 @@ export async function FeaturedProjects() {
         <li
           key={card.slug}
           data-reel-card
-          className="shrink-0 basis-[min(85vw,34rem)] snap-start group-data-pinned:basis-[min(60vw,92vh)]"
+          className="w-[min(85vw,34rem)] shrink-0 snap-start group-data-pinned:w-[min(60vw,92vh)]"
         >
           <div
             data-reel-image
@@ -77,7 +77,7 @@ export async function FeaturedProjects() {
           </div>
         </li>
       ))}
-      <li className="shrink-0 basis-[min(60vw,20rem)] snap-start group-data-pinned:basis-[min(24vw,22rem)] group-data-pinned:self-start">
+      <li className="w-[min(60vw,20rem)] shrink-0 snap-start group-data-pinned:w-[min(24vw,22rem)] group-data-pinned:self-start">
         <Link
           href={allProjects}
           className="flex aspect-[16/10] flex-col justify-between rounded-3xl bg-primary p-8 font-serif text-[clamp(1.75rem,2.6vw,2.5rem)] leading-[1.1] text-white transition-[background-color] duration-200 ease-[ease] group-data-pinned:aspect-auto group-data-pinned:h-[var(--reel-image,calc(min(60vw,92vh)*0.625))] hover:bg-primary-hover"

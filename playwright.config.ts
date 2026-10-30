@@ -26,6 +26,15 @@ export default defineConfig({
         viewport: { width: 1280, height: 800 },
       },
     },
+    {
+      // Safari sizes the pinned reel its own way; the rest of the suite runs in Chrome only.
+      name: "desktop-safari",
+      grep: /desktop reel/,
+      use: {
+        ...devices["Desktop Safari"],
+        viewport: { width: 1280, height: 800 },
+      },
+    },
   ],
   webServer: {
     // CI builds in an earlier step; locally the server builds first.
