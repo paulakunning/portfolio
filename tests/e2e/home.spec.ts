@@ -12,12 +12,12 @@ test("renders the home sections in order", async ({ page }) => {
   ]);
 });
 
-test("lists the tools and what Paula is learning", async ({ page }) => {
+test("lists the tools Paula uses", async ({ page }) => {
   const cases = [
-    ["/", "Hola, soy Paula", "Ahora estoy aprendiendo Next.js y Framer."],
-    ["/en", "Hi, I'm Paula", "Currently learning Next.js and Framer."],
+    ["/", "Hola, soy Paula"],
+    ["/en", "Hi, I'm Paula"],
   ] as const;
-  for (const [path, region, line] of cases) {
+  for (const [path, region] of cases) {
     await page.goto(path);
     const about = page.getByRole("region", { name: region });
     await expect(
@@ -25,8 +25,10 @@ test("lists the tools and what Paula is learning", async ({ page }) => {
     ).toHaveCount(1);
     await expect(
       about.getByRole("listitem").filter({ hasText: "Next.js" }),
+    ).toHaveCount(1);
+    await expect(
+      about.getByRole("listitem").filter({ hasText: "Framer" }),
     ).toHaveCount(0);
-    await expect(about.getByText(line)).toBeVisible();
   }
 });
 
@@ -83,7 +85,7 @@ test("shows the five featured projects and a link to all", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator("[data-reel-card]")).toHaveCount(5);
   // Enter, not click: on desktop the card is off-screen until focus scrolls to it.
-  await page.getByRole("link", { name: "Ver los 14 proyectos" }).press("Enter");
+  await page.getByRole("link", { name: "Ver los 15 proyectos" }).press("Enter");
   await expect(page).toHaveURL(/\/proyectos$/);
 });
 
@@ -120,7 +122,7 @@ test.describe("desktop reel", () => {
       }),
     );
     await expect(
-      page.getByRole("link", { name: "Ver los 14 proyectos" }),
+      page.getByRole("link", { name: "Ver los 15 proyectos" }),
     ).toBeInViewport({ ratio: 1 });
   });
 
@@ -150,10 +152,12 @@ test.describe("desktop reel", () => {
   }) => {
     await page.goto("/");
     await expect(page.locator("#proyectos")).toHaveAttribute("data-pinned");
-    await page.getByRole("link", { name: "Ver proyecto DéDé Digital" }).focus();
+    await page
+      .getByRole("link", { name: "Ver proyecto GEA Logistics" })
+      .focus();
     await page.keyboard.press(tabKey(browserName));
     await expect(
-      page.getByRole("link", { name: "Ver proyecto Lucrecia Cornaglia" }),
+      page.getByRole("link", { name: "Ver proyecto DéDé Digital" }),
     ).toBeInViewport();
   });
 
@@ -167,9 +171,9 @@ test.describe("desktop reel", () => {
       );
     // delay: the page must not move between mousedown and mouseup
     await page
-      .getByRole("link", { name: "Ver proyecto Don Higinio" })
+      .getByRole("link", { name: "Ver proyecto Weather App" })
       .click({ delay: 100 });
-    await expect(page).toHaveURL(/\/proyectos\/don-higinio$/);
+    await expect(page).toHaveURL(/\/proyectos\/weather-app$/);
   });
 
   test("Enter on Ver proyectos leaves focus in the reel", async ({

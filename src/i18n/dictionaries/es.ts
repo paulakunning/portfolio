@@ -76,7 +76,6 @@ export const es = {
       "Actualmente, estoy abierta a nuevas oportunidades laborales y proyectos freelance, especialmente en diseño y desarrollo web.",
     ],
     tools: "Herramientas que uso",
-    learning: "Ahora estoy aprendiendo {list}.",
   },
   testimonials: {
     title: "Testimonios",

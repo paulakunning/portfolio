@@ -6,6 +6,7 @@ import { skills } from "./skills";
 
 // Spec §4 order.
 const specOrder = [
+  "weather-app",
   "don-higinio",
   "factchequeado-lab",
   "gea-logistics",
@@ -36,11 +37,11 @@ describe("projects", () => {
 
   it("features five projects that mix categories", () => {
     expect(projects.filter((p) => p.featured).map((p) => p.slug)).toEqual([
+      "weather-app",
       "don-higinio",
       "factchequeado-lab",
       "gea-logistics",
       "dede-digital",
-      "lucrecia-cornaglia",
     ]);
   });
 
@@ -64,12 +65,6 @@ describe("projects", () => {
 });
 
 describe("skills", () => {
-  it("only Next.js and Framer are marked as learning", () => {
-    expect(
-      skills.filter((skill) => skill.learning).map((skill) => skill.name),
-    ).toEqual(["Next.js", "Framer"]);
-  });
-
   it("skills end with Illustrator", () => {
     expect(skills.at(-1)?.name).toBe("Adobe Illustrator");
   });

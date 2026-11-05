@@ -39,6 +39,6 @@ export type Experience = {
   highlights?: Localized<string[]>;
 };
 
-export type Skill = { name: string; icon: StaticImageData; learning?: boolean };
+export type Skill = { name: string; icon: StaticImageData };
 
 export type Testimonial = { quote: Localized; author: string; role: Localized };

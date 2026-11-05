@@ -3,16 +3,11 @@ import { workingPhoto } from "@/content/about";
 import { Reveal } from "@/components/Reveal";
 import { skills } from "@/content/skills";
 import { getDictionary } from "@/i18n/get-dictionary";
-import { formatMessage } from "@/i18n/format";
 import { getLocale } from "@/i18n/server";
 
 export async function About() {
   const locale = await getLocale();
   const { about } = getDictionary(locale);
-  const tools = skills.filter((skill) => !skill.learning);
-  const learning = skills
-    .filter((skill) => skill.learning)
-    .map((skill) => skill.name);
 
   return (
     <section
@@ -45,7 +40,7 @@ export async function About() {
           {about.tools}
         </h3>
         <ul className="mt-4 flex flex-wrap gap-2">
-          {tools.map((skill) => (
+          {skills.map((skill) => (
             <li
               key={skill.name}
               className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-[0.85rem] py-[0.4rem] text-sm leading-[1.6]"
@@ -55,13 +50,6 @@ export async function About() {
             </li>
           ))}
         </ul>
-        <p className="mt-4 text-[0.9375rem] text-muted">
-          {formatMessage(about.learning, {
-            list: new Intl.ListFormat(locale, { type: "conjunction" }).format(
-              learning,
-            ),
-          })}
-        </p>
       </Reveal>
     </section>
   );

@@ -76,7 +76,6 @@ export const en: Dictionary = {
       "Currently, I'm open to new job opportunities and freelance projects, especially in web design and development.",
     ],
     tools: "Tools I use",
-    learning: "Currently learning {list}.",
   },
   testimonials: {
     title: "Testimonials",
