@@ -5,14 +5,14 @@ export const en: Dictionary = {
     siteName: "Paula Kunning",
     ogLocale: "en_US",
     home: {
-      title: "Paula Kunning — Web Designer & WordPress / Front-End Developer",
+      title: "Paula Kunning — Full Stack Developer, Front-End Focused",
       description:
-        "I design websites in Figma and build them in WordPress and code. Portfolio of Paula Kunning, Argentina. Available for remote work.",
+        "I design websites in Figma and build them with React, Next.js and WordPress. Portfolio of Paula Kunning, Argentina. Available for remote work.",
     },
     projects: {
       title: "Projects",
       description:
-        "Web design, WordPress development and branding projects by Paula Kunning.",
+        "Web design, front-end development and branding projects by Paula Kunning.",
     },
     contact: {
       title: "Contact",
@@ -71,7 +71,7 @@ export const en: Dictionary = {
   about: {
     title: "Hi, I'm Paula",
     paragraphs: [
-      "I design websites in Figma and bring them to life with WordPress or code.",
+      "I design websites in Figma and bring them to life with React, Next.js or WordPress.",
       "I have over 3 years of experience working in web development, both at a digital marketing agency and on freelance projects. I've worked on corporate websites and online stores, and I also design brand identities and graphic assets that complement my web design work.",
       "Currently, I'm open to new job opportunities and freelance projects, especially in web design and development.",
     ],

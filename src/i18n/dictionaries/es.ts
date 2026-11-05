@@ -3,15 +3,14 @@ export const es = {
     siteName: "Paula Kunning",
     ogLocale: "es_AR",
     home: {
-      title:
-        "Paula Kunning — Diseñadora Web y Desarrolladora WordPress / Front-End",
+      title: "Paula Kunning — Desarrolladora Full Stack orientada a Front-End",
       description:
-        "Diseño sitios web en Figma y los desarrollo en WordPress y código. Portfolio de Paula Kunning, Córdoba, Argentina. Disponible para trabajo remoto.",
+        "Diseño sitios web en Figma y los desarrollo con React, Next.js y WordPress. Portfolio de Paula Kunning, Córdoba, Argentina. Disponible para trabajo remoto.",
     },
     projects: {
       title: "Proyectos",
       description:
-        "Proyectos de diseño web, desarrollo WordPress y branding de Paula Kunning.",
+        "Proyectos de diseño web, desarrollo front-end y branding de Paula Kunning.",
     },
     contact: {
       title: "Contacto",
@@ -71,7 +70,7 @@ export const es = {
   about: {
     title: "Hola, soy Paula",
     paragraphs: [
-      "Diseño páginas web en Figma y las hago realidad con WordPress o código.",
+      "Diseño páginas web en Figma y las hago realidad con React, Next.js o WordPress.",
       "Tengo más de 3 años de experiencia trabajando en desarrollo web para una agencia de marketing digital y en proyectos freelance. Trabajé en sitios corporativos y tiendas online, y también diseño identidades visuales y piezas gráficas que complementan mi trabajo web.",
       "Actualmente, estoy abierta a nuevas oportunidades laborales y proyectos freelance, especialmente en diseño y desarrollo web.",
     ],
