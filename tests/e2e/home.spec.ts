@@ -137,13 +137,18 @@ test.describe("desktop reel", () => {
       scrollTo({ top: el.offsetTop, behavior: "instant" }),
     );
     const header = (await page.locator("header").boundingBox())!;
-    const card = (await page
-      .locator("[data-reel-card]")
-      .first()
-      .boundingBox())!;
-    expect(card.y).toBeGreaterThan(header.y + header.height);
-    // The progress bar sits 32px above the bottom edge.
-    expect(card.y + card.height).toBeLessThan(720 - 32);
+    const card = page.locator("[data-reel-card]").first();
+    // The reel slides up as it reveals, so wait for the card to settle.
+    await expect
+      .poll(async () => {
+        const box = (await card.boundingBox())!;
+        return box.y + box.height;
+      })
+      // The progress bar sits 32px above the bottom edge.
+      .toBeLessThan(720 - 32);
+    expect((await card.boundingBox())!.y).toBeGreaterThan(
+      header.y + header.height,
+    );
   });
 
   test("tabbing to an off-screen card brings it into view", async ({
