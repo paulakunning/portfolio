@@ -22,12 +22,12 @@ export const skills: Skill[] = [
   { name: "JavaScript", icon: javascript },
   { name: "TypeScript", icon: typescript },
   { name: "React", icon: react },
+  { name: "Next.js", icon: nextjs },
   { name: "PHP", icon: php },
   { name: "WordPress", icon: wordpress },
   { name: "Elementor", icon: elementor },
   { name: "Bricks Builder", icon: bricksBuilder },
   { name: "WooCommerce", icon: woocommerce },
-  { name: "Next.js", icon: nextjs, learning: true },
   { name: "Framer", icon: framer, learning: true },
   { name: "Adobe Illustrator", icon: illustrator },
 ];

@@ -14,8 +14,8 @@ test("renders the home sections in order", async ({ page }) => {
 
 test("lists the tools and what Paula is learning", async ({ page }) => {
   const cases = [
-    ["/", "Hola, soy Paula", "Ahora estoy aprendiendo Next.js y Framer."],
-    ["/en", "Hi, I'm Paula", "Currently learning Next.js and Framer."],
+    ["/", "Hola, soy Paula", "Ahora estoy aprendiendo Framer."],
+    ["/en", "Hi, I'm Paula", "Currently learning Framer."],
   ] as const;
   for (const [path, region, line] of cases) {
     await page.goto(path);
@@ -25,6 +25,9 @@ test("lists the tools and what Paula is learning", async ({ page }) => {
     ).toHaveCount(1);
     await expect(
       about.getByRole("listitem").filter({ hasText: "Next.js" }),
+    ).toHaveCount(1);
+    await expect(
+      about.getByRole("listitem").filter({ hasText: "Framer" }),
     ).toHaveCount(0);
     await expect(about.getByText(line)).toBeVisible();
   }

@@ -65,10 +65,10 @@ describe("projects", () => {
 });
 
 describe("skills", () => {
-  it("only Next.js and Framer are marked as learning", () => {
+  it("only Framer is marked as learning", () => {
     expect(
       skills.filter((skill) => skill.learning).map((skill) => skill.name),
-    ).toEqual(["Next.js", "Framer"]);
+    ).toEqual(["Framer"]);
   });
 
   it("skills end with Illustrator", () => {
