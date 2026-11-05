@@ -73,7 +73,10 @@ export async function FeaturedProjects() {
               <p className="mt-[0.4rem] text-sm leading-[1.6] text-muted">
                 {card.role}, {card.year}
               </p>
-              <p className="mt-3 max-w-[32rem]">{card.summary}</p>
+              {/* Three lines keep the pinned card on a 720px-tall screen; the project page has the full text. */}
+              <p className="mt-3 max-w-[32rem] group-data-pinned:line-clamp-3">
+                {card.summary}
+              </p>
             </div>
             <ButtonLink href={card.href} variant="secondary">
               {featured.viewProject}
