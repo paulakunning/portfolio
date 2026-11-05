@@ -2,7 +2,6 @@ import bricksBuilder from "@/assets/skills/bricks-builder.svg";
 import css from "@/assets/skills/css.svg";
 import elementor from "@/assets/skills/elementor.svg";
 import figma from "@/assets/skills/figma.svg";
-import framer from "@/assets/skills/framer.svg";
 import html from "@/assets/skills/html.svg";
 import illustrator from "@/assets/skills/illustrator.svg";
 import javascript from "@/assets/skills/javascript.svg";
@@ -28,6 +27,5 @@ export const skills: Skill[] = [
   { name: "Elementor", icon: elementor },
   { name: "Bricks Builder", icon: bricksBuilder },
   { name: "WooCommerce", icon: woocommerce },
-  { name: "Framer", icon: framer, learning: true },
   { name: "Adobe Illustrator", icon: illustrator },
 ];

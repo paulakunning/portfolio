@@ -12,12 +12,12 @@ test("renders the home sections in order", async ({ page }) => {
   ]);
 });
 
-test("lists the tools and what Paula is learning", async ({ page }) => {
+test("lists the tools Paula uses", async ({ page }) => {
   const cases = [
-    ["/", "Hola, soy Paula", "Ahora estoy aprendiendo Framer."],
-    ["/en", "Hi, I'm Paula", "Currently learning Framer."],
+    ["/", "Hola, soy Paula"],
+    ["/en", "Hi, I'm Paula"],
   ] as const;
-  for (const [path, region, line] of cases) {
+  for (const [path, region] of cases) {
     await page.goto(path);
     const about = page.getByRole("region", { name: region });
     await expect(
@@ -29,7 +29,6 @@ test("lists the tools and what Paula is learning", async ({ page }) => {
     await expect(
       about.getByRole("listitem").filter({ hasText: "Framer" }),
     ).toHaveCount(0);
-    await expect(about.getByText(line)).toBeVisible();
   }
 });
 

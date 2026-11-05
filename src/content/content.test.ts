@@ -65,12 +65,6 @@ describe("projects", () => {
 });
 
 describe("skills", () => {
-  it("only Framer is marked as learning", () => {
-    expect(
-      skills.filter((skill) => skill.learning).map((skill) => skill.name),
-    ).toEqual(["Framer"]);
-  });
-
   it("skills end with Illustrator", () => {
     expect(skills.at(-1)?.name).toBe("Adobe Illustrator");
   });
