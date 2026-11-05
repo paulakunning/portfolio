@@ -70,7 +70,7 @@ test("the body sits under its own heading", async ({ page }) => {
 test("wraps from the last project to the first", async ({ page }) => {
   await page.goto("/proyectos/lucrecia-cornaglia");
   await page.getByRole("link", { name: /Siguiente proyecto/ }).click();
-  await expect(page).toHaveURL(/\/proyectos\/don-higinio$/);
+  await expect(page).toHaveURL(/\/proyectos\/weather-app$/);
 });
 
 test("shows conceptual projects as such", async ({ page }) => {
@@ -108,7 +108,7 @@ test("links out to the live site or Behance in a new tab", async ({ page }) => {
 
 test("shows the project count next to the tabs", async ({ page }) => {
   await page.goto("/proyectos");
-  const count = page.getByText("14 proyectos");
+  const count = page.getByText("15 proyectos");
   await expect(count).toBeVisible();
   // Not the old sr-only 1px box.
   expect((await count.boundingBox())?.width).toBeGreaterThan(50);
@@ -223,7 +223,7 @@ test.describe("without JavaScript", () => {
   test.use({ javaScriptEnabled: false });
   test("every card is visible", async ({ page }) => {
     await page.goto("/proyectos");
-    await expect(page.getByRole("article")).toHaveCount(14);
+    await expect(page.getByRole("article")).toHaveCount(15);
     expect(
       await page
         .getByRole("article")

@@ -29,7 +29,7 @@ test.describe("custom cursor", () => {
     const cover = page.locator("[data-reel-image]").first();
     await cover.scrollIntoViewIfNeeded();
     await cover.click();
-    await expect(page).toHaveURL(/\/proyectos\/don-higinio$/);
+    await expect(page).toHaveURL(/\/proyectos\/weather-app$/);
   });
 
   test("form fields keep the native caret", async ({ page }) => {

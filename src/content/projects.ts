@@ -40,12 +40,62 @@ import tecnofastCover from "@/assets/projects/tecnofast-peru/cover.jpg";
 import uniform1 from "@/assets/projects/uniform/1.jpg";
 import uniform2 from "@/assets/projects/uniform/2.jpg";
 import uniformCover from "@/assets/projects/uniform/cover.jpg";
+import weatherApp1 from "@/assets/projects/weather-app/1.jpg";
+import weatherApp2 from "@/assets/projects/weather-app/2.jpg";
+import weatherAppCover from "@/assets/projects/weather-app/cover.jpg";
 import type { Project } from "./types";
 
 const webDevelopment = { es: "Desarrollo web", en: "Web development" };
 
 // Order here is the order on screen.
 export const projects: Project[] = [
+  {
+    slug: "weather-app",
+    name: "Weather App",
+    featured: true,
+    categories: ["web-design", "web-development"],
+    tools: ["Figma", "Next.js", "React", "TypeScript", "Tailwind CSS"],
+    year: 2026,
+    role: { es: "Diseño + desarrollo", en: "Design + development" },
+    summary: {
+      es: "Diseño y desarrollo de una app del clima bilingüe donde toda la pantalla es el cielo en vivo de la ciudad, calculado con la posición real del sol, con una regla de 24 horas para recorrer el día.",
+      en: "Design and development of a bilingual weather app where the whole screen is the city's live sky, computed from the real sun position, with a 24-hour ruler to travel through the day.",
+    },
+    body: {
+      es: [
+        "Weather App muestra el cielo de cualquier ciudad en este momento. El fondo sigue la altura real del sol, la nubosidad y la lluvia, y cambia de forma continua al recorrer el día con una regla de 24 horas que se puede arrastrar, usar con la rueda del mouse o con el teclado. Incluye búsqueda de ciudades con sugerencias, ubicación actual, URLs para compartir, español e inglés, y °C / °F.",
+        "Diseñé la interfaz en Figma y la desarrollé con Next.js, React, TypeScript y Tailwind CSS. Los datos de Open-Meteo se validan con Zod en el servidor, el texto elige un color claro u oscuro según el cielo para mantener el contraste WCAG AA, y la regla funciona con un control nativo accesible para lectores de pantalla. El proyecto tiene tests unitarios y end-to-end, y CI con GitHub Actions.",
+      ],
+      en: [
+        "Weather App shows the sky of any city right now. The background follows the real sun altitude, the cloud cover and the rain, and changes continuously as you travel through the day with a 24-hour ruler you can drag, scroll or use with the keyboard. It includes city search with suggestions, current location, shareable URLs, English and Spanish, and °C / °F.",
+        "I designed the interface in Figma and built it with Next.js, React, TypeScript and Tailwind CSS. Open-Meteo data is validated with Zod on the server, text picks a light or dark ink from the sky behind it to keep WCAG AA contrast, and the ruler runs on a native control that screen readers understand. The project has unit and end-to-end tests, and CI with GitHub Actions.",
+      ],
+    },
+    cover: {
+      src: weatherAppCover,
+      alt: {
+        es: "Manos escribiendo en una notebook con Weather App abierta, mostrando el cielo de Honolulu al atardecer",
+        en: "Hands typing on a laptop with Weather App open, showing the Honolulu sky at sunset",
+      },
+    },
+    gallery: [
+      {
+        src: weatherApp1,
+        alt: {
+          es: "Notebook sobre una mesa de madera con Weather App: 26° en Honolulu y la regla de 24 horas",
+          en: "Laptop on a wooden table showing Weather App: 26° in Honolulu and the 24-hour ruler",
+        },
+      },
+      {
+        src: weatherApp2,
+        alt: {
+          es: "Mujer sosteniendo un celular con la versión mobile de Weather App",
+          en: "Woman holding a phone with the mobile version of Weather App",
+        },
+      },
+    ],
+    link: { type: "live", url: "https://pk-weather-app-v2.vercel.app" },
+  },
   {
     slug: "don-higinio",
     name: "Don Higinio",
@@ -665,7 +715,6 @@ export const projects: Project[] = [
   {
     slug: "lucrecia-cornaglia",
     name: "Lucrecia Cornaglia",
-    featured: true,
     categories: ["branding"],
     tools: ["Adobe Illustrator"],
     year: 2026,
