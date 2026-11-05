@@ -57,7 +57,7 @@ export const es = {
   },
   featured: {
     title: "Proyectos destacados",
-    subtitle: "Diseño Web, Desarrollo WordPress y Branding.",
+    subtitle: "Diseño Web, Desarrollo Front-End y Branding.",
     viewAll: "Ver todos los proyectos",
     viewProject: "Ver proyecto",
     seeAll: "Ver los {count} proyectos",
@@ -106,7 +106,7 @@ export const es = {
   cta: {
     title: "¿Tenés una idea en mente? Me encantaría hacerla realidad",
     availability:
-      "Busco un puesto remoto como Diseñadora Web o Desarrolladora WordPress / Front-End, y también tomo proyectos freelance.",
+      "Busco un puesto remoto como Desarrolladora Full Stack orientada a Front-End, y también tomo proyectos freelance.",
   },
   contact: {
     title: "¿Tenés un proyecto en mente?",

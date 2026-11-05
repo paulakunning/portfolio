@@ -57,7 +57,7 @@ export const en: Dictionary = {
   },
   featured: {
     title: "Featured projects",
-    subtitle: "Web Design, WordPress Development and Branding.",
+    subtitle: "Web Design, Front-End Development and Branding.",
     viewAll: "View all projects",
     viewProject: "View project",
     seeAll: "See all {count} projects",
@@ -106,7 +106,7 @@ export const en: Dictionary = {
   cta: {
     title: "Have an idea in mind? I'd love to bring it to life",
     availability:
-      "I'm looking for a remote role as a Web Designer or WordPress / Front-End Developer, and I also take on freelance projects.",
+      "I'm looking for a remote role as a Full Stack Developer with a front-end focus, and I also take on freelance projects.",
   },
   contact: {
     title: "Have a project in mind?",
