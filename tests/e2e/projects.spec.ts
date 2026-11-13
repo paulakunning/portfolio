@@ -108,7 +108,7 @@ test("links out to the live site or Behance in a new tab", async ({ page }) => {
 
 test("shows the project count next to the tabs", async ({ page }) => {
   await page.goto("/proyectos");
-  const count = page.getByText("15 proyectos");
+  const count = page.getByText("16 proyectos");
   await expect(count).toBeVisible();
   // Not the old sr-only 1px box.
   expect((await count.boundingBox())?.width).toBeGreaterThan(50);
@@ -223,7 +223,7 @@ test.describe("without JavaScript", () => {
   test.use({ javaScriptEnabled: false });
   test("every card is visible", async ({ page }) => {
     await page.goto("/proyectos");
-    await expect(page.getByRole("article")).toHaveCount(15);
+    await expect(page.getByRole("article")).toHaveCount(16);
     expect(
       await page
         .getByRole("article")

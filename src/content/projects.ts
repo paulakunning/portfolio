@@ -25,6 +25,9 @@ import friosurCover from "@/assets/projects/friosur/cover.jpg";
 import gea1 from "@/assets/projects/gea-logistics/1.jpg";
 import gea2 from "@/assets/projects/gea-logistics/2.jpg";
 import geaCover from "@/assets/projects/gea-logistics/cover.jpg";
+import janssen1 from "@/assets/projects/janssen-maquinaria/1.jpg";
+import janssen2 from "@/assets/projects/janssen-maquinaria/2.jpg";
+import janssenCover from "@/assets/projects/janssen-maquinaria/cover.jpg";
 import javierCarrizo1 from "@/assets/projects/javier-carrizo/1.jpg";
 import javierCarrizo2 from "@/assets/projects/javier-carrizo/2.jpg";
 import javierCarrizoCover from "@/assets/projects/javier-carrizo/cover.jpg";
@@ -515,6 +518,52 @@ export const projects: Project[] = [
       },
     ],
     link: { type: "live", url: "https://aeropuertoelloa.cl/" },
+  },
+  {
+    slug: "janssen-maquinaria",
+    name: "Janssen Maquinaria",
+    categories: ["web-development"],
+    tools: ["WordPress", "Bricks Builder", "WooCommerce"],
+    year: 2024,
+    role: webDevelopment,
+    summary: {
+      es: "Desarrollo del sitio web de una empresa chilena de maquinaria y equipos industriales, a partir de diseños definidos en Figma. Implementado en WordPress con Bricks Builder y WooCommerce, con catálogo de productos y adaptación responsive.",
+      en: "Development of the website for a Chilean industrial machinery and equipment company, from designs defined in Figma. Built in WordPress with Bricks Builder and WooCommerce, with a product catalog and a responsive layout.",
+    },
+    body: {
+      es: [
+        "Janssen Maquinaria es una empresa chilena especializada en maquinaria y equipos industriales. El proyecto consistió en desarrollar su sitio web a partir de diseños previamente definidos en Figma, trasladando cada interfaz a una experiencia web funcional y responsive.",
+        "Me encargué de todo el desarrollo del sitio en WordPress, utilizando Bricks Builder y WooCommerce. Trabajé en la construcción de las páginas, la configuración del catálogo de productos, la adaptación responsive y los ajustes de estilos y funcionalidades con HTML y CSS para respetar el diseño original.",
+      ],
+      en: [
+        "Janssen Maquinaria is a Chilean company specialized in industrial machinery and equipment. The project was to develop its website from designs previously defined in Figma, turning each interface into a functional, responsive web experience.",
+        "I handled the full development of the site in WordPress, using Bricks Builder and WooCommerce. I built the pages, set up the product catalog, made the layout responsive and adjusted styles and features with HTML and CSS to stay true to the original design.",
+      ],
+    },
+    cover: {
+      src: janssenCover,
+      alt: {
+        es: "Hombre mirando el inicio del sitio de Janssen Maquinaria en una notebook sobre un escritorio de madera",
+        en: "Man viewing the Janssen Maquinaria home page on a laptop on a wooden desk",
+      },
+    },
+    gallery: [
+      {
+        src: janssen1,
+        alt: {
+          es: "Mano sosteniendo un celular con la versión mobile del sitio de Janssen Maquinaria",
+          en: "Hand holding a phone with the mobile version of the Janssen Maquinaria site",
+        },
+      },
+      {
+        src: janssen2,
+        alt: {
+          es: "Persona navegando el sitio de Janssen Maquinaria en una notebook apoyada sobre las piernas",
+          en: "Person browsing the Janssen Maquinaria site on a laptop resting on their lap",
+        },
+      },
+    ],
+    link: { type: "live", url: "https://janssenmaquinaria.cl/" },
   },
   {
     slug: "burning-wanderlust",

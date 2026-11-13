@@ -16,6 +16,7 @@ const specOrder = [
   "olatrek",
   "friosur",
   "aeropuerto-el-loa",
+  "janssen-maquinaria",
   "burning-wanderlust",
   "dede-digital",
   "amanda-wellness-coach",
