@@ -85,7 +85,7 @@ test("shows the five featured projects and a link to all", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator("[data-reel-card]")).toHaveCount(5);
   // Enter, not click: on desktop the card is off-screen until focus scrolls to it.
-  await page.getByRole("link", { name: "Ver los 15 proyectos" }).press("Enter");
+  await page.getByRole("link", { name: "Ver los 16 proyectos" }).press("Enter");
   await expect(page).toHaveURL(/\/proyectos$/);
 });
 
@@ -122,7 +122,7 @@ test.describe("desktop reel", () => {
       }),
     );
     await expect(
-      page.getByRole("link", { name: "Ver los 15 proyectos" }),
+      page.getByRole("link", { name: "Ver los 16 proyectos" }),
     ).toBeInViewport({ ratio: 1 });
   });
 
