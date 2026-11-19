@@ -66,8 +66,12 @@ describe("projects", () => {
 });
 
 describe("skills", () => {
-  it("skills end with Illustrator", () => {
-    expect(skills.at(-1)?.name).toBe("Adobe Illustrator");
+  it("skills start with React, Next.js and TypeScript", () => {
+    expect(skills.slice(0, 3).map((skill) => skill.name)).toEqual([
+      "React",
+      "Next.js",
+      "TypeScript",
+    ]);
   });
 });
 

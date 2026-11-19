@@ -1,14 +1,14 @@
 import type { StaticImageData } from "next/image";
 import profile from "@/assets/about/profile.jpg";
-import bricks from "@/assets/skills/bricks-builder.svg";
 import css from "@/assets/skills/css.svg";
-import elementor from "@/assets/skills/elementor.svg";
 import figma from "@/assets/skills/figma.svg";
 import html from "@/assets/skills/html.svg";
 import javascript from "@/assets/skills/javascript.svg";
 import nextjs from "@/assets/skills/nextjs.svg";
+import nodejs from "@/assets/skills/nodejs.svg";
 import php from "@/assets/skills/php.svg";
 import react from "@/assets/skills/react.svg";
+import tailwindCss from "@/assets/skills/tailwind-css.svg";
 import typescript from "@/assets/skills/typescript.svg";
 import wordpress from "@/assets/skills/wordpress.svg";
 
@@ -43,8 +43,8 @@ export const heroTiles: HeroTile[] = [
     mobile: { x: 28, y: 12 },
   },
   {
-    label: "Elementor",
-    image: elementor,
+    label: "Node.js",
+    image: nodejs,
     x: 18,
     y: 44,
     mobile: { x: 9, y: 83 },
@@ -78,8 +78,8 @@ export const heroTiles: HeroTile[] = [
     mobile: { x: 58, y: 84 },
   },
   {
-    label: "Bricks Builder",
-    image: bricks,
+    label: "Tailwind CSS",
+    image: tailwindCss,
     x: 81,
     y: 76,
     mobile: { x: 80, y: 79 },
