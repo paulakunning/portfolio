@@ -5,14 +5,13 @@ export const en: Dictionary = {
     siteName: "Paula Kunning",
     ogLocale: "en_US",
     home: {
-      title: "Paula Kunning — Full Stack Developer, Front-End Focused",
+      title: "Paula Kunning — Full Stack Developer",
       description:
-        "I design websites in Figma and build them with React and Next.js, or with WordPress. Portfolio of Paula Kunning, Argentina. Available for remote work.",
+        "Full stack developer working with React, Next.js, TypeScript and Node.js. Portfolio of Paula Kunning, Argentina. Available for remote work.",
     },
     projects: {
       title: "Projects",
-      description:
-        "Web design, front-end development and branding projects by Paula Kunning.",
+      description: "Web development and design projects by Paula Kunning.",
     },
     contact: {
       title: "Contact",
@@ -46,18 +45,18 @@ export const en: Dictionary = {
     copyright: "© {year} Paula Kunning. Córdoba, Argentina.",
   },
   hero: {
-    title: "Web Design + Development",
+    title: "Full Stack Developer",
     seeProjects: "See projects",
     cv: "View my resume",
     cvNotice: "(PDF, opens in a new tab)",
     subtitle:
-      "I create websites in Figma and can bring them to life with code or no-code tools.",
+      "I build websites and web apps with React, Next.js, TypeScript and Node.js, and design the interfaces myself in Figma.",
     availability: "Available for full-time remote work and freelance projects",
     dragHint: "You can move the tools around",
   },
   featured: {
     title: "Featured projects",
-    subtitle: "Web Design, Front-End Development and Branding.",
+    subtitle: "Web Development and Design.",
     viewAll: "View all projects",
     viewProject: "View project",
     seeAll: "See all {count} projects",
@@ -71,9 +70,9 @@ export const en: Dictionary = {
   about: {
     title: "Hi, I'm Paula",
     paragraphs: [
-      "I design websites in Figma and bring them to life with React and Next.js, or with WordPress.",
-      "I have over 3 years of experience working in web development, both at a digital marketing agency and on freelance projects. I've worked on corporate websites and online stores, and I also design brand identities and graphic assets that complement my web design work.",
-      "Currently, I'm open to new job opportunities and freelance projects, especially in web design and development.",
+      "I'm a full stack developer. I design interfaces in Figma and build them myself with React and Next.js, or with WordPress, so I can take a project from start to finish.",
+      "I have over 3 years of experience in web development: 2.5 years at a digital marketing agency, where I built 10+ sites, and now freelance for clients in Argentina and abroad.",
+      "I'm currently learning Python and LLMs to build AI-powered apps, and I'm open to new job opportunities and freelance projects.",
     ],
     tools: "Tools I use",
   },
@@ -106,7 +105,7 @@ export const en: Dictionary = {
   cta: {
     title: "Have an idea in mind? I'd love to bring it to life",
     availability:
-      "I'm looking for a remote role as a Full Stack Developer with a front-end focus, and I also take on freelance projects.",
+      "I'm looking for a remote role as a Full Stack Developer, and I also take on freelance projects.",
   },
   contact: {
     title: "Have a project in mind?",

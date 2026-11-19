@@ -3,14 +3,13 @@ export const es = {
     siteName: "Paula Kunning",
     ogLocale: "es_AR",
     home: {
-      title: "Paula Kunning — Desarrolladora Full Stack orientada a Front-End",
+      title: "Paula Kunning — Desarrolladora Full Stack",
       description:
-        "Diseño sitios web en Figma y los desarrollo con React y Next.js, o con WordPress. Portfolio de Paula Kunning, Córdoba, Argentina. Disponible para trabajo remoto.",
+        "Desarrolladora full stack con React, Next.js, TypeScript y Node.js. Portfolio de Paula Kunning, Córdoba, Argentina. Disponible para trabajo remoto.",
     },
     projects: {
       title: "Proyectos",
-      description:
-        "Proyectos de diseño web, desarrollo front-end y branding de Paula Kunning.",
+      description: "Proyectos de desarrollo y diseño web de Paula Kunning.",
     },
     contact: {
       title: "Contacto",
@@ -44,19 +43,19 @@ export const es = {
     copyright: "© {year} Paula Kunning. Córdoba, Argentina.",
   },
   hero: {
-    title: "Diseño Web + Desarrollo",
+    title: "Desarrolladora Full Stack",
     seeProjects: "Ver proyectos",
     cv: "Ver mi CV",
     cvNotice: "(PDF, se abre en una pestaña nueva)",
     subtitle:
-      "Creo páginas web en Figma y puedo hacerlas realidad con código o herramientas no-code.",
+      "Desarrollo sitios y apps web con React, Next.js, TypeScript y Node.js, y diseño las interfaces yo misma en Figma.",
     availability:
       "Disponible para trabajo remoto full-time y proyectos freelance",
     dragHint: "Podés mover las herramientas",
   },
   featured: {
     title: "Proyectos destacados",
-    subtitle: "Diseño Web, Desarrollo Front-End y Branding.",
+    subtitle: "Desarrollo y Diseño Web.",
     viewAll: "Ver todos los proyectos",
     viewProject: "Ver proyecto",
     seeAll: "Ver los {count} proyectos",
@@ -70,9 +69,9 @@ export const es = {
   about: {
     title: "Hola, soy Paula",
     paragraphs: [
-      "Diseño páginas web en Figma y las hago realidad con React y Next.js, o con WordPress.",
-      "Tengo más de 3 años de experiencia trabajando en desarrollo web para una agencia de marketing digital y en proyectos freelance. Trabajé en sitios corporativos y tiendas online, y también diseño identidades visuales y piezas gráficas que complementan mi trabajo web.",
-      "Actualmente, estoy abierta a nuevas oportunidades laborales y proyectos freelance, especialmente en diseño y desarrollo web.",
+      "Soy desarrolladora full stack. Diseño las interfaces en Figma y las implemento yo misma con React y Next.js, o con WordPress, así que puedo llevar un proyecto de punta a punta.",
+      "Tengo más de 3 años de experiencia en desarrollo web: 2 años y medio en una agencia de marketing digital, donde desarrollé más de 10 sitios, y hoy como freelance para clientes de Argentina y del exterior.",
+      "Actualmente estoy aprendiendo Python y LLMs para construir apps con IA, y estoy abierta a nuevas oportunidades laborales y proyectos freelance.",
     ],
     tools: "Herramientas que uso",
   },
@@ -105,7 +104,7 @@ export const es = {
   cta: {
     title: "¿Tenés una idea en mente? Me encantaría hacerla realidad",
     availability:
-      "Busco un puesto remoto como Desarrolladora Full Stack orientada a Front-End, y también tomo proyectos freelance.",
+      "Busco un puesto remoto como Desarrolladora Full Stack, y también tomo proyectos freelance.",
   },
   contact: {
     title: "¿Tenés un proyecto en mente?",
