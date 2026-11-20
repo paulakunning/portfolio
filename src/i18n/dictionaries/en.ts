@@ -49,7 +49,7 @@ export const en: Dictionary = {
     seeProjects: "See projects",
     cv: "View my resume",
     cvNotice: "(PDF, opens in a new tab)",
-    subtitle: "I turn ideas into digital products, from Figma design to code.",
+    subtitle: "I turn ideas into digital products,\nfrom Figma design to code.",
     availability: "Available for full-time remote work and freelance projects",
     dragHint: "You can move the tools around",
   },

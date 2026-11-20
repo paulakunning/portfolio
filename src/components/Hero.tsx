@@ -21,7 +21,7 @@ export async function Hero() {
         >
           {hero.title}
         </h1>
-        <p className="mx-auto mt-6 max-w-[33rem] text-[clamp(1.0625rem,1.5vw,1.25rem)] text-muted motion-safe:animate-enter">
+        <p className="mx-auto mt-6 max-w-[33rem] text-[clamp(1.0625rem,1.5vw,1.25rem)] whitespace-pre-line text-muted motion-safe:animate-enter">
           {hero.subtitle}
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3 motion-safe:animate-enter motion-safe:[animation-delay:150ms]">
