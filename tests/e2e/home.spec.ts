@@ -103,6 +103,13 @@ test.describe("desktop reel", () => {
     await reel.evaluate((el: HTMLElement) =>
       scrollTo({ top: el.offsetTop, behavior: "instant" }),
     );
+    // Two frames: WebKit drops a wheel sent before the programmatic scroll has landed.
+    await page.evaluate(
+      () =>
+        new Promise((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(resolve)),
+        ),
+    );
     const start = (await card.boundingBox())!.x;
     await page.mouse.wheel(0, 600);
     await expect
