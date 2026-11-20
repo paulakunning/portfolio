@@ -4,13 +4,13 @@ export const experience: Experience[] = [
   {
     company: "Aster Estudio",
     role: {
-      es: "Diseñadora y Desarrolladora Web Freelance",
-      en: "Freelance Web Designer & Developer",
+      es: "Desarrolladora y Diseñadora Web Freelance",
+      en: "Freelance Web Developer & Designer",
     },
     start: "2025-07",
     description: {
-      es: "Diseño y desarrollo sitios web y landing pages para clientes, de Figma a WordPress. Trabajo directo con clientes, mantenimiento, y proyectos de identidad visual cuando hace falta.",
-      en: "I design and build websites and landing pages for clients, from Figma to WordPress. I work directly with clients, handle maintenance, and take on visual identity projects when needed.",
+      es: "Desarrollo sitios web para clientes con Next.js y TypeScript, y con WordPress para clientes que necesitan editar su contenido. Diseño cada proyecto en Figma, desde wireframes hasta interfaces finales con desarrollo responsive y accesible. Trabajo directamente con clientes: gestiono propuestas, feedback y mantenimiento (calificación 5.0 en Upwork).",
+      en: "I build client websites with Next.js and TypeScript, and with WordPress for clients who need to edit content themselves. I design every project in Figma, from wireframes to final UI, and build it responsive and accessible. I work directly with clients: proposals, feedback rounds and maintenance. 5.0 rating on Upwork.",
     },
   },
   {
@@ -23,20 +23,18 @@ export const experience: Experience[] = [
     end: "2025-07",
     highlights: {
       es: [
-        "Construí y mantuve más de 10 sitios corporativos para clientes de la agencia en WordPress, llevando diseños de Figma a páginas responsive.",
-        "Rehice tecnofast.com.pe en Bricks Builder, tomando como base tecnofast.cl (hecho con Elementor), y desarrollé su cotizador con código a medida.",
-        "Armé páginas y plantillas con Elementor Pro y Bricks Builder, sumando HTML, CSS/SCSS, JavaScript y PHP personalizados cuando hizo falta.",
+        "Construí y mantuve más de 10 sitios corporativos para clientes de la agencia, a partir de diseños en Figma, con WordPress, PHP, HTML, CSS/SCSS y JavaScript.",
+        "Rehice tecnofast.com.pe en Bricks Builder y participé en la integración del front-end de su cotizador junto al equipo de desarrollo.",
+        "Desarrollé código a medida (PHP, JavaScript, SCSS) sobre plantillas de Elementor Pro y Bricks Builder.",
         "Trabajé en un equipo de desarrolladores y diseñadores: tomé desarrollos asignados de forma independiente y colaboré en los más grandes; usé GitLab en algunos proyectos.",
-        "Trabajé con WooCommerce en proyectos de tienda y catálogo.",
-        "Mantuve y resolví problemas en sitios de clientes, optimicé imágenes y desarrollé plantillas de email responsive con MJML y CSS.",
+        "Mantuve y resolví problemas en sitios de clientes, trabajé en tiendas WooCommerce y desarrollé plantillas de email responsive con MJML.",
       ],
       en: [
-        "Built and maintained 10+ corporate websites for agency clients in WordPress, turning Figma designs into responsive pages.",
-        "Rebuilt tecnofast.com.pe in Bricks Builder, based on the Elementor-built tecnofast.cl, and developed its quote calculator with custom code.",
+        "Built and maintained 10+ corporate websites for agency clients, turning Figma designs into responsive pages with WordPress, PHP, HTML, CSS/SCSS and JavaScript.",
+        "Rebuilt tecnofast.com.pe in Bricks Builder and collaborated with the back-end team on its custom quote calculator, integrating and finishing the front end.",
         "Built pages and templates with Elementor Pro and Bricks Builder, adding custom HTML, CSS/SCSS, JavaScript and PHP where needed.",
         "Worked in a team of developers and designers: took on assigned developments independently and collaborated on larger ones; used GitLab on some projects.",
-        "Worked with WooCommerce on store and catalog projects.",
-        "Maintained and troubleshot client sites, optimized images, and built responsive email templates with MJML and CSS.",
+        "Maintained and troubleshot client sites, worked on WooCommerce stores, and built responsive email templates with MJML.",
       ],
     },
   },

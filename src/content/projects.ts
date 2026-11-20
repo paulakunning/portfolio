@@ -349,11 +349,11 @@ export const projects: Project[] = [
     body: {
       es: [
         "Tecnofast Perú necesitaba un sitio web corporativo para presentar sus soluciones modulares, mostrar su catálogo de productos y facilitar las consultas comerciales. El proyecto tomó como referencia el sitio de Tecnofast Chile, adaptando su estructura y funcionalidades a una nueva implementación.",
-        "Participé en el desarrollo con WordPress y Bricks Builder, utilizando HTML, CSS y código personalizado para implementar el flujo de cotización integrado con WooCommerce, desde la selección de productos hasta el envío de la solicitud. El trabajo combinó funcionalidades a medida con un enfoque orientado al rendimiento y a una experiencia de navegación ágil.",
+        "Participé en el desarrollo con WordPress y Bricks Builder, utilizando HTML, CSS y código personalizado, y en la integración del front-end del flujo de cotización con WooCommerce junto al equipo de desarrollo, desde la selección de productos hasta el envío de la solicitud. El trabajo combinó funcionalidades a medida con un enfoque orientado al rendimiento y a una experiencia de navegación ágil.",
       ],
       en: [
         "Tecnofast Perú needed a corporate website to present its modular solutions, show its product catalog and make sales inquiries easier. The project took the Tecnofast Chile site as a reference, adapting its structure and features into a new build.",
-        "I worked on the development with WordPress and Bricks Builder, using HTML, CSS and custom code to build the quote flow integrated with WooCommerce, from choosing products to sending the request. The work combined custom features with a focus on performance and fast, smooth browsing.",
+        "I worked on the development with WordPress and Bricks Builder, using HTML, CSS and custom code, and collaborated with the back-end team on the WooCommerce quote flow, integrating its front end, from choosing products to sending the request. The work combined custom features with a focus on performance and fast, smooth browsing.",
       ],
     },
     cover: {
