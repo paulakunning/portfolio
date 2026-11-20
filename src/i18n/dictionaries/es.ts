@@ -48,7 +48,7 @@ export const es = {
     cv: "Ver mi CV",
     cvNotice: "(PDF, se abre en una pestaña nueva)",
     subtitle:
-      "Desarrollo sitios y apps web con React, Next.js, TypeScript y Node.js, y diseño las interfaces yo misma en Figma.",
+      "Llevo sitios y apps web del diseño en Figma al código en producción.",
     availability:
       "Disponible para trabajo remoto full-time y proyectos freelance",
     dragHint: "Podés mover las herramientas",

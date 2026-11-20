@@ -50,7 +50,7 @@ export const en: Dictionary = {
     cv: "View my resume",
     cvNotice: "(PDF, opens in a new tab)",
     subtitle:
-      "I build websites and web apps with React, Next.js, TypeScript and Node.js, and design the interfaces myself in Figma.",
+      "I take websites and web apps from Figma design to production code.",
     availability: "Available for full-time remote work and freelance projects",
     dragHint: "You can move the tools around",
   },
