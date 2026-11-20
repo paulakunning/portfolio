@@ -47,8 +47,7 @@ export const es = {
     seeProjects: "Ver proyectos",
     cv: "Ver mi CV",
     cvNotice: "(PDF, se abre en una pestaña nueva)",
-    subtitle:
-      "Llevo sitios y apps web del diseño en Figma al código en producción.",
+    subtitle: "Transformo ideas en productos digitales reales.",
     availability:
       "Disponible para trabajo remoto full-time y proyectos freelance",
     dragHint: "Podés mover las herramientas",
