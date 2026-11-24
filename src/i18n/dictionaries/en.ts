@@ -7,7 +7,7 @@ export const en: Dictionary = {
     home: {
       title: "Paula Kunning — Full Stack Developer",
       description:
-        "Full stack developer working with React, Next.js, TypeScript and Node.js. Portfolio of Paula Kunning, Argentina. Available for remote work.",
+        "Full stack developer working with React, Next.js, TypeScript and Node.js. Portfolio of Paula Kunning, Argentina. Available for full-time work and freelance projects.",
     },
     projects: {
       title: "Projects",
@@ -16,7 +16,7 @@ export const en: Dictionary = {
     contact: {
       title: "Contact",
       description:
-        "Get in touch with Paula Kunning about a remote role or a freelance project.",
+        "Get in touch with Paula Kunning about a full-time role or a freelance project.",
     },
   },
   nav: {
@@ -50,7 +50,7 @@ export const en: Dictionary = {
     cv: "View my resume",
     cvNotice: "(PDF, opens in a new tab)",
     subtitle: "I turn ideas into digital products,\nfrom Figma design to code.",
-    availability: "Available for full-time remote work and freelance projects",
+    availability: "Available for full-time work and freelance projects",
     dragHint: "You can move the tools around",
   },
   featured: {
@@ -104,7 +104,7 @@ export const en: Dictionary = {
   cta: {
     title: "Have an idea in mind? I'd love to bring it to life",
     availability:
-      "I'm looking for a remote role as a Full Stack Developer, and I also take on freelance projects.",
+      "I'm looking for a Full Stack Developer role, and I also take on freelance projects.",
   },
   contact: {
     title: "Have a project in mind?",
