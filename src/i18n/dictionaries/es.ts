@@ -5,7 +5,7 @@ export const es = {
     home: {
       title: "Paula Kunning — Desarrolladora Full Stack",
       description:
-        "Desarrolladora full stack con React, Next.js, TypeScript y Node.js. Portfolio de Paula Kunning, Córdoba, Argentina. Disponible para trabajo remoto.",
+        "Desarrolladora full stack con React, Next.js, TypeScript y Node.js. Portfolio de Paula Kunning, Córdoba, Argentina. Disponible para trabajo full-time y proyectos freelance.",
     },
     projects: {
       title: "Proyectos",
@@ -14,7 +14,7 @@ export const es = {
     contact: {
       title: "Contacto",
       description:
-        "Contactá a Paula Kunning para un puesto remoto o un proyecto freelance.",
+        "Contactá a Paula Kunning para un puesto full-time o un proyecto freelance.",
     },
   },
   nav: {
@@ -49,8 +49,7 @@ export const es = {
     cvNotice: "(PDF, se abre en una pestaña nueva)",
     subtitle:
       "Transformo ideas en productos digitales,\ndel diseño en Figma al código.",
-    availability:
-      "Disponible para trabajo remoto full-time y proyectos freelance",
+    availability: "Disponible para trabajo full-time y proyectos freelance",
     dragHint: "Podés mover las herramientas",
   },
   featured: {
@@ -104,7 +103,7 @@ export const es = {
   cta: {
     title: "¿Tenés una idea en mente? Me encantaría hacerla realidad",
     availability:
-      "Busco un puesto remoto como Desarrolladora Full Stack, y también tomo proyectos freelance.",
+      "Busco un puesto como Desarrolladora Full Stack, y también tomo proyectos freelance.",
   },
   contact: {
     title: "¿Tenés un proyecto en mente?",
